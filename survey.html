@@ -24,76 +24,87 @@
 <body>
   <div class="msg" id="msg">正在准备问卷...</div>
 
-  <script>
-    // =============== 1. 检测是否刚完成一份问卷 ===============
-    if (localStorage.getItem('has_redirected') === 'true') {
-      // 用户从问卷返回，说明刚完成一份
-      let done = parseInt(localStorage.getItem('survey_done_count') || '0');
-      done += 1;
-      localStorage.setItem('survey_done_count', done.toString());
-      localStorage.removeItem('has_redirected'); // 清除标记
-    }
+<script>
+  const msgEl = document.getElementById('msg');
 
-    // =============== 2. 问卷链接池 ===============
-    const urls = [
-      "https://www.wjx.cn/vm/OIINUdi.aspx",
-      "https://www.wjx.cn/vm/wFuyCIf.aspx",
-      "https://www.wjx.cn/vm/eoE3bHt.aspx",
-      "https://www.wjx.cn/vm/ty4UqKF.aspx",
-      "https://www.wjx.cn/vm/hTmouAO.aspx",
-      "https://www.wjx.cn/vm/Y8GWIpm.aspx",
-      "https://www.wjx.cn/vm/tCs4UvJ.aspx",
-      "https://www.wjx.cn/vm/rgLpid4.aspx",
-      "https://www.wjx.cn/vm/PpHqbVx.aspx",
-      "https://www.wjx.cn/vm/YDpmxyN.aspx",
-      "https://www.wjx.cn/vm/PKWqvJk.aspx",
-      "https://www.wjx.cn/vm/QJeHCnD.aspx",
-      "https://www.wjx.cn/vm/ts41axa.aspx",
-      "https://www.wjx.cn/vm/Ow7KIIi.aspx",
-      "https://www.wjx.cn/vm/Ol8i7Kb.aspx",
-      "https://www.wjx.cn/vm/QJhFCna.aspx",
-      "https://www.wjx.cn/vm/QE0CnaM.aspx",
-      "https://www.wjx.cn/vm/OwuVJi7.aspx",
-      "https://www.wjx.cn/vm/eI6HtXI.aspx"
-    ];
+  // --- 兼容 bfcache：页面返回也会触发，保证计数及时更新 ---
+  window.addEventListener('pageshow', (e) => {
+    console.log('[pageshow]', e.persisted);
+  });
 
-    // =============== 3. 状态读取 ===============
-    let doneCount = parseInt(localStorage.getItem('survey_done_count') || '0');
-    let selectedIndices = JSON.parse(localStorage.getItem('selected_indices') || '[]');
+  // 1) 回来后+1（通过 localStorage 标记）
+  if (localStorage.getItem('has_redirected') === 'true') {
+    const done = (parseInt(localStorage.getItem('survey_done_count') || '0') + 1);
+    localStorage.setItem('survey_done_count', String(done));
+    localStorage.removeItem('has_redirected');
+    console.log('[return] done_count =', done);
+  }
 
-    const msgEl = document.getElementById('msg');
+  // 2) 问卷池
+  const urls = [
+    "https://www.wjx.cn/vm/OIINUdi.aspx",
+    "https://www.wjx.cn/vm/wFuyCIf.aspx",
+    "https://www.wjx.cn/vm/eoE3bHt.aspx",
+    "https://www.wjx.cn/vm/ty4UqKF.aspx",
+    "https://www.wjx.cn/vm/hTmouAO.aspx",
+    "https://www.wjx.cn/vm/Y8GWIpm.aspx",
+    "https://www.wjx.cn/vm/tCs4UvJ.aspx",
+    "https://www.wjx.cn/vm/rgLpid4.aspx",
+    "https://www.wjx.cn/vm/PpHqbVx.aspx",
+    "https://www.wjx.cn/vm/YDpmxyN.aspx",
+    "https://www.wjx.cn/vm/PKWqvJk.aspx",
+    "https://www.wjx.cn/vm/QJeHCnD.aspx",
+    "https://www.wjx.cn/vm/ts41axa.aspx",
+    "https://www.wjx.cn/vm/Ow7KIIi.aspx",
+    "https://www.wjx.cn/vm/Ol8i7Kb.aspx",
+    "https://www.wjx.cn/vm/QJhFCna.aspx",
+    "https://www.wjx.cn/vm/QE0CnaM.aspx",
+    "https://www.wjx.cn/vm/OwuVJi7.aspx",
+    "https://www.wjx.cn/vm/eI6HtXI.aspx"
+  ];
 
-    // =============== 4. 已完成两份？跳感谢页 ===============
-    if (doneCount >= 2) {
-      setTimeout(() => {
-        window.location.href = 'thanks.html';
-      }, 500);
-      return;
-    }
+  // 3) 状态
+  const params = new URLSearchParams(location.search);
+  const debug = params.get('debug') === '1';
+  let doneCount = parseInt(localStorage.getItem('survey_done_count') || '0');
+  let selected = JSON.parse(localStorage.getItem('selected_indices') || '[]');
 
-    // =============== 5. 预选两个不重复的索引（仅在第一次进入时） ===============
-    if (selectedIndices.length === 0) {
-      // 随机打乱索引，取前两个
-      const allIndices = [...Array(urls.length).keys()];
-      for (let i = allIndices.length - 1; i > 0; i--) {
+  // 4) 完成两份 → 感谢页
+  if (doneCount >= 2) {
+    console.log('[done] 2/2, go thanks');
+    location.replace('thanks.html');
+  } else {
+    // 5) 首次进入随机选两份
+    if (selected.length === 0) {
+      const all = [...Array(urls.length).keys()];
+      for (let i = all.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [allIndices[i], allIndices[j]] = [allIndices[j], allIndices[i]];
+        [all[i], all[j]] = [all[j], all[i]];
       }
-      selectedIndices = allIndices.slice(0, 2); // 只取两个
-      localStorage.setItem('selected_indices', JSON.stringify(selectedIndices));
+      selected = all.slice(0, 2);
+      localStorage.setItem('selected_indices', JSON.stringify(selected));
+      console.log('[pick]', selected);
     }
 
-    // =============== 6. 跳转当前应完成的问卷 ===============
-    const currentIndex = doneCount; // 0 或 1
-    const targetIndex = selectedIndices[currentIndex];
-    const targetUrl = urls[targetIndex];
+    const idx = selected[doneCount];
+    const target = urls[idx];
+    msgEl.innerHTML = `正在跳转第 ${doneCount + 1} 份问卷（共2份）…<br><br><a id="fallback" href="${target}" rel="nofollow">若未自动跳转，点此进入</a>`;
+    console.log('[goto]', { doneCount, idx, target });
 
-    msgEl.innerHTML = `正在跳转第 ${doneCount + 1} 份问卷（共2份）...`;
+    // 标记将要跳转（用于回来 +1）
+    localStorage.setItem('has_redirected', 'true');
 
-    setTimeout(() => {
-      localStorage.setItem('has_redirected', 'true'); // 标记即将跳转
-      window.location.href = targetUrl;
-    }, 800);
-  </script>
+    // 6) 立即跳转（更稳），debug 模式下不跳只显示链接
+    if (!debug) {
+      try {
+        location.assign(target); // 比 setTimeout 更可靠
+      } catch (e) {
+        console.warn('assign failed, use href', e);
+        location.href = target;
+      }
+    }
+  }
+</script>
+
 </body>
 </html>
