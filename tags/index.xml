@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Tags on ABOYL-Tuna</title>
-        <link>https://aboyl-tuna.github.io/tags/</link>
-        <description>Recent content in Tags on ABOYL-Tuna</description>
+        <title>Tags on ABOYL-AIS</title>
+        <link>https://aboyl-ais.github.io/tags/</link>
+        <description>Recent content in Tags on ABOYL-AIS</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <copyright>ABOYL-Tuna</copyright>
-        <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://aboyl-tuna.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <copyright>ABOYL-AIS</copyright>
+        <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://aboyl-ais.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Css</title>
-        <link>https://aboyl-tuna.github.io/tags/css/</link>
+        <link>https://aboyl-ais.github.io/tags/css/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://aboyl-tuna.github.io/tags/css/</guid>
+        <guid>https://aboyl-ais.github.io/tags/css/</guid>
         <description></description>
         </item>
         <item>
         <title>Html</title>
-        <link>https://aboyl-tuna.github.io/tags/html/</link>
+        <link>https://aboyl-ais.github.io/tags/html/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://aboyl-tuna.github.io/tags/html/</guid>
+        <guid>https://aboyl-ais.github.io/tags/html/</guid>
         <description></description>
         </item>
         <item>
         <title>Markdown</title>
-        <link>https://aboyl-tuna.github.io/tags/markdown/</link>
+        <link>https://aboyl-ais.github.io/tags/markdown/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://aboyl-tuna.github.io/tags/markdown/</guid>
+        <guid>https://aboyl-ais.github.io/tags/markdown/</guid>
         <description></description>
         </item>
         <item>
         <title>Themes</title>
-        <link>https://aboyl-tuna.github.io/tags/themes/</link>
+        <link>https://aboyl-ais.github.io/tags/themes/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://aboyl-tuna.github.io/tags/themes/</guid>
+        <guid>https://aboyl-ais.github.io/tags/themes/</guid>
         <description></description>
         </item>
         <item>
         <title>Tag With Whitespaces</title>
-        <link>https://aboyl-tuna.github.io/tags/tag-with-whitespaces/</link>
+        <link>https://aboyl-ais.github.io/tags/tag-with-whitespaces/</link>
         <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://aboyl-tuna.github.io/tags/tag-with-whitespaces/</guid>
+        <guid>https://aboyl-ais.github.io/tags/tag-with-whitespaces/</guid>
         <description></description>
         </item>
         <item>
         <title>Text</title>
-        <link>https://aboyl-tuna.github.io/tags/text/</link>
+        <link>https://aboyl-ais.github.io/tags/text/</link>
         <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://aboyl-tuna.github.io/tags/text/</guid>
+        <guid>https://aboyl-ais.github.io/tags/text/</guid>
         <description></description>
         </item>
         <item>
         <title>Emoji</title>
-        <link>https://aboyl-tuna.github.io/tags/emoji/</link>
+        <link>https://aboyl-ais.github.io/tags/emoji/</link>
         <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://aboyl-tuna.github.io/tags/emoji/</guid>
+        <guid>https://aboyl-ais.github.io/tags/emoji/</guid>
         <description></description>
         </item>
         
