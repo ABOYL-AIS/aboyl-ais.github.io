@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import PlaceholderNotice from "../../components/PlaceholderNotice.astro";
+import ResearchCard from "../../components/ResearchCard.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const research = (await getCollection("research")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout title="Research | ABOYL-AIS" description="Papers, competitions, reports and achievements">
+  <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8">
+    <SectionHeading
+      kicker="Research"
+      title="Papers, Competitions, Reports and Achievements."
+      intro="研究相关内容统一收纳在这里，页面框架保持正式、清晰与低装饰感，适合长期扩展。"
+    />
+
+    <div class="mt-10">
+      <PlaceholderNotice body="当前 Research 条目为演示型占位内容，用于确认 Paper / Competition / Report / Achievement 的统一承载方式。" />
+    </div>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {research.map((entry) => (
+        <ResearchCard
+          title={entry.data.title}
+          summary={entry.data.summary}
+          kind={entry.data.kind}
+          venue={entry.data.venue}
+          date={entry.data.date.toLocaleDateString("zh-CN")}
+          tags={entry.data.tags}
+          href={`/research/${entry.id}/`}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

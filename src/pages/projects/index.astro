@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import PlaceholderNotice from "../../components/PlaceholderNotice.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const projects = (await getCollection("projects")).sort((a, b) =>
+  b.data.year.localeCompare(a.data.year)
+);
+---
+
+<BaseLayout title="项目 | ABOYL-AIS" description="ABOYL-AIS 项目展示页">
+  <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8">
+    <SectionHeading
+      kicker="Projects"
+      title="项目不是简单陈列，而是逐步成形的结构。"
+      intro="这里集中展示当前站点的模块、前端设计方向和部署能力。后续可以继续扩展更多真实项目。"
+    />
+
+    <div class="mt-10">
+      <PlaceholderNotice body="当前项目条目为演示型占位内容，用于验证卡片结构、详情页布局和外链字段。后续可逐项替换为真实项目。" />
+    </div>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {projects.map((entry) => (
+        <ProjectCard
+          title={entry.data.title}
+          summary={entry.data.summary}
+          year={entry.data.year}
+          role={entry.data.role}
+          status={entry.data.status}
+          tags={entry.data.tags}
+          cover={entry.data.cover}
+          coverAlt={entry.data.coverAlt}
+          href={`/projects/${entry.id}/`}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PlaceholderNotice from "../components/PlaceholderNotice.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { siteMeta } from "../data/site";
+---
+
+<BaseLayout title="Contact | ABOYL-AIS" description="联系 ABOYL-AIS">
+  <section class="mx-auto max-w-5xl px-5 pt-16 md:px-8">
+    <SectionHeading
+      kicker="Contact"
+      title="把外部联系方式保持清晰、简洁和公开安全。"
+      intro={siteMeta.contact.intro}
+    />
+
+    <div class="mt-10">
+      <PlaceholderNotice body="本页当前保留公开演示联系方式，其中邮箱字段仍为占位内容。正式上线前，请替换为真实且愿意公开展示的联系渠道。" />
+    </div>
+
+    <div class="mt-6 grid gap-6">
+      {siteMeta.contact.items.map((item) => (
+        <div class="paper-panel rounded-[2rem] px-6 py-6">
+          <p class="section-kicker">{item.label}</p>
+          {item.href ? (
+            <a href={item.href} class="mt-3 inline-flex font-display text-3xl text-text hover:text-accent-deep">
+              {item.value}
+            </a>
+          ) : (
+            <div>
+              <p class="mt-3 font-display text-3xl text-text">{item.value}</p>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                当前为占位说明，建议替换为正式公开邮箱或其他可用联络方式。
+              </p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

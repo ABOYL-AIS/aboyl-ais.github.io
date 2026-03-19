@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Lunar Card Library Cover</title>
+  <desc id="desc">Muted soft lunar themed composition</desc>
+  <rect width="1200" height="720" fill="#f5f0ea"/>
+  <circle cx="850" cy="220" r="170" fill="#fff" fill-opacity=".74"/>
+  <circle cx="820" cy="220" r="170" fill="#f5f0ea"/>
+  <rect x="135" y="138" width="430" height="300" rx="34" fill="#fff" fill-opacity=".62" stroke="#78656d" stroke-opacity=".18"/>
+  <path d="M640 505c79-78 171-120 274-125 66-3 124 9 171 35" fill="none" stroke="#b87784" stroke-width="10" stroke-linecap="round"/>
+  <path d="M175 488c82-48 155-71 220-70 57 .4 105 18 146 54" fill="none" stroke="#a6a0c7" stroke-width="9" stroke-linecap="round"/>
+  <text x="175" y="220" fill="#3c3642" font-size="40" font-family="Georgia, serif">LUNAR CARD LIBRARY</text>
+  <text x="175" y="274" fill="#6f6771" font-size="20" font-family="Georgia, serif">Cards for projects, notes and quiet presentation.</text>
+</svg>

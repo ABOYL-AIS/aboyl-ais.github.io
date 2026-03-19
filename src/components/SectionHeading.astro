@@ -1,0 +1,15 @@
+---
+interface Props {
+  kicker: string;
+  title: string;
+  intro?: string;
+}
+
+const { kicker, title, intro } = Astro.props;
+---
+
+<div class="max-w-3xl">
+  <p class="section-kicker">{kicker}</p>
+  <h2 class="mt-4 max-w-[16ch] font-display text-4xl leading-[1.02] text-text md:text-5xl">{title}</h2>
+  {intro && <p class="mt-5 max-w-2xl text-lg leading-8 text-muted">{intro}</p>}
+</div>

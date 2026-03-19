@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PlaceholderNotice from "../components/PlaceholderNotice.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { withBase } from "../utils/paths";
+---
+
+<BaseLayout title="404 | ABOYL-AIS" description="页面未找到">
+  <section class="mx-auto max-w-5xl px-5 pt-16 md:px-8">
+    <SectionHeading
+      kicker="404"
+      title="这页没有被留在当前站点里。"
+      intro="可能是链接已变更、内容尚未公开，或你访问了一个不存在的静态路径。"
+    />
+
+    <div class="paper-panel surface-mist mt-10 rounded-[2.6rem] px-7 py-10 md:px-10 md:py-12">
+      <p class="font-display text-6xl leading-none text-text md:text-8xl">404</p>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-muted">
+        当前站点使用 Astro 静态构建并发布到 GitHub Pages / Vercel。若内容尚未同步生成，
+        请返回首页或使用顶部导航继续浏览。
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href={withBase("/")}
+          class="rounded-full border border-line bg-white/85 px-5 py-2.5 text-sm text-text transition-colors hover:border-line-strong hover:text-accent-deep"
+        >
+          返回首页
+        </a>
+        <a
+          href={withBase("/notes/")}
+          class="rounded-full border border-line bg-white/85 px-5 py-2.5 text-sm text-text transition-colors hover:border-line-strong hover:text-accent-deep"
+        >
+          查看 Notes
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <PlaceholderNotice body="404 页面文案当前也是演示版本，用于补齐 GitHub Pages 静态站的基础访问体验。" />
+    </div>
+  </section>
+</BaseLayout>

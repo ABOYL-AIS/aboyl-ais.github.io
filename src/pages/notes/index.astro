@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import PlaceholderNotice from "../../components/PlaceholderNotice.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import WritingCard from "../../components/WritingCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const notes = (await getCollection("notes")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout title="Notes | ABOYL-AIS" description="Notes, technical records and essays">
+  <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8">
+    <SectionHeading
+      kicker="Notes"
+      title="Notes, technical records, essays and stage summaries."
+      intro="记录与随笔保持独立入口，既能承接技术内容，也能保留灵感、总结与较轻的个人文本。"
+    />
+
+    <div class="mt-10">
+      <PlaceholderNotice body="当前 Notes 条目为演示型占位内容，用于展示技术记录、随笔、阶段总结等不同类型的内容容器。" />
+    </div>
+
+    <div class="mt-10 grid gap-6">
+      {notes.map((entry) => (
+        <WritingCard
+          title={entry.data.title}
+          summary={entry.data.summary}
+          date={entry.data.date.toLocaleDateString("zh-CN")}
+          readingTime={entry.data.kind}
+          href={`/notes/${entry.id}/`}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

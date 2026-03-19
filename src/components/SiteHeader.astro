@@ -1,0 +1,79 @@
+---
+import { siteMeta } from "../data/site";
+import { withBase } from "../utils/paths";
+
+const { pathname } = Astro.url;
+---
+
+<header class="sticky top-0 z-30">
+  <div class="mx-auto max-w-6xl px-5 pt-4 md:px-8">
+    <div class="paper-panel rounded-[2rem] px-5 py-3 md:rounded-full">
+      <div class="flex items-center justify-between gap-6">
+        <a href={withBase("/")} class="flex items-center gap-3 text-text">
+          <span class="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong bg-white/90 font-display text-lg font-semibold text-accent-deep shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
+            A
+          </span>
+          <div>
+            <p class="font-display text-lg leading-none">{siteMeta.name}</p>
+            <p class="mt-1 text-xs tracking-[0.2em] text-muted">QUIET PERSONAL EDITION</p>
+          </div>
+        </a>
+
+        <nav class="hidden items-center gap-5 text-sm text-muted md:flex">
+          {siteMeta.nav.map((item) => {
+            const resolvedHref = withBase(item.href);
+            const active =
+              item.href === "/" ? pathname === withBase("/") : pathname.startsWith(resolvedHref);
+
+            return (
+              <a
+                href={resolvedHref}
+                class:list={[
+                  "rounded-full px-3 py-1.5 transition-colors",
+                  active
+                    ? "bg-white/80 text-text shadow-[0_8px_20px_rgba(125,97,118,0.06)]"
+                    : "text-muted hover:bg-white/55 hover:text-text"
+                ]}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+        </nav>
+
+        <details class="group relative md:hidden">
+          <summary class="flex cursor-pointer list-none items-center gap-2 rounded-full border border-line bg-white/75 px-3 py-2 text-sm text-text shadow-[0_8px_20px_rgba(125,97,118,0.06)] marker:content-none">
+            <span class="font-display text-base">Menu</span>
+            <span class="text-xs tracking-[0.16em] text-muted transition-transform group-open:rotate-45">
+              +
+            </span>
+          </summary>
+
+          <div class="absolute right-0 top-[calc(100%+0.9rem)] w-[min(18rem,78vw)] overflow-hidden rounded-[1.6rem] border border-line bg-white/88 p-3 shadow-[0_24px_50px_rgba(71,78,102,0.12)] backdrop-blur-xl">
+            <nav class="grid gap-1">
+              {siteMeta.nav.map((item) => {
+                const resolvedHref = withBase(item.href);
+                const active =
+                  item.href === "/" ? pathname === withBase("/") : pathname.startsWith(resolvedHref);
+
+                return (
+                  <a
+                    href={resolvedHref}
+                    class:list={[
+                      "rounded-[1rem] px-4 py-3 text-sm transition-colors",
+                      active
+                        ? "bg-accent-soft/70 text-text"
+                        : "text-muted hover:bg-white hover:text-text"
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
+            </nav>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</header>

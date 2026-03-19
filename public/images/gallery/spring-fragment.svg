@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" role="img" aria-labelledby="title desc">
+  <title id="title">Spring Fragment</title>
+  <desc id="desc">Soft anime-inspired floral fragment illustration</desc>
+  <rect width="1200" height="840" fill="#f5efe9"/>
+  <circle cx="880" cy="210" r="150" fill="#ffffff" fill-opacity=".78"/>
+  <path d="M180 610c98-145 205-226 324-244 131-20 249 21 386 132" fill="none" stroke="#b87784" stroke-width="13" stroke-linecap="round"/>
+  <path d="M190 666c75-55 144-81 208-79 74 3 139 34 206 101" fill="none" stroke="#a6a0c7" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="436" cy="320" r="56" fill="#efdfe2"/>
+  <circle cx="500" cy="278" r="36" fill="#f5d9df"/>
+  <circle cx="560" cy="350" r="42" fill="#e7e3f2"/>
+</svg>

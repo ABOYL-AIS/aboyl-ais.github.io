@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Dual Deploy Setup Cover</title>
+  <desc id="desc">Soft technical layout inspired cover</desc>
+  <rect width="1200" height="720" fill="#f6f1eb"/>
+  <rect x="142" y="132" width="910" height="450" rx="44" fill="#fff" fill-opacity=".66" stroke="#7d6c74" stroke-opacity=".14"/>
+  <rect x="210" y="210" width="290" height="190" rx="28" fill="#f3dfe3"/>
+  <rect x="560" y="210" width="290" height="190" rx="28" fill="#e7e4f1"/>
+  <path d="M500 305h60" stroke="#8a6d76" stroke-width="12" stroke-linecap="round"/>
+  <path d="M860 305h60" stroke="#8a6d76" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="940" cy="305" r="52" fill="#fff" stroke="#8a6d76" stroke-opacity=".2"/>
+  <text x="210" y="470" fill="#3d3541" font-size="40" font-family="Georgia, serif">DUAL DEPLOY SETUP</text>
+  <text x="210" y="522" fill="#6e6670" font-size="20" font-family="Georgia, serif">Static-first deployment for GitHub Pages and Vercel.</text>
+</svg>

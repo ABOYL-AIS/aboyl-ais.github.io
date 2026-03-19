@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../utils/paths";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("gallery");
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | ABOYL-AIS`} description={entry.data.summary}>
+  <article class="mx-auto max-w-4xl px-5 pt-16 md:px-8">
+    <div class:list={[
+      "paper-panel rounded-[2.5rem] px-7 py-9 md:px-10",
+      entry.data.kind === "Quote" ? "quote-wash" : "gallery-wash"
+    ]}>
+      <p class="section-kicker">
+        {entry.data.date.toLocaleDateString("zh-CN")} · {entry.data.kind} · {entry.data.medium}
+      </p>
+      <h1 class="mt-4 font-display text-5xl text-text md:text-6xl">{entry.data.title}</h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{entry.data.summary}</p>
+      {entry.data.image && (
+        <div class="mt-6 overflow-hidden rounded-[1.8rem] border border-line bg-bg-soft">
+          <img src={withBase(entry.data.image)} alt={entry.data.title} class="h-72 w-full object-cover" loading="lazy" />
+        </div>
+      )}
+    </div>
+
+    <div class="rich-copy paper-panel mt-8 rounded-[2rem] px-7 py-8 md:px-10">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
