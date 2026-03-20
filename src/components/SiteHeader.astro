@@ -18,7 +18,7 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
 <header class="sticky top-0 z-30">
   <div class="mx-auto max-w-6xl px-5 pt-4 md:px-8">
     <div class="hidden items-center gap-4 md:grid md:grid-cols-[minmax(0,1fr)_auto] xl:gap-6">
-      <div class="paper-panel rounded-full px-6 py-3">
+      <div class="paper-panel surface-rose rounded-full px-6 py-3">
         <div class="grid items-center gap-8 md:grid-cols-[auto_1fr]">
           <a href={withBase(localizePath(locale, "/"))} class="flex items-center gap-3 text-text">
             {copy.brand.markImage ? (
@@ -63,8 +63,8 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
                   class:list={[
                     "rounded-full px-3 py-1.5 transition-colors",
                     active
-                      ? "bg-white/92 text-text shadow-[0_10px_24px_rgba(125,97,118,0.08)]"
-                      : "text-muted hover:bg-white/70 hover:text-text"
+                      ? "bg-accent-soft/92 text-accent-deep shadow-[0_10px_24px_rgba(191,134,152,0.14)]"
+                      : "text-muted hover:bg-accent-soft/55 hover:text-text"
                   ]}
                 >
                   {item.label}
@@ -76,15 +76,13 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
       </div>
 
       <div class="header-utility-island">
-        <div class="paper-panel header-utility-island__panel surface-rose rounded-[1.8rem] px-3 py-3">
-          <div class="header-utility-panel">
-            <LanguageToggle locale={locale} pathname={pathname} label={copy.common.languageToggle} />
-            <ThemeToggle
-              label={copy.common.themeToggle}
-              dayLabel={copy.common.dayMode}
-              nightLabel={copy.common.nightMode}
-            />
-          </div>
+        <div class="header-utility-panel">
+          <LanguageToggle locale={locale} pathname={pathname} label={copy.common.languageToggle} />
+          <ThemeToggle
+            label={copy.common.themeToggle}
+            dayLabel={copy.common.dayMode}
+            nightLabel={copy.common.nightMode}
+          />
         </div>
       </div>
     </div>
