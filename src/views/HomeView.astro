@@ -82,39 +82,6 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
         tone={copy.home.keywordCard.tone}
         viewLabel={copy.common.viewContent}
       />
-
-      {notes.slice(0, 1).map((entry) => (
-        <BentoCard
-          kicker="Notes"
-          title={entry.data.title}
-          body={entry.data.summary}
-          href={localizePath(locale, `/notes/${getEntrySlug(entry.id)}/`)}
-          tone="soft"
-          viewLabel={copy.common.viewContent}
-        />
-      ))}
-
-      {research.slice(0, 1).map((entry) => (
-        <BentoCard
-          kicker="Research"
-          title={entry.data.title}
-          body={entry.data.summary}
-          href={localizePath(locale, `/research/${getEntrySlug(entry.id)}/`)}
-          tone="neutral"
-          viewLabel={copy.common.viewContent}
-        />
-      ))}
-
-      {galleryPreview.map((entry) => (
-        <BentoCard
-          kicker={entry.data.kind}
-          title={entry.data.title}
-          body={entry.data.summary}
-          href={localizePath(locale, `/gallery/${getEntrySlug(entry.id)}/`)}
-          tone="soft"
-          viewLabel={copy.common.viewContent}
-        />
-      ))}
     </div>
   </section>
 
