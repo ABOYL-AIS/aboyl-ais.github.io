@@ -10,7 +10,18 @@ const { locale } = Astro.props;
 const copy = getSiteCopy(locale);
 ---
 
-<section class="mx-auto max-w-6xl px-5 pt-10 md:px-8 md:pt-16">
+<section class="hero-stage mx-auto max-w-6xl px-5 pt-10 md:px-8 md:pt-16">
+  <div class="hero-stage__rail hero-stage__rail--left hidden xl:flex" aria-hidden="true">
+    <span class="hero-stage__line"></span>
+    <span class="hero-stage__label">{copy.hero.kicker}</span>
+  </div>
+
+  <div class="hero-stage__rail hero-stage__rail--right hidden xl:flex" aria-hidden="true">
+    <span class="hero-stage__petal"></span>
+    <span class="hero-stage__petal hero-stage__petal--small"></span>
+    <span class="hero-stage__label hero-stage__label--soft">{copy.hero.palette}</span>
+  </div>
+
   <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
     <div class="paper-panel surface-rose relative rounded-[2.8rem] px-7 py-10 md:px-10 md:py-12">
       <div class="absolute right-6 top-6 rounded-full border border-line bg-white/70 px-3 py-1 text-[0.65rem] tracking-[0.3em] text-accent-deep">

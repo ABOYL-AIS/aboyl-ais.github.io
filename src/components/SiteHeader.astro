@@ -17,9 +17,9 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
 
 <header class="sticky top-0 z-30">
   <div class="mx-auto max-w-6xl px-5 pt-4 md:px-8">
-    <div class="relative">
-      <div class="paper-panel rounded-[2rem] px-5 py-3 md:mr-[14rem] md:rounded-full">
-        <div class="flex items-center justify-between gap-6 md:grid md:grid-cols-[auto_1fr] md:items-center md:gap-8">
+    <div class="hidden items-center gap-4 md:grid md:grid-cols-[minmax(0,1fr)_auto] xl:gap-6">
+      <div class="paper-panel rounded-full px-6 py-3">
+        <div class="grid items-center gap-8 md:grid-cols-[auto_1fr]">
           <a href={withBase(localizePath(locale, "/"))} class="flex items-center gap-3 text-text">
             {copy.brand.markImage ? (
               <span class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-line-strong bg-white/90 shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
@@ -48,7 +48,7 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
             </div>
           </a>
 
-          <nav class="hidden items-center justify-center gap-2 text-sm text-muted md:flex">
+          <nav class="flex items-center justify-center gap-2 text-sm text-muted">
             {copy.nav.map((item) => {
               const localizedHref = localizePath(locale, item.href);
               const resolvedHref = withBase(localizedHref);
@@ -72,8 +72,55 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
               );
             })}
           </nav>
+        </div>
+      </div>
 
-          <details class="group relative md:hidden">
+      <div class="header-utility-island">
+        <div class="paper-panel header-utility-island__panel surface-rose rounded-[1.8rem] px-3 py-3">
+          <div class="header-utility-panel">
+            <LanguageToggle locale={locale} pathname={pathname} label={copy.common.languageToggle} />
+            <ThemeToggle
+              label={copy.common.themeToggle}
+              dayLabel={copy.common.dayMode}
+              nightLabel={copy.common.nightMode}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:hidden">
+      <div class="paper-panel rounded-[2rem] px-5 py-3">
+        <div class="flex items-center justify-between gap-6">
+          <a href={withBase(localizePath(locale, "/"))} class="flex items-center gap-3 text-text">
+            {copy.brand.markImage ? (
+              <span class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-line-strong bg-white/90 shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
+                <img
+                  src={withBase(copy.brand.markImage)}
+                  alt={copy.brand.markImageAlt}
+                  class="h-full w-full object-cover"
+                />
+              </span>
+            ) : (
+              <span class="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong bg-white/90 font-display text-lg font-semibold text-accent-deep shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
+                {copy.brand.markLetter}
+              </span>
+            )}
+            <div>
+              {copy.brand.wordmarkImage ? (
+                <img
+                  src={withBase(copy.brand.wordmarkImage)}
+                  alt={copy.brand.wordmarkImageAlt}
+                  class="h-8 w-auto"
+                />
+              ) : (
+                <p class="font-display text-lg leading-none">{copy.name}</p>
+              )}
+              <p class="mt-1 text-xs tracking-[0.2em] text-muted">{copy.brand.editionLabel}</p>
+            </div>
+          </a>
+
+          <details class="group relative">
             <summary class="flex cursor-pointer list-none items-center gap-2 rounded-full border border-line bg-white/75 px-3 py-2 text-sm text-text shadow-[0_8px_20px_rgba(125,97,118,0.06)] marker:content-none">
               <span class="font-display text-base">{copy.common.menu}</span>
               <span class="text-xs tracking-[0.16em] text-muted transition-transform group-open:rotate-45">
@@ -81,7 +128,7 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
               </span>
             </summary>
 
-            <div class="absolute right-0 top-[calc(100%+0.9rem)] w-[min(18rem,78vw)] overflow-hidden rounded-[1.6rem] border border-line bg-white/88 p-3 shadow-[0_24px_50px_rgba(71,78,102,0.12)] backdrop-blur-xl">
+            <div class="absolute right-0 top-[calc(100%+0.9rem)] z-10 w-[min(18rem,78vw)] overflow-hidden rounded-[1.6rem] border border-line bg-white/88 p-3 shadow-[0_24px_50px_rgba(71,78,102,0.12)] backdrop-blur-xl">
               <div class="mb-3 flex items-center justify-between gap-3 px-1">
                 <LanguageToggle
                   locale={locale}
@@ -121,19 +168,6 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
               </nav>
             </div>
           </details>
-        </div>
-      </div>
-
-      <div class="header-utility-island hidden md:block">
-        <div class="paper-panel header-utility-island__panel surface-rose rounded-[1.8rem] px-3 py-3">
-          <div class="header-utility-panel">
-            <LanguageToggle locale={locale} pathname={pathname} label={copy.common.languageToggle} />
-            <ThemeToggle
-              label={copy.common.themeToggle}
-              dayLabel={copy.common.dayMode}
-              nightLabel={copy.common.nightMode}
-            />
-          </div>
         </div>
       </div>
     </div>
