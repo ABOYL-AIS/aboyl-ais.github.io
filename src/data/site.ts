@@ -53,6 +53,12 @@ type SiteCopy = {
   footer: {
     note: string;
     tagline: string;
+    contacts: Array<{
+      label: string;
+      value: string;
+      href: string;
+      kind: "phone" | "email" | "qq" | "wechat" | "github" | "team";
+    }>;
   };
   home: {
     designPrinciple: {
@@ -123,6 +129,12 @@ type SiteCopy = {
       background: string;
       keywords: string[];
     };
+    sections: Array<{
+      kicker: string;
+      title: string;
+      body: string;
+      items?: string[];
+    }>;
   };
   contact: {
     metaTitle: string;
@@ -130,13 +142,15 @@ type SiteCopy = {
     kicker: string;
     title: string;
     intro: string;
-    emailHint: string;
-    items: Array<{
-      label: string;
-      value: string;
-      href: string;
-      icon?: string;
-      iconAlt?: string;
+    sections: Array<{
+      kicker: string;
+      title: string;
+      body: string;
+      links: Array<{
+        label: string;
+        value: string;
+        href: string;
+      }>;
     }>;
   };
   notFound: {
@@ -246,9 +260,46 @@ const siteCopy: Record<Locale, SiteCopy> = {
       status: ["项目", "论文", "记录", "图集", "语句集合"],
     },
     footer: {
-      note: "Built with Astro. Shaped as a calm, content-led personal archive.",
-      tagline:
-        "Static-first. Component-driven. Ready for GitHub Pages and Vercel.",
+      note: "欢迎随时联系，期待您的交流。",
+      tagline: "无论是学术、项目、团队合作，还是日常沟通，我都很欢迎。",
+      contacts: [
+        {
+          label: "电话",
+          value: "18372779323",
+          href: "tel:18372779323",
+          kind: "phone",
+        },
+        {
+          label: "Email",
+          value: "18372779323@qq.com",
+          href: "mailto:18372779323@qq.com",
+          kind: "email",
+        },
+        {
+          label: "QQ",
+          value: "1286735016",
+          href: "https://qm.qq.com/cgi-bin/qm/qr?k=1286735016",
+          kind: "qq",
+        },
+        {
+          label: "微信",
+          value: "GuGuai_MR7",
+          href: "https://weixin.qq.com/",
+          kind: "wechat",
+        },
+        {
+          label: "个人 GitHub",
+          value: "ABOYL-AIS",
+          href: "https://github.com/ABOYL-AIS",
+          kind: "github",
+        },
+        {
+          label: "AIS 团队 GitHub",
+          value: "Advanced-Informatics-Scholar",
+          href: "https://github.com/Advanced-Informatics-Scholar",
+          kind: "team",
+        },
+      ],
     },
     home: {
       designPrinciple: {
@@ -346,9 +397,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
       keywordsLabel: "Keywords",
       profile: {
         summary:
-          "这里暂时使用公开安全的演示型个人简介：一位偏内容导向、关注信息结构与视觉秩序的创作者。这个网站会承载个人介绍、项目、研究、记录与审美收藏。",
+          "我更在意长期主义的表达方式，而不是一次性地堆满信息。这个站点会持续承载个人经历、研究兴趣、团队建设、项目实践与一些更私人的文字沉淀。",
         background:
-          "当前背景说明同样属于占位文本，用于展示站点定位与信息层级。整体方向不是传统 academic homepage，也不是常见的 developer portfolio，而是更克制、更长期主义的个人品牌站。",
+          "当前正从软件工程本科阶段走向博士阶段，关注如何把研究、技术、组织与长期表达慢慢整理成同一条清晰的个人路径。站点本身也是这条路径的一部分。",
         keywords: [
           "统筹组织",
           "INFJ-深度思考",
@@ -359,36 +410,82 @@ const siteCopy: Record<Locale, SiteCopy> = {
           "樱花粉",
         ],
       },
+      sections: [
+        {
+          kicker: "News",
+          title: "近期动态与阶段更新会优先放在这里。",
+          body:
+            "包括升学进展、阶段成果、团队动态、公开活动与值得记录的小节点。当前版本先保留栏目结构，后续再逐条补上真实内容。",
+        },
+        {
+          kicker: "Research",
+          title: "研究相关内容会按更正式的学术主页方式逐步整理。",
+          body:
+            "这里后续会继续收纳研究方向、论文、预印本、产品化尝试与其他阶段成果，形成一个更稳定的研究展示入口。",
+          items: ["Recent Interest", "Publication", "Preprint", "Product"],
+        },
+        {
+          kicker: "Award",
+          title: "奖项、荣誉与阶段性认可可以集中放在这一栏。",
+          body:
+            "它适合用来整理竞赛、学术、团队或项目相关的代表性奖项，也方便后续在学术主页语境下快速浏览个人阶段成果。",
+        },
+        {
+          kicker: "Collaborators",
+          title: "合作导师、同学、团队伙伴与长期协作者可以在这里统一呈现。",
+          body:
+            "后续可以按导师、实验室、团队成员或合作项目维度逐步补充，让页面更接近一份完整而清晰的个人学术主页。",
+        },
+      ],
     },
     contact: {
       metaTitle: "Contact | ABOYL-AIS",
       metaDescription: "联系 ABOYL-AIS",
       kicker: "Contact",
-      title: "把外部联系方式保持清晰、简洁和公开安全。",
+      title: "把联系入口做得更清楚，也让合作与交流更自然地发生。",
       intro:
-        "如果后续需要合作、交流、项目讨论或内容沟通，这里可以作为对外联系入口。当前版本先保留安全、公开的联系占位。",
-      emailHint: "当前为占位说明，建议替换为正式公开邮箱或其他可用联络方式。",
-      items: [
+        "这一页不再堆联系方式卡片，而是保留更直接的联系说明。无论是个人交流，还是和 AIS 团队相关的合作沟通，都可以从这里开始。",
+      sections: [
         {
-          label: "GitHub",
-          value: "ABOYL-AIS",
-          href: "https://github.com/ABOYL-AIS",
-          icon: "/icons/icon.jpg",
-          iconAlt: "GitHub icon",
+          kicker: "Personal Contact",
+          title: "如果你想直接联系我",
+          body:
+            "适合用于学术交流、项目讨论、合作邀约、内容沟通，或者只是想围绕 Agent、LLM、研究路径与个人成长展开一次认真对话。邮件会是最稳定的方式，GitHub 和站点则更适合先了解我现在在做什么。",
+          links: [
+            {
+              label: "Email",
+              value: "18372779323@163.com",
+              href: "mailto:18372779323@163.com",
+            },
+            {
+              label: "GitHub",
+              value: "ABOYL-AIS",
+              href: "https://github.com/ABOYL-AIS",
+            },
+            {
+              label: "Site",
+              value: "aboyl-ais.github.io",
+              href: "https://aboyl-ais.github.io/",
+            },
+          ],
         },
         {
-          label: "Site",
-          value: "aboyl-ais.github.io",
-          href: "https://aboyl-ais.github.io/",
-          icon: "/icons/icon.jpg",
-          iconAlt: "Site icon",
-        },
-        {
-          label: "Email",
-          value: "18372779323@163.com",
-          href: "",
-          icon: "/icons/icon.jpg",
-          iconAlt: "Email icon",
+          kicker: "AIS Team",
+          title: "如果你想联系 Advanced Informatics Scholar 团队",
+          body:
+            "适合用于团队交流、项目合作、活动邀请、技术共建或未来想进一步了解 AIS 的同学与伙伴。现阶段可以先通过公开站点与 GitHub 入口建立联系，后续我会再补充更正式的团队信息页。",
+          links: [
+            {
+              label: "AIS GitHub",
+              value: "ABOYL-AIS",
+              href: "https://github.com/ABOYL-AIS",
+            },
+            {
+              label: "AIS Site",
+              value: "aboyl-ais.github.io",
+              href: "https://aboyl-ais.github.io/",
+            },
+          ],
         },
       ],
     },
@@ -502,9 +599,46 @@ const siteCopy: Record<Locale, SiteCopy> = {
       status: ["Projects", "Papers", "Notes", "Gallery", "Quotes"],
     },
     footer: {
-      note: "Built with Astro. Shaped as a calm, content-led personal archive.",
-      tagline:
-        "Static-first. Component-driven. Ready for GitHub Pages and Vercel.",
+      note: "Feel free to reach out. I would be glad to hear from you.",
+      tagline: "Academic exchange, projects, teamwork, and thoughtful conversation are all welcome.",
+      contacts: [
+        {
+          label: "Phone",
+          value: "18372779323",
+          href: "tel:18372779323",
+          kind: "phone",
+        },
+        {
+          label: "Email",
+          value: "18372779323@qq.com",
+          href: "mailto:18372779323@qq.com",
+          kind: "email",
+        },
+        {
+          label: "QQ",
+          value: "1286735016",
+          href: "https://qm.qq.com/cgi-bin/qm/qr?k=1286735016",
+          kind: "qq",
+        },
+        {
+          label: "WeChat",
+          value: "GuGuai_MR7",
+          href: "https://weixin.qq.com/",
+          kind: "wechat",
+        },
+        {
+          label: "Personal GitHub",
+          value: "ABOYL-AIS",
+          href: "https://github.com/ABOYL-AIS",
+          kind: "github",
+        },
+        {
+          label: "AIS Team GitHub",
+          value: "Advanced-Informatics-Scholar",
+          href: "https://github.com/Advanced-Informatics-Scholar",
+          kind: "team",
+        },
+      ],
     },
     home: {
       designPrinciple: {
@@ -610,9 +744,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
       keywordsLabel: "Keywords",
       profile: {
         summary:
-          "This is still a safe placeholder profile: a creator who leans toward content structure, editorial rhythm, and calm visual order. The site is meant to hold profile, projects, research, notes, and personal collections.",
+          "I care more about building a long-term line of expression than displaying everything at once. This site is meant to hold my academic path, research interests, team work, technical projects, and more personal writing over time.",
         background:
-          "This background paragraph is also placeholder copy used to establish the site's positioning and hierarchy. The direction is neither a traditional academic homepage nor a standard developer portfolio, but a more restrained long-term personal archive.",
+          "I am now moving from the undergraduate stage toward the Ph.D. stage, and I want to gradually organize research, engineering, leadership, and long-form expression into one coherent personal trajectory.",
         keywords: [
           "Organized People",
           "INFJ-Deep Thinker",
@@ -623,37 +757,82 @@ const siteCopy: Record<Locale, SiteCopy> = {
           "Sakura Pink",
         ],
       },
+      sections: [
+        {
+          kicker: "News",
+          title: "Recent updates and milestone notes can live here first.",
+          body:
+            "This section can hold admission updates, recent progress, team news, public activities, and other small but meaningful milestones. The structure is ready, and real items can be added over time.",
+        },
+        {
+          kicker: "Research",
+          title: "Research-facing content will be organized in a more academic-homepage style.",
+          body:
+            "Over time, this block can gather research directions, publications, preprints, product work, and other outputs into one more stable research entry point.",
+          items: ["Recent Interest", "Publication", "Preprint", "Product"],
+        },
+        {
+          kicker: "Award",
+          title: "Awards, honors, and milestone recognition can be collected here.",
+          body:
+            "It is a useful place for organizing representative distinctions from competitions, academic activities, team work, or project-based achievements in one quick overview.",
+        },
+        {
+          kicker: "Collaborators",
+          title: "Advisors, teammates, collaborators, and long-term partners can be presented together here.",
+          body:
+            "Later this can be expanded by advisor, lab, team, or project relationship so the page reads more like a complete and structured academic profile.",
+        },
+      ],
     },
     contact: {
       metaTitle: "Contact | ABOYL-AIS",
       metaDescription: "Contact ABOYL-AIS",
       kicker: "Contact",
-      title: "Keep public contact information clear, light, and safe.",
+      title: "Keep the contact layer clear, human, and easy to approach.",
       intro:
-        "This page works as the outward-facing contact layer for collaboration, conversation, project discussion, or general exchange. It currently keeps placeholder-safe public information.",
-      emailHint:
-        "This is still placeholder guidance. Replace it with a real public email or another active contact channel.",
-      items: [
+        "Instead of stacking contact cards, this page now keeps two direct descriptions: one for reaching me personally, and one for reaching the AIS team for future collaboration or communication.",
+      sections: [
         {
-          label: "GitHub",
-          value: "ABOYL-AIS",
-          href: "https://github.com/ABOYL-AIS",
-          icon: "/icons/icon.jpg",
-          iconAlt: "GitHub icon",
+          kicker: "Personal Contact",
+          title: "If you want to reach me directly",
+          body:
+            "This is the right channel for research exchange, project discussion, collaboration ideas, or a more thoughtful conversation around agents, large models, academic direction, and personal growth. Email is the most reliable starting point, while GitHub and the site help provide context first.",
+          links: [
+            {
+              label: "Email",
+              value: "18372779323@163.com",
+              href: "mailto:18372779323@163.com",
+            },
+            {
+              label: "GitHub",
+              value: "ABOYL-AIS",
+              href: "https://github.com/ABOYL-AIS",
+            },
+            {
+              label: "Site",
+              value: "aboyl-ais.github.io",
+              href: "https://aboyl-ais.github.io/",
+            },
+          ],
         },
         {
-          label: "Site",
-          value: "aboyl-ais.github.io",
-          href: "https://aboyl-ais.github.io/",
-          icon: "/icons/icon.jpg",
-          iconAlt: "Site icon",
-        },
-        {
-          label: "Email",
-          value: "18372779323@163.com",
-          href: "",
-          icon: "/icons/icon.jpg",
-          iconAlt: "Email icon",
+          kicker: "AIS Team",
+          title: "If you want to contact the Advanced Informatics Scholar team",
+          body:
+            "This is better for team-level communication, project collaboration, activity invitations, technical co-building, or anyone who wants to learn more about AIS as an evolving group. For now, the public site and GitHub remain the cleanest entry points.",
+          links: [
+            {
+              label: "AIS GitHub",
+              value: "ABOYL-AIS",
+              href: "https://github.com/ABOYL-AIS",
+            },
+            {
+              label: "AIS Site",
+              value: "aboyl-ais.github.io",
+              href: "https://aboyl-ais.github.io/",
+            },
+          ],
         },
       ],
     },

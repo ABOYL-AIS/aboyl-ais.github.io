@@ -61,8 +61,12 @@ const categories = await Promise.all(
   <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8" data-gallery-root data-default-category="avatar">
     <div class="max-w-4xl">
       <p class="section-kicker">{copy.collections.gallery.kicker}</p>
-      <h1 class="mt-4 font-display text-4xl leading-tight text-text md:text-6xl">{galleryTitle}</h1>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{copy.collections.gallery.intro}</p>
+      <h1 class="mt-4 max-w-4xl font-display text-[clamp(2.8rem,5.4vw,4.85rem)] leading-[0.96] text-text">
+        {galleryTitle}
+      </h1>
+      <p class="mt-5 max-w-3xl text-base leading-7 text-muted md:text-lg md:leading-8">
+        {copy.collections.gallery.intro}
+      </p>
     </div>
 
     <div class="gallery-filter-bar mt-10 flex flex-wrap gap-3">

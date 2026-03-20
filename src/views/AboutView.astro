@@ -72,12 +72,12 @@ const copy = getSiteCopy(locale);
       </div>
 
       {copy.brand.aboutPortrait ? (
-        <aside class="about-portrait-panel rounded-[2.5rem]">
-          <div class="about-portrait-frame overflow-hidden rounded-[2.5rem]">
+        <aside class="about-portrait-card card-lift rounded-[2.5rem]">
+          <div class="about-portrait-frame overflow-hidden rounded-[2.15rem]">
             <img
               src={withBase(copy.brand.aboutPortrait)}
               alt={copy.brand.aboutPortraitAlt}
-              class="block h-full w-full object-cover"
+              class="about-portrait-image block h-full w-full object-cover"
             />
           </div>
         </aside>
@@ -93,6 +93,29 @@ const copy = getSiteCopy(locale);
           </p>
         </aside>
       )}
+    </div>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      {copy.about.sections.map((section) => (
+        <article class="paper-panel card-lift rounded-[2.1rem] px-6 py-7 md:px-7">
+          <p class="section-kicker">{section.kicker}</p>
+          <h2 class="mt-4 font-display text-[2rem] leading-tight text-text md:text-[2.3rem]">
+            {section.title}
+          </h2>
+          <p class="mt-4 text-base leading-8 text-muted">
+            {section.body}
+          </p>
+          {section.items && section.items.length > 0 && (
+            <div class="mt-5 flex flex-wrap gap-2">
+              {section.items.map((item) => (
+                <span class="rounded-full border border-line bg-white/72 px-3 py-1 text-xs tracking-[0.14em] text-accent-deep md:text-[0.8rem]">
+                  {item}
+                </span>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
     </div>
   </section>
 </BaseLayout>

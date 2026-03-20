@@ -103,9 +103,8 @@
 当前版本为了先完成结构、风格与部署验证，仍保留了一批演示型占位内容：
 
 - `src/data/site.ts`
-  - About 页个人简介
-  - Background 文案
-  - Contact 页中的邮箱说明
+  - About 页中的个人简介、博士阶段导向栏目
+  - Contact 页中的两段联系说明与公开链接
 - `src/content/zh/projects/`
 - `src/content/en/projects/`
   - 当前项目条目均为演示型样例
@@ -114,7 +113,7 @@
   - 当前研究条目均为演示型样例
 - `src/content/zh/notes/`
 - `src/content/en/notes/`
-  - 当前笔记条目均为演示型样例
+  - 当前仅保留 `personal-principles-theory` 作为真实笔记条目
 - `src/content/zh/gallery/`
 - `src/content/en/gallery/`
   - 当前图集与 Quote 条目均为演示型样例
