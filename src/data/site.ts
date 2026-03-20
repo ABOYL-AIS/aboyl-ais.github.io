@@ -462,9 +462,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
       metaTitle: "Contact | ABOYL-AIS",
       metaDescription: "联系 ABOYL-AIS",
       kicker: "Contact",
-      title: "把联系入口做得更清楚，也让合作与交流更自然地发生。",
+      title: "欢迎与我联系，期待您的交流！",
       intro:
-        "这一页不再堆联系方式卡片，而是保留更直接的联系说明。无论是个人交流，还是和 AIS 团队相关的合作沟通，都可以从这里开始。",
+        "如果你对我或者我的团队做的一些东西感兴趣，随时欢迎您的交流，也非常欢迎各位同仁加入我的团队！",
       sections: [
         {
           kicker: "Personal Contact",
@@ -481,12 +481,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
               label: "GitHub",
               value: "ABOYL-AIS",
               href: "https://github.com/ABOYL-AIS",
-            },
-            {
-              label: "Site",
-              value: "aboyl-ais.github.io",
-              href: "https://aboyl-ais.github.io/",
-            },
+            }
           ],
         },
         {
@@ -499,12 +494,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
               label: "AIS GitHub",
               value: "ABOYL-AIS",
               href: "https://github.com/ABOYL-AIS",
-            },
-            {
-              label: "AIS Site",
-              value: "aboyl-ais.github.io",
-              href: "https://aboyl-ais.github.io/",
-            },
+            }
           ],
         },
       ],
@@ -524,17 +514,17 @@ const siteCopy: Record<Locale, SiteCopy> = {
         metaTitle: "项目 | ABOYL-AIS",
         metaDescription: "ABOYL-AIS 项目展示页",
         kicker: "Projects",
-        title: "项目不是简单陈列，而是逐步成形的结构。",
+        title: "重大项目|产品|系统的集中展示页！",
         intro:
-          "这里集中展示当前站点的模块、前端设计方向和部署能力。后续可以继续扩展更多真实项目。",
+          "关于本人主要参与的项目、产品、系统与可公开展示的工程化成果的集中展示页！欢迎各位同仁进行阅览与交流！",
       },
       research: {
         metaTitle: "Research | ABOYL-AIS",
         metaDescription: "Papers, competitions, reports and achievements",
         kicker: "Research",
-        title: "Papers, Competitions, Reports and Achievements.",
+        title: "论文、竞赛、报告与成果展示页！",
         intro:
-          "研究相关内容统一收纳在这里，页面框架保持正式、清晰与低装饰感，适合长期扩展。",
+          "关于本人主要参与的论文、竞赛、报告与成果的集中展示页！欢迎各位同仁进行阅览与交流！",
       },
       notes: {
         metaTitle: "Notes | ABOYL-AIS",
@@ -712,9 +702,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
       research: {
         kicker: "Research",
         title:
-          "Research, competitions, reports, and achievements share one formal presentation layer.",
+          "Papers, competitions, reports, and achievements share the same formal layer.",
         intro:
-          "The Research section keeps formal outputs together instead of scattering them between projects and notes.",
+          "The Research page is meant for more formal outputs, keeping them from being scattered between ordinary notes and project lists.",
       },
       notes: {
         kicker: "Notes",
@@ -823,9 +813,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
       metaTitle: "Contact | ABOYL-AIS",
       metaDescription: "Contact ABOYL-AIS",
       kicker: "Contact",
-      title: "Keep the contact layer clear, human, and easy to approach.",
+      title: "Feel free to reach out. I would be glad to hear from you.",
       intro:
-        "Instead of stacking contact cards, this page now keeps two direct descriptions: one for reaching me personally, and one for reaching the AIS team for future collaboration or communication.",
+        "If you are interested in me or some of the things I do, I would be glad to hear from you. I also welcome anyone who wants to join my team!",
       sections: [
         {
           kicker: "Personal Contact",
@@ -842,12 +832,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
               label: "GitHub",
               value: "ABOYL-AIS",
               href: "https://github.com/ABOYL-AIS",
-            },
-            {
-              label: "Site",
-              value: "aboyl-ais.github.io",
-              href: "https://aboyl-ais.github.io/",
-            },
+            }
           ],
         },
         {
@@ -860,12 +845,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
               label: "AIS GitHub",
               value: "ABOYL-AIS",
               href: "https://github.com/ABOYL-AIS",
-            },
-            {
-              label: "AIS Site",
-              value: "aboyl-ais.github.io",
-              href: "https://aboyl-ais.github.io/",
-            },
+            }
           ],
         },
       ],
@@ -887,9 +867,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
         metaDescription: "Project showcase for ABOYL-AIS",
         kicker: "Projects",
         title:
-          "Projects are not a flat showcase. They are structures still taking shape.",
+          "A dedicated showcase for major projects, products, and systems!",
         intro:
-          "This section gathers the site's current modules, frontend directions, and deployment-related work. More real projects can be added over time.",
+          "A dedicated showcase for major projects, products, systems, and public engineering outputs I have been involved in! Welcome to browse and exchange!",
       },
       research: {
         metaTitle: "Research | ABOYL-AIS",
