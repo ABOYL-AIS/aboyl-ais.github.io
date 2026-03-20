@@ -13,6 +13,11 @@ const { locale } = Astro.props;
 const { pathname } = Astro.url;
 const copy = getSiteCopy(locale);
 const pathWithoutLocale = stripLocaleFromPathname(pathname);
+const navWrapClass =
+  locale === "en"
+    ? "flex items-center justify-center gap-1 text-[0.92rem] text-muted lg:gap-1.5 xl:gap-2"
+    : "flex items-center justify-center gap-2 text-sm text-muted";
+const navItemClass = locale === "en" ? "rounded-full px-2.5 py-1.5 transition-colors xl:px-3" : "rounded-full px-3 py-1.5 transition-colors";
 ---
 
 <header class="sticky top-0 z-30">
@@ -48,7 +53,7 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
             </div>
           </a>
 
-          <nav class="flex items-center justify-center gap-2 text-sm text-muted">
+          <nav class={navWrapClass}>
             {copy.nav.map((item) => {
               const localizedHref = localizePath(locale, item.href);
               const resolvedHref = withBase(localizedHref);
@@ -61,9 +66,9 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
                 <a
                   href={resolvedHref}
                   class:list={[
-                    "rounded-full px-3 py-1.5 transition-colors",
+                    navItemClass,
                     active
-                      ? "bg-accent-soft/92 text-accent-deep shadow-[0_10px_24px_rgba(191,134,152,0.14)]"
+                      ? "bg-accent-soft/92 text-accent-deep shadow-[0_10px_24px_rgba(191,134,152,0.14)] dark:bg-white/10 dark:text-text dark:shadow-[0_12px_28px_rgba(0,0,0,0.24)]"
                       : "text-muted hover:bg-accent-soft/55 hover:text-text"
                   ]}
                 >
