@@ -491,9 +491,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
             "适合用于团队交流、项目合作、活动邀请、技术共建或未来想进一步了解 AIS 的同学与伙伴。现阶段可以先通过公开站点与 GitHub 入口建立联系，后续我会再补充更正式的团队信息页。",
           links: [
             {
-              label: "AIS GitHub",
-              value: "ABOYL-AIS",
-              href: "https://github.com/ABOYL-AIS",
+              label: "AIS-Team GitHub",
+              value: "Advanced-Informatics-Scholar",
+              href: "https://github.com/Advanced-Informatics-Scholar",
             }
           ],
         },
@@ -842,9 +842,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
             "This is better for team-level communication, project collaboration, activity invitations, technical co-building, or anyone who wants to learn more about AIS as an evolving group. For now, the public site and GitHub remain the cleanest entry points.",
           links: [
             {
-              label: "AIS GitHub",
-              value: "ABOYL-AIS",
-              href: "https://github.com/ABOYL-AIS",
+              label: "AIS-Team GitHub",
+              value: "Advanced-Informatics-Scholar",
+              href: "https://github.com/Advanced-Informatics-Scholar",
             }
           ],
         },
