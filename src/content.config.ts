@@ -10,7 +10,7 @@ const linkField = z
   );
 
 const projects = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
+  loader: glob({ pattern: "*/projects/**/*.md", base: "./src/content" }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),
@@ -28,7 +28,7 @@ const projects = defineCollection({
 });
 
 const research = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/research" }),
+  loader: glob({ pattern: "*/research/**/*.md", base: "./src/content" }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),
@@ -41,7 +41,7 @@ const research = defineCollection({
 });
 
 const notes = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/notes" }),
+  loader: glob({ pattern: "*/notes/**/*.md", base: "./src/content" }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),
@@ -52,7 +52,7 @@ const notes = defineCollection({
 });
 
 const gallery = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/gallery" }),
+  loader: glob({ pattern: "*/gallery/**/*.md", base: "./src/content" }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),

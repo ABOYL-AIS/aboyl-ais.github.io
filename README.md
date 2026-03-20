@@ -31,18 +31,16 @@
 ├─ src/
 │  ├─ components/
 │  ├─ content/
-│  │  ├─ gallery/
-│  │  │  ├─ zh/
-│  │  │  └─ en/
-│  │  ├─ notes/
-│  │  │  ├─ zh/
-│  │  │  └─ en/
-│  │  ├─ projects/
-│  │  │  ├─ zh/
-│  │  │  └─ en/
-│  │  └─ research/
-│  │     ├─ zh/
-│  │     └─ en/
+│  │  ├─ zh/
+│  │  │  ├─ gallery/
+│  │  │  ├─ notes/
+│  │  │  ├─ projects/
+│  │  │  └─ research/
+│  │  └─ en/
+│  │     ├─ gallery/
+│  │     ├─ notes/
+│  │     ├─ projects/
+│  │     └─ research/
 │  ├─ data/
 │  ├─ i18n/
 │  ├─ layouts/
@@ -69,7 +67,7 @@
 
 - `public/` 放静态资源，如项目封面图和 Gallery 图片。
 - `src/content/` 放结构化内容条目。
-- `src/content/*/zh` 与 `src/content/*/en` 分别维护中英文内容。
+- `src/content/zh/*` 与 `src/content/en/*` 分别维护中英文内容。
 - `src/pages/` 放页面路由和详情页模板。
 - `src/pages/en/` 提供英文页面路由，中文仍保持根路径。
 - `src/components/` 放可复用 UI 组件。
@@ -254,7 +252,7 @@ image: /images/gallery/example.svg
 
 ### 新增项目
 
-在 `src/content/projects/zh/` 或 `src/content/projects/en/` 下新增一个 `md` 文件，至少填写：
+在 `src/content/zh/projects/` 或 `src/content/en/projects/` 下新增一个 `md` 文件，至少填写：
 
 ```yaml
 title:
@@ -275,7 +273,7 @@ writeup:
 
 ### 新增研究内容
 
-在 `src/content/research/zh/` 或 `src/content/research/en/` 下新增 `md` 文件，至少填写：
+在 `src/content/zh/research/` 或 `src/content/en/research/` 下新增 `md` 文件，至少填写：
 
 ```yaml
 title:
@@ -296,7 +294,7 @@ featured:
 
 ### 新增笔记
 
-在 `src/content/notes/zh/` 或 `src/content/notes/en/` 下新增 `md` 文件，至少填写：
+在 `src/content/zh/notes/` 或 `src/content/en/notes/` 下新增 `md` 文件，至少填写：
 
 ```yaml
 title:
@@ -315,7 +313,7 @@ featured:
 
 ### 新增图集或 Quote
 
-在 `src/content/gallery/zh/` 或 `src/content/gallery/en/` 下新增 `md` 文件，至少填写：
+在 `src/content/zh/gallery/` 或 `src/content/en/gallery/` 下新增 `md` 文件，至少填写：
 
 ```yaml
 title:

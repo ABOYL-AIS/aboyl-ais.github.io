@@ -8,7 +8,7 @@ export function getEntryLocale(id: string): Locale {
 
 export function getEntrySlug(id: string) {
   const segments = id.split("/");
-  return isLocale(segments[0]) ? segments.slice(1).join("/") : id;
+  return isLocale(segments[0]) ? segments.slice(2).join("/") : id;
 }
 
 export async function getLocalizedCollection<
