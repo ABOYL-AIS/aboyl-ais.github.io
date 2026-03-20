@@ -489,6 +489,58 @@ a {
     radial-gradient(circle at 10% 16%, rgba(244, 228, 234, 0.46), transparent 24%);
 }
 
+.gallery-filter {
+  border-radius: 999px;
+  border: 1px solid rgba(125, 97, 118, 0.14);
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.7rem 1.2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition:
+    transform 220ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 220ms ease;
+}
+
+.gallery-filter:hover {
+  transform: translateY(-2px);
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.gallery-filter.is-active {
+  background: rgba(244, 228, 234, 0.78);
+  border-color: rgba(191, 134, 152, 0.24);
+  color: var(--accent-deep);
+  box-shadow: 0 16px 28px rgba(191, 134, 152, 0.12);
+}
+
+.gallery-image-tile {
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 18px 40px rgba(71, 78, 102, 0.08);
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease,
+    filter 240ms ease;
+}
+
+.gallery-image-tile:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 56px rgba(71, 78, 102, 0.14);
+}
+
+.gallery-image-tile__image {
+  transition: transform 320ms ease;
+}
+
+.gallery-image-tile:hover .gallery-image-tile__image {
+  transform: scale(1.02);
+}
+
 .hero-stage {
   position: relative;
 }
@@ -604,6 +656,33 @@ a {
   background:
     linear-gradient(180deg, rgba(34, 35, 46, 0.96), rgba(31, 28, 42, 0.98)),
     radial-gradient(circle at 82% 20%, rgba(114, 129, 164, 0.18), transparent 20%);
+}
+
+[data-theme="dark"] .gallery-filter {
+  border-color: rgba(224, 228, 240, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(232, 228, 236, 0.82);
+}
+
+[data-theme="dark"] .gallery-filter:hover {
+  color: rgba(244, 240, 246, 0.96);
+  border-color: rgba(224, 228, 240, 0.24);
+}
+
+[data-theme="dark"] .gallery-filter.is-active {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(224, 228, 240, 0.24);
+  color: rgba(246, 242, 248, 0.98);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.24);
+}
+
+[data-theme="dark"] .gallery-image-tile {
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.24);
+}
+
+[data-theme="dark"] .gallery-image-tile:hover {
+  box-shadow: 0 34px 60px rgba(0, 0, 0, 0.34);
 }
 
 [data-theme="dark"] .quote-wash {

@@ -1,11 +1,10 @@
 ---
-import BentoCard from "../components/BentoCard.astro";
-import SectionHeading from "../components/SectionHeading.astro";
+import { readdir } from "node:fs/promises";
+import path from "node:path";
 import { getSiteCopy } from "../data/site";
 import type { Locale } from "../i18n/config";
-import { localizePath } from "../i18n/config";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getEntrySlug, getLocalizedCollection } from "../utils/content";
+import { withBase } from "../utils/paths";
 
 interface Props {
   locale: Locale;
@@ -13,8 +12,44 @@ interface Props {
 
 const { locale } = Astro.props;
 const copy = getSiteCopy(locale);
-const gallery = (await getLocalizedCollection("gallery", locale)).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+const categoryMeta = [
+  {
+    id: "avatar",
+    label: locale === "zh" ? "头像类" : "Avatar",
+    title: locale === "zh" ? "二次元头像" : "Anime Avatar"
+  },
+  {
+    id: "img",
+    label: locale === "zh" ? "网络图片" : "Image",
+    title: locale === "zh" ? "网络图片收藏" : "Anime Image"
+  },
+  {
+    id: "photo",
+    label: locale === "zh" ? "实拍照片" : "Photo",
+    title: locale === "zh" ? "实拍照片" : "Photography"
+  }
+];
+
+const galleryTitle =
+  copy.collections.gallery.title || (locale === "zh" ? "分类查看图片收藏。" : "Browse images by category.");
+
+async function getCategoryImages(folder: string) {
+  const dir = path.join(process.cwd(), "public", "Photos", folder);
+  const entries = await readdir(dir, { withFileTypes: true });
+  return entries
+    .filter((entry) => entry.isFile() && !entry.name.startsWith("."))
+    .sort((a, b) => a.name.localeCompare(b.name, "zh-CN"))
+    .map((entry) => ({
+      name: entry.name,
+      src: withBase(`/Photos/${folder}/${encodeURIComponent(entry.name)}`)
+    }));
+}
+
+const categories = await Promise.all(
+  categoryMeta.map(async (item) => ({
+    ...item,
+    images: await getCategoryImages(item.id)
+  }))
 );
 ---
 
@@ -23,30 +58,77 @@ const gallery = (await getLocalizedCollection("gallery", locale)).sort(
   title={copy.collections.gallery.metaTitle}
   description={copy.collections.gallery.metaDescription}
 >
-  <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8">
-    <SectionHeading
-      kicker={copy.collections.gallery.kicker}
-      title={copy.collections.gallery.title}
-      intro={copy.collections.gallery.intro}
-    />
-    <div class="paper-panel card-lift gallery-wash mt-10 rounded-[2.2rem] px-6 py-7 md:px-8">
-      <p class="section-kicker">{copy.collections.gallery.moodKicker}</p>
-      <p class="mt-4 max-w-3xl font-display text-3xl leading-tight text-text md:text-4xl">
-        {copy.collections.gallery.moodTitle}
-      </p>
+  <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8" data-gallery-root data-default-category="avatar">
+    <div class="max-w-4xl">
+      <p class="section-kicker">{copy.collections.gallery.kicker}</p>
+      <h1 class="mt-4 font-display text-4xl leading-tight text-text md:text-6xl">{galleryTitle}</h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{copy.collections.gallery.intro}</p>
     </div>
 
-    <div class="mt-10 grid gap-6 lg:grid-cols-2">
-      {gallery.map((entry) => (
-        <BentoCard
-          kicker={entry.data.category ?? entry.data.kind}
-          title={entry.data.title}
-          body={entry.data.summary}
-          href={localizePath(locale, `/gallery/${getEntrySlug(entry.id)}/`)}
-          tone="soft"
-          viewLabel={copy.common.viewContent}
-        />
+    <div class="gallery-filter-bar mt-10 flex flex-wrap gap-3">
+      {categories.map((category, index) => (
+        <button
+          type="button"
+          class:list={["gallery-filter", index === 0 && "is-active"]}
+          data-gallery-filter={category.id}
+        >
+          {category.label}
+        </button>
+      ))}
+    </div>
+
+    <div class="mt-10 space-y-10">
+      {categories.map((category, index) => (
+        <section
+          data-gallery-panel={category.id}
+          hidden={index !== 0}
+        >
+          <p class="section-kicker">{category.title}</p>
+          <div class="gallery-image-wall mt-5 columns-1 gap-5 sm:columns-2 xl:columns-3">
+            {category.images.map((image) => (
+              <a
+                href={image.src}
+                target="_blank"
+                rel="noreferrer"
+                class="gallery-image-tile mb-5 block break-inside-avoid overflow-hidden rounded-[1.8rem]"
+              >
+                <img
+                  src={image.src}
+                  alt={category.title}
+                  loading="lazy"
+                  class="gallery-image-tile__image block h-auto w-full object-cover"
+                />
+              </a>
+            ))}
+          </div>
+        </section>
       ))}
     </div>
   </section>
 </BaseLayout>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-gallery-root]");
+    if (!root) return;
+
+    const buttons = Array.from(root.querySelectorAll("[data-gallery-filter]"));
+    const panels = Array.from(root.querySelectorAll("[data-gallery-panel]"));
+
+    const setActive = (category) => {
+      buttons.forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.galleryFilter === category);
+      });
+
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.galleryPanel !== category;
+      });
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => setActive(button.dataset.galleryFilter));
+    });
+
+    setActive(root.dataset.defaultCategory || "avatar");
+  })();
+</script>
