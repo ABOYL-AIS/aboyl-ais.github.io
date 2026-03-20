@@ -31,16 +31,16 @@ const {
 ---
 
 <article class="paper-panel card-lift surface-mist overflow-hidden rounded-[2.3rem] p-4 md:p-5">
-  <div class="grid gap-5 md:grid-cols-[17rem_1fr] md:items-stretch">
+  <div class="grid gap-5 md:grid-cols-[22rem_1fr] md:items-stretch">
     <div class="overflow-hidden rounded-[1.75rem] border border-line bg-white/70">
       {cover ? (
         <img
           src={withBase(cover)}
           alt={coverAlt}
-          class="block h-full min-h-[13rem] w-full object-cover"
+          class="block h-full min-h-[16rem] w-full object-cover"
         />
       ) : (
-        <div class="h-full min-h-[13rem] bg-[radial-gradient(circle_at_top_left,rgba(244,228,234,0.72),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.96),rgba(239,243,249,0.88))]" />
+        <div class="h-full min-h-[16rem] bg-[radial-gradient(circle_at_top_left,rgba(244,228,234,0.72),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.96),rgba(239,243,249,0.88))]" />
       )}
     </div>
 
@@ -52,10 +52,10 @@ const {
         <span class="text-xs tracking-[0.16em] text-muted">{date}</span>
       </div>
 
-      <h3 class="mt-4 max-w-[20ch] font-display text-[2rem] leading-[1.02] text-text md:text-[2.45rem]">
+      <h3 class="mt-4 max-w-[16ch] font-display text-[1.9rem] leading-[1.02] text-text md:text-[2.25rem]">
         {title}
       </h3>
-      <p class="mt-4 max-w-3xl text-base leading-8 text-muted">{summary}</p>
+      <p class="mt-4 max-w-2xl text-base leading-8 text-muted">{summary}</p>
       <p class="mt-4 text-sm text-text/80">{venueLabel}: {venue}</p>
 
       <div class="mt-5 flex flex-wrap gap-2">
