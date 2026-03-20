@@ -20,8 +20,13 @@ const { Content } = await render(entry);
       <h1 class="mt-4 font-display text-[2.4rem] leading-[1.02] text-text md:text-[3.2rem]">{entry.data.title}</h1>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{entry.data.summary}</p>
 
-      <div class="mt-6 overflow-hidden rounded-[1.8rem] border border-line bg-bg-soft">
-        <img src={withBase(entry.data.cover)} alt={entry.data.coverAlt} class="h-72 w-full object-cover" loading="lazy" />
+      <div class="mt-6 overflow-hidden rounded-[1.8rem] border border-line bg-bg-soft p-4 md:p-6">
+        <img
+          src={withBase(entry.data.cover)}
+          alt={entry.data.coverAlt}
+          class="mx-auto block h-auto max-h-[28rem] w-auto max-w-full object-contain"
+          loading="lazy"
+        />
       </div>
 
       <div class="mt-6 flex flex-wrap gap-2">

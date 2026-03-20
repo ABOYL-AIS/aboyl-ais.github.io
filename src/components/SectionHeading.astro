@@ -11,12 +11,12 @@ const {
   kicker,
   title,
   intro,
-  titleClass = "max-w-full text-balance text-[clamp(2rem,3.2vw,3.25rem)] leading-[0.98] tracking-[-0.018em]",
-  introClass = "max-w-3xl text-base leading-7 text-muted md:text-lg md:leading-8",
+  titleClass = "w-full max-w-none text-[clamp(2rem,3.2vw,3.25rem)] leading-[0.98] tracking-[-0.018em]",
+  introClass = "w-full max-w-none text-base leading-7 text-muted md:text-lg md:leading-8",
 } = Astro.props;
 ---
 
-<div class="max-w-5xl">
+<div class="w-full">
   <p class="section-kicker">{kicker}</p>
   <h2 class:list={["mt-4 font-display text-text", titleClass]}>
     {title}

@@ -28,8 +28,8 @@ const notes = (await getLocalizedCollection("notes", locale)).sort(
       kicker={copy.collections.notes.kicker}
       title={copy.collections.notes.title}
       intro={copy.collections.notes.intro}
-      titleClass="max-w-full text-balance text-[clamp(2rem,3.2vw,3.15rem)] leading-[0.97] tracking-[-0.02em]"
-      introClass="max-w-4xl text-base leading-7 text-muted md:text-lg md:leading-8"
+      titleClass="w-full max-w-none text-[clamp(2rem,3.2vw,3.15rem)] leading-[0.97] tracking-[-0.02em]"
+      introClass="w-full max-w-none text-base leading-7 text-muted md:text-lg md:leading-8"
     />
     <div class="mt-10 grid gap-6">
       {notes.map((entry) => (

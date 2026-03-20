@@ -18,8 +18,8 @@ const copy = getSiteCopy(locale);
       kicker={copy.contact.kicker}
       title={copy.contact.title}
       intro={copy.contact.intro}
-      titleClass="max-w-full text-balance text-[clamp(2.15rem,4.35vw,4.3rem)] leading-[0.94] tracking-[-0.022em]"
-      introClass="max-w-4xl text-base leading-7 text-muted md:text-lg md:leading-8"
+      titleClass="w-full max-w-none text-[clamp(2.15rem,4.35vw,4.3rem)] leading-[0.94] tracking-[-0.022em]"
+      introClass="w-full max-w-none text-base leading-7 text-muted md:text-lg md:leading-8"
     />
     <div class="mt-8 grid gap-6">
       {copy.contact.sections.map((section) => (
@@ -35,10 +35,10 @@ const copy = getSiteCopy(locale);
             {section.links.map((item) => (
               <a
                 href={item.href}
-                class="inline-flex items-center gap-2 rounded-full border border-line bg-white/72 px-4 py-2 text-sm text-text transition-colors hover:border-line-strong hover:text-accent-deep md:text-base"
+                class="inline-flex min-w-0 max-w-full items-center gap-2 rounded-full border border-line bg-white/72 px-4 py-2 text-sm text-text transition-colors hover:border-line-strong hover:text-accent-deep md:text-base"
               >
                 <span class="section-kicker !text-[0.62rem] !tracking-[0.22em]">{item.label}</span>
-                <span>{item.value}</span>
+                <span class="min-w-0 break-all">{item.value}</span>
               </a>
             ))}
           </div>

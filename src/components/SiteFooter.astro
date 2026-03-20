@@ -32,23 +32,23 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
     </div>
 
     <div class="mt-8 space-y-5">
-      <div class="grid gap-4 lg:grid-cols-[1fr_1fr_14rem_14rem]">
+      <div class="grid gap-4 lg:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_13.5rem_13.5rem]">
         {phone && (
-          <div class="footer-meta-row flex items-center gap-4 rounded-[1.55rem] border border-line bg-white/72 px-4 py-4">
+          <div class="footer-meta-row flex min-w-0 items-center gap-4 rounded-[1.55rem] border border-line bg-white/72 px-4 py-4">
             <span class="footer-icon-badge flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white/80 text-accent-deep">
               <svg viewBox="0 0 24 24" class="h-[1.05rem] w-[1.05rem]" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M6.8 4.8h2.8l1 3.5-1.8 1.6a14.4 14.4 0 0 0 6.6 6.6l1.6-1.8 3.5 1v2.8c0 .7-.5 1.2-1.2 1.2A16.3 16.3 0 0 1 5.6 6c0-.7.5-1.2 1.2-1.2Z" />
               </svg>
             </span>
-            <span>
+            <span class="min-w-0">
               <span class="section-kicker block !text-[0.62rem] !tracking-[0.2em]">{phone.label}</span>
-              <span class="mt-1 block text-lg text-text md:text-[1.35rem]">{phone.value}</span>
+              <span class="mt-1 block break-words text-lg text-text md:text-[1.35rem]">{phone.value}</span>
             </span>
           </div>
         )}
 
         {email && (
-          <div class="footer-meta-row flex items-center gap-4 rounded-[1.55rem] border border-line bg-white/72 px-4 py-4">
+          <div class="footer-meta-row flex min-w-0 items-center gap-4 rounded-[1.55rem] border border-line bg-white/72 px-4 py-4">
             <span class="footer-icon-badge flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white/80 text-accent-deep">
               <svg viewBox="0 0 24 24" class="h-[1.05rem] w-[1.05rem]" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4.5 6.5h15a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1Zm0 1.4 7.5 5.1 7.5-5.1" />
@@ -56,7 +56,7 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
             </span>
             <span class="min-w-0">
               <span class="section-kicker block !text-[0.62rem] !tracking-[0.2em]">{email.label}</span>
-              <span class="mt-1 block break-all text-lg text-text md:text-[1.2rem]">{email.value}</span>
+              <span class="mt-1 block break-all text-lg text-text md:text-[1.1rem]">{email.value}</span>
             </span>
           </div>
         )}
@@ -66,7 +66,7 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
             href={github.href}
             target="_blank"
             rel="noreferrer"
-            class="footer-social-card group flex flex-col items-center justify-center rounded-[1.55rem] border border-line bg-white/72 px-5 py-5 text-center hover:border-line-strong"
+            class="footer-social-card group flex min-w-0 flex-col items-center justify-center rounded-[1.55rem] border border-line bg-white/72 px-5 py-5 text-center hover:border-line-strong"
           >
             <span class="footer-icon-badge flex h-14 w-14 items-center justify-center rounded-full border border-line bg-white/82 text-accent-deep transition-transform duration-200 group-hover:scale-105">
               <svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
@@ -74,7 +74,7 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
               </svg>
             </span>
             <span class="mt-4 section-kicker !text-[0.62rem] !tracking-[0.2em]">{github.label}</span>
-            <span class="mt-1 text-base text-text">{github.value}</span>
+            <span class="mt-1 break-words text-base text-text">{github.value}</span>
           </a>
         )}
 
@@ -83,7 +83,7 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
             href={team.href}
             target="_blank"
             rel="noreferrer"
-            class="footer-social-card group flex flex-col items-center justify-center rounded-[1.55rem] border border-line bg-white/72 px-5 py-5 text-center hover:border-line-strong"
+            class="footer-social-card group flex min-w-0 flex-col items-center justify-center rounded-[1.55rem] border border-line bg-white/72 px-5 py-5 text-center hover:border-line-strong"
           >
             <span class="footer-icon-badge flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-line bg-white/82 transition-transform duration-200 group-hover:scale-105">
               {team.imageSrc ? (
@@ -93,7 +93,7 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
               )}
             </span>
             <span class="mt-4 section-kicker !text-[0.62rem] !tracking-[0.2em]">{team.label}</span>
-            <span class="mt-1 text-base text-text">{team.value}</span>
+            <span class="mt-1 break-words text-base text-text">{team.value}</span>
           </a>
         )}
       </div>

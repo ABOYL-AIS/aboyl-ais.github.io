@@ -16,7 +16,7 @@ const copy = getSiteCopy(locale);
   <section class="mx-auto max-w-5xl px-5 pt-16 md:px-8">
     <div class="max-w-4xl">
       <p class="section-kicker">{copy.about.kicker}</p>
-      <h1 class="mt-4 max-w-full text-balance font-display text-[clamp(2.3rem,3.9vw,3.9rem)] leading-[0.95] text-text">
+      <h1 class="mt-4 w-full max-w-none font-display text-[clamp(2.3rem,3.9vw,3.9rem)] leading-[0.95] text-text">
         {copy.about.title}
       </h1>
       <p class="mt-5 max-w-3xl text-base leading-7 text-muted md:text-lg md:leading-8">
@@ -43,7 +43,7 @@ const copy = getSiteCopy(locale);
       </div>
     </div>
 
-    <div class="mt-10 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+    <div class="mt-10 grid gap-6 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
       <div class="paper-panel card-lift rounded-[2.5rem] px-7 py-8 md:px-10">
       <div class="grid gap-8 md:grid-cols-2">
         <div>
@@ -72,7 +72,7 @@ const copy = getSiteCopy(locale);
       </div>
 
       {copy.brand.aboutPortrait ? (
-        <aside class="about-portrait-card card-lift rounded-[2.5rem]">
+        <aside class="about-portrait-card card-lift self-center rounded-[2.5rem]">
           <div class="about-portrait-frame overflow-hidden rounded-[2.15rem]">
             <img
               src={withBase(copy.brand.aboutPortrait)}

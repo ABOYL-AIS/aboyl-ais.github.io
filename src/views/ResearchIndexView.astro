@@ -28,8 +28,8 @@ const research = (await getLocalizedCollection("research", locale)).sort(
       kicker={copy.collections.research.kicker}
       title={copy.collections.research.title}
       intro={copy.collections.research.intro}
-      titleClass="max-w-full text-balance text-[clamp(2rem,3.3vw,3.35rem)] leading-[0.97] tracking-[-0.02em]"
-      introClass="max-w-4xl text-base leading-7 text-muted md:text-lg md:leading-8"
+      titleClass="w-full max-w-none text-[clamp(2rem,3.3vw,3.35rem)] leading-[0.97] tracking-[-0.02em]"
+      introClass="w-full max-w-none text-base leading-7 text-muted md:text-lg md:leading-8"
     />
     <div class="mt-10 grid gap-6">
       {research.map((entry) => (
