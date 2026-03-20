@@ -276,7 +276,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
         },
         {
           label: "Email",
-          value: "18372779323@qq.com",
+          value: "18372779323@163.com",
           kind: "email",
         },
         {
@@ -629,7 +629,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
         },
         {
           label: "Email",
-          value: "18372779323@qq.com",
+          value: "18372779323@163.com",
           kind: "email",
         },
         {
