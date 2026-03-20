@@ -58,6 +58,7 @@ const gallery = defineCollection({
     summary: z.string(),
     date: z.coerce.date(),
     kind: z.enum(["Artwork", "Collection", "Quote"]),
+    category: z.enum(["Anime Avatar", "Anime Image", "Photography", "Quote"]).optional(),
     medium: z.string(),
     image: z.string().optional(),
     source: z.string().optional(),

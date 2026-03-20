@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "generate:gallery": "node scripts/generate-gallery.mjs",
     "astro": "astro"
   },
   "dependencies": {

@@ -3,6 +3,7 @@ title: Spring Fragment
 summary: 用于承载图集、视觉碎片和轻量图文专题的内容入口。
 date: 2026-03-19
 kind: Artwork
+category: Anime Image
 medium: Visual Collection
 image: /images/gallery/spring-fragment.svg
 featured: true

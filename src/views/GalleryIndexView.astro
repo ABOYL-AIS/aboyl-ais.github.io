@@ -39,7 +39,7 @@ const gallery = (await getLocalizedCollection("gallery", locale)).sort(
     <div class="mt-10 grid gap-6 lg:grid-cols-2">
       {gallery.map((entry) => (
         <BentoCard
-          kicker={entry.data.kind}
+          kicker={entry.data.category ?? entry.data.kind}
           title={entry.data.title}
           body={entry.data.summary}
           href={localizePath(locale, `/gallery/${getEntrySlug(entry.id)}/`)}

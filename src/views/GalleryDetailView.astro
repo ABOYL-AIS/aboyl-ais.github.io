@@ -21,6 +21,7 @@ const { Content } = await render(entry);
     ]}>
       <p class="section-kicker">
         {entry.data.date.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US")} · {entry.data.kind}
+        {entry.data.category && ` · ${entry.data.category}`}
         {" · "}
         {entry.data.medium}
       </p>

@@ -371,6 +371,20 @@ featured:
 - 图片文件放到 `public/images/gallery/`
 - `image` 字段填 `/images/gallery/xxx.xxx`
 
+如果图片放在 `public/Photos/` 这一套自动图集目录下，也可以直接运行：
+
+```bash
+npm run generate:gallery
+```
+
+当前自动分类目录约定为：
+
+- `public/Photos/avatar/` -> `Anime Avatar`
+- `public/Photos/img/` -> `Anime Image`
+- `public/Photos/photo/` -> `Photography`
+
+脚本会自动为中英文 Gallery 生成对应条目，并按编号写入 `src/content/zh/gallery/` 与 `src/content/en/gallery/`。
+
 如果是 Favorite Quote：
 
 - `kind` 写 `Quote`
