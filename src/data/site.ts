@@ -885,7 +885,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
         kicker: "Notes",
         title: "Some deep thoughts from an INFJ-Green Older......",
         intro:
-          "Not great at talking, but love to think and express. Here I record some of my thoughts, and INFJ-绿老头 resonates with you! Ask me anything!",
+          "Not great at talking, but love to think and express. Here I record some of my thoughts, and INFJ-Green Older resonates with you! Ask me anything!",
       },
       gallery: {
         metaTitle: "Gallery | ABOYL-AIS",
