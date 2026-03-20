@@ -44,7 +44,7 @@ const copy = getSiteCopy(locale);
     </div>
 
     <div class="mt-10 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
-      <div class="paper-panel rounded-[2.5rem] px-7 py-8 md:px-10">
+      <div class="paper-panel card-lift rounded-[2.5rem] px-7 py-8 md:px-10">
       <div class="grid gap-8 md:grid-cols-2">
         <div>
           <p class="section-kicker">{copy.about.profileLabel}</p>
@@ -72,8 +72,8 @@ const copy = getSiteCopy(locale);
       </div>
 
       {copy.brand.aboutPortrait ? (
-        <aside class="about-portrait-panel paper-panel rounded-[2.5rem] p-4 md:p-5">
-          <div class="about-portrait-frame overflow-hidden rounded-[2rem] border border-line bg-white/86">
+        <aside class="about-portrait-panel rounded-[2.5rem]">
+          <div class="about-portrait-frame overflow-hidden rounded-[2.5rem]">
             <img
               src={withBase(copy.brand.aboutPortrait)}
               alt={copy.brand.aboutPortraitAlt}

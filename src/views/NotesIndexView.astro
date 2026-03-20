@@ -1,5 +1,4 @@
 ---
-import PlaceholderNotice from "../components/PlaceholderNotice.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import WritingCard from "../components/WritingCard.astro";
 import { getSiteCopy } from "../data/site";
@@ -30,14 +29,6 @@ const notes = (await getLocalizedCollection("notes", locale)).sort(
       title={copy.collections.notes.title}
       intro={copy.collections.notes.intro}
     />
-
-    <div class="mt-10">
-      <PlaceholderNotice
-        title={copy.common.placeholderTitle}
-        body={copy.collections.notes.placeholder}
-      />
-    </div>
-
     <div class="mt-10 grid gap-6">
       {notes.map((entry) => (
         <WritingCard

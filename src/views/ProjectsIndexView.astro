@@ -1,5 +1,4 @@
 ---
-import PlaceholderNotice from "../components/PlaceholderNotice.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import { getSiteCopy } from "../data/site";
@@ -30,14 +29,6 @@ const projects = (await getLocalizedCollection("projects", locale)).sort((a, b) 
       title={copy.collections.projects.title}
       intro={copy.collections.projects.intro}
     />
-
-    <div class="mt-10">
-      <PlaceholderNotice
-        title={copy.common.placeholderTitle}
-        body={copy.collections.projects.placeholder}
-      />
-    </div>
-
     <div class="mt-10 grid gap-6 lg:grid-cols-2">
       {projects.map((entry) => (
         <ProjectCard

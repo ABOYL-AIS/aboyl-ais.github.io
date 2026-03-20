@@ -32,7 +32,6 @@ type SiteCopy = {
     roleLabel: string;
     venueLabel: string;
     favoriteQuote: string;
-    placeholderTitle: string;
     closingNote: string;
   };
   hero: {
@@ -131,7 +130,6 @@ type SiteCopy = {
     kicker: string;
     title: string;
     intro: string;
-    placeholder: string;
     emailHint: string;
     items: Array<{ label: string; value: string; href: string; icon?: string; iconAlt?: string }>;
   };
@@ -144,7 +142,6 @@ type SiteCopy = {
     body: string;
     homeLink: string;
     notesLink: string;
-    placeholder: string;
   };
   collections: {
     projects: {
@@ -153,7 +150,6 @@ type SiteCopy = {
       kicker: string;
       title: string;
       intro: string;
-      placeholder: string;
     };
     research: {
       metaTitle: string;
@@ -161,7 +157,6 @@ type SiteCopy = {
       kicker: string;
       title: string;
       intro: string;
-      placeholder: string;
     };
     notes: {
       metaTitle: string;
@@ -169,7 +164,6 @@ type SiteCopy = {
       kicker: string;
       title: string;
       intro: string;
-      placeholder: string;
     };
     gallery: {
       metaTitle: string;
@@ -177,7 +171,6 @@ type SiteCopy = {
       kicker: string;
       title: string;
       intro: string;
-      placeholder: string;
       moodKicker: string;
       moodTitle: string;
     };
@@ -223,7 +216,6 @@ const siteCopy: Record<Locale, SiteCopy> = {
       roleLabel: "定位",
       venueLabel: "载体",
       favoriteQuote: "Favorite Quote",
-      placeholderTitle: "Placeholder Content",
       closingNote: "Closing Note"
     },
     hero: {
@@ -326,8 +318,8 @@ const siteCopy: Record<Locale, SiteCopy> = {
       title: "INFJ | Qi Liu（刘琪）",
       intro: "攀至小坡，仰高山远上!同不失道上所景，亦可伴偕侧良人，向阳逐心中所念!",
       affiliations: [
-        { text: "西北大学（中国）软件工程本科在读", href: "https://www.nwu.edu.cn/" },
-        { text: "上海交通大学直博博士生（待入学）", href: "https://www.sjtu.edu.cn/" },
+        { text: "西北大学（中国）软件工程大四本科在读", href: "https://www.nwu.edu.cn/" },
+        { text: "上海交通大学博士生-直博（Incoming | 博0）", href: "https://www.sjtu.edu.cn/" },
         { text: "Advanced Informatics Scholar 团队负责人" }
       ],
       profileLabel: "Profile",
@@ -347,7 +339,6 @@ const siteCopy: Record<Locale, SiteCopy> = {
       kicker: "Contact",
       title: "把外部联系方式保持清晰、简洁和公开安全。",
       intro: "如果后续需要合作、交流、项目讨论或内容沟通，这里可以作为对外联系入口。当前版本先保留安全、公开的联系占位。",
-      placeholder: "本页当前保留公开演示联系方式，其中邮箱字段仍为占位内容。正式上线前，请替换为真实且愿意公开展示的联系渠道。",
       emailHint: "当前为占位说明，建议替换为正式公开邮箱或其他可用联络方式。",
       items: [
         { label: "GitHub", value: "ABOYL-AIS", href: "https://github.com/ABOYL-AIS", icon: "/icons/icon.jpg", iconAlt: "GitHub icon" },
@@ -363,8 +354,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       intro: "可能是链接已变更、内容尚未公开，或你访问了一个不存在的静态路径。",
       body: "当前站点使用 Astro 静态构建并发布到 GitHub Pages / Vercel。若内容尚未同步生成，请返回首页或使用顶部导航继续浏览。",
       homeLink: "返回首页",
-      notesLink: "查看 Notes",
-      placeholder: "404 页面文案当前也是演示版本，用于补齐 GitHub Pages 静态站的基础访问体验。"
+      notesLink: "查看 Notes"
     },
     collections: {
       projects: {
@@ -372,24 +362,21 @@ const siteCopy: Record<Locale, SiteCopy> = {
         metaDescription: "ABOYL-AIS 项目展示页",
         kicker: "Projects",
         title: "项目不是简单陈列，而是逐步成形的结构。",
-        intro: "这里集中展示当前站点的模块、前端设计方向和部署能力。后续可以继续扩展更多真实项目。",
-        placeholder: "当前项目条目为演示型占位内容，用于验证卡片结构、详情页布局和外链字段。后续可逐项替换为真实项目。"
+        intro: "这里集中展示当前站点的模块、前端设计方向和部署能力。后续可以继续扩展更多真实项目。"
       },
       research: {
         metaTitle: "Research | ABOYL-AIS",
         metaDescription: "Papers, competitions, reports and achievements",
         kicker: "Research",
         title: "Papers, Competitions, Reports and Achievements.",
-        intro: "研究相关内容统一收纳在这里，页面框架保持正式、清晰与低装饰感，适合长期扩展。",
-        placeholder: "当前 Research 条目为演示型占位内容，用于确认 Paper / Competition / Report / Achievement 的统一承载方式。"
+        intro: "研究相关内容统一收纳在这里，页面框架保持正式、清晰与低装饰感，适合长期扩展。"
       },
       notes: {
         metaTitle: "Notes | ABOYL-AIS",
         metaDescription: "Notes, technical records and essays",
         kicker: "Notes",
         title: "Notes, technical records, essays and stage summaries.",
-        intro: "记录与随笔保持独立入口，既能承接技术内容，也能保留灵感、总结与较轻的个人文本。",
-        placeholder: "当前 Notes 条目为演示型占位内容，用于展示技术记录、随笔、阶段总结等不同类型的内容容器。"
+        intro: "记录与随笔保持独立入口，既能承接技术内容，也能保留灵感、总结与较轻的个人文本。"
       },
       gallery: {
         metaTitle: "Gallery | ABOYL-AIS",
@@ -397,7 +384,6 @@ const siteCopy: Record<Locale, SiteCopy> = {
         kicker: "Gallery",
         title: "把图像、句子和一点个人偏好放在同一处。",
         intro: "审美表达统一进入 Gallery，包括图集、轻量图文收藏、二次元图片收藏与 Favorite Quotes。这里的气质会比其他页面更柔和、更私人。",
-        placeholder: "当前 Gallery 条目为演示型占位内容，用于确认图集、视觉碎片与 Favorite Quote 的共同展示方式。",
         moodKicker: "Curated Mood",
         moodTitle: "不把收藏做成瀑布流展示，而是保留一种更安静、更接近手账页的阅读方式。"
       }
@@ -441,7 +427,6 @@ const siteCopy: Record<Locale, SiteCopy> = {
       roleLabel: "Role",
       venueLabel: "Venue",
       favoriteQuote: "Favorite Quote",
-      placeholderTitle: "Placeholder Content",
       closingNote: "Closing Note"
     },
     hero: {
@@ -571,7 +556,6 @@ const siteCopy: Record<Locale, SiteCopy> = {
       kicker: "Contact",
       title: "Keep public contact information clear, light, and safe.",
       intro: "This page works as the outward-facing contact layer for collaboration, conversation, project discussion, or general exchange. It currently keeps placeholder-safe public information.",
-      placeholder: "This page still contains placeholder-safe public contact data, and the email field is not final. Replace it with your actual public contact channel before launch.",
       emailHint: "This is still placeholder guidance. Replace it with a real public email or another active contact channel.",
       items: [
         { label: "GitHub", value: "ABOYL-AIS", href: "https://github.com/ABOYL-AIS", icon: "/icons/icon.jpg", iconAlt: "GitHub icon" },
@@ -587,8 +571,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       intro: "The link may have changed, the content may not be public yet, or you may have reached a static path that does not exist.",
       body: "This site is statically built with Astro and deployed to GitHub Pages / Vercel. If the content has not been generated yet, return to the homepage or continue through the navigation above.",
       homeLink: "Back home",
-      notesLink: "Browse notes",
-      placeholder: "The 404 copy is also placeholder text used to complete the baseline static-site experience."
+      notesLink: "Browse notes"
     },
     collections: {
       projects: {
@@ -596,24 +579,21 @@ const siteCopy: Record<Locale, SiteCopy> = {
         metaDescription: "Project showcase for ABOYL-AIS",
         kicker: "Projects",
         title: "Projects are not a flat showcase. They are structures still taking shape.",
-        intro: "This section gathers the site's current modules, frontend directions, and deployment-related work. More real projects can be added over time.",
-        placeholder: "The current project entries are placeholder examples used to validate the card layout, detail pages, and external link fields."
+        intro: "This section gathers the site's current modules, frontend directions, and deployment-related work. More real projects can be added over time."
       },
       research: {
         metaTitle: "Research | ABOYL-AIS",
         metaDescription: "Papers, competitions, reports, and achievements",
         kicker: "Research",
         title: "Papers, competitions, reports, and achievements.",
-        intro: "Research-related material is collected here inside a cleaner, more formal frame suitable for long-term expansion.",
-        placeholder: "The current research items are placeholder examples used to validate a shared structure for papers, competitions, reports, and achievements."
+        intro: "Research-related material is collected here inside a cleaner, more formal frame suitable for long-term expansion."
       },
       notes: {
         metaTitle: "Notes | ABOYL-AIS",
         metaDescription: "Notes, technical records, and essays",
         kicker: "Notes",
         title: "Notes, technical records, essays, and stage summaries.",
-        intro: "Notes keeps its own entry point so technical writing, idea fragments, and more personal text can coexist without collapsing into one stream.",
-        placeholder: "The current notes are placeholder examples used to validate multiple note-like content types inside one long-term archive."
+        intro: "Notes keeps its own entry point so technical writing, idea fragments, and more personal text can coexist without collapsing into one stream."
       },
       gallery: {
         metaTitle: "Gallery | ABOYL-AIS",
@@ -621,7 +601,6 @@ const siteCopy: Record<Locale, SiteCopy> = {
         kicker: "Gallery",
         title: "Put images, lines, and quieter preferences in one place.",
         intro: "Gallery holds visual fragments, lighter image collections, anime-inspired references, and favorite quotes. Its tone stays softer and more private than the rest of the site.",
-        placeholder: "The current gallery entries are placeholder examples used to validate a shared frame for visual fragments and favorite quotes.",
         moodKicker: "Curated Mood",
         moodTitle: "The collection is not a waterfall feed. It should feel closer to a quiet notebook page."
       }

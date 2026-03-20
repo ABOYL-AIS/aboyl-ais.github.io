@@ -1,5 +1,4 @@
 ---
-import PlaceholderNotice from "../components/PlaceholderNotice.astro";
 import ResearchCard from "../components/ResearchCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import { getSiteCopy } from "../data/site";
@@ -30,14 +29,6 @@ const research = (await getLocalizedCollection("research", locale)).sort(
       title={copy.collections.research.title}
       intro={copy.collections.research.intro}
     />
-
-    <div class="mt-10">
-      <PlaceholderNotice
-        title={copy.common.placeholderTitle}
-        body={copy.collections.research.placeholder}
-      />
-    </div>
-
     <div class="mt-10 grid gap-6 lg:grid-cols-2">
       {research.map((entry) => (
         <ResearchCard

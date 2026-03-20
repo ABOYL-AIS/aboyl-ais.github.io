@@ -134,7 +134,7 @@ a {
   overflow: clip;
 }
 
-.home-snap-page .page-shell::before {
+.page-shell::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -147,7 +147,7 @@ a {
   background-size: cover, auto, cover;
   background-position: center, top left, center top;
   background-repeat: no-repeat;
-  opacity: 0.4;
+  opacity: 0.56;
 }
 
 .page-shell::after {
@@ -240,12 +240,15 @@ a {
 }
 
 .about-portrait-panel {
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 18px 44px rgba(71, 78, 102, 0.08);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .about-portrait-frame {
   box-shadow: none;
+  border: 0;
+  background: transparent;
 }
 
 .soft-chip {
@@ -559,8 +562,8 @@ a {
 }
 
 [data-theme="dark"] .about-portrait-panel {
-  background: rgba(35, 36, 46, 0.9);
-  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.3);
+  background: transparent;
+  box-shadow: none;
 }
 
 [data-theme="dark"] .hero-visual {
@@ -577,7 +580,7 @@ a {
     radial-gradient(circle at 82% 12%, rgba(114, 129, 164, 0.16), transparent 22%);
 }
 
-[data-theme="dark"] .home-snap-page .page-shell::before {
+[data-theme="dark"] .page-shell::before {
   background:
     linear-gradient(180deg, rgba(22, 22, 29, 0.78), rgba(22, 22, 29, 0.9)),
     radial-gradient(circle at top left, rgba(120, 83, 102, 0.18), transparent 32%),
@@ -585,7 +588,7 @@ a {
   background-size: cover, auto, cover;
   background-position: center, top left, center top;
   background-repeat: no-repeat;
-  opacity: 0.22;
+  opacity: 0.3;
 }
 
 [data-theme="dark"] .hero-visual__image {

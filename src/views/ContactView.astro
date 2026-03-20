@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PlaceholderNotice from "../components/PlaceholderNotice.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import { getSiteCopy } from "../data/site";
 import type { Locale } from "../i18n/config";
@@ -21,14 +20,9 @@ const copy = getSiteCopy(locale);
       title={copy.contact.title}
       intro={copy.contact.intro}
     />
-
-    <div class="mt-10">
-      <PlaceholderNotice title={copy.common.placeholderTitle} body={copy.contact.placeholder} />
-    </div>
-
     <div class="mt-6 grid gap-6">
       {copy.contact.items.map((item) => (
-        <div class="paper-panel rounded-[2rem] px-6 py-6">
+        <div class="paper-panel card-lift rounded-[2rem] px-6 py-6">
           <div class="flex items-center gap-3">
             {item.icon && (
               <span class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-line bg-white/80 shadow-[0_8px_20px_rgba(125,97,118,0.06)]">

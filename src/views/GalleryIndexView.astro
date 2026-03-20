@@ -1,6 +1,5 @@
 ---
 import BentoCard from "../components/BentoCard.astro";
-import PlaceholderNotice from "../components/PlaceholderNotice.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import { getSiteCopy } from "../data/site";
 import type { Locale } from "../i18n/config";
@@ -30,15 +29,7 @@ const gallery = (await getLocalizedCollection("gallery", locale)).sort(
       title={copy.collections.gallery.title}
       intro={copy.collections.gallery.intro}
     />
-
-    <div class="mt-10">
-      <PlaceholderNotice
-        title={copy.common.placeholderTitle}
-        body={copy.collections.gallery.placeholder}
-      />
-    </div>
-
-    <div class="paper-panel gallery-wash mt-10 rounded-[2.2rem] px-6 py-7 md:px-8">
+    <div class="paper-panel card-lift gallery-wash mt-10 rounded-[2.2rem] px-6 py-7 md:px-8">
       <p class="section-kicker">{copy.collections.gallery.moodKicker}</p>
       <p class="mt-4 max-w-3xl font-display text-3xl leading-tight text-text md:text-4xl">
         {copy.collections.gallery.moodTitle}

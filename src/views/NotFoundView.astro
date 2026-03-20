@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PlaceholderNotice from "../components/PlaceholderNotice.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import { getSiteCopy } from "../data/site";
 import { getLocaleFromPathname, localizePath } from "../i18n/config";
@@ -18,7 +17,7 @@ const copy = getSiteCopy(locale);
       intro={copy.notFound.intro}
     />
 
-    <div class="paper-panel surface-mist mt-10 rounded-[2.6rem] px-7 py-10 md:px-10 md:py-12">
+    <div class="paper-panel card-lift surface-mist mt-10 rounded-[2.6rem] px-7 py-10 md:px-10 md:py-12">
       <p class="font-display text-6xl leading-none text-text md:text-8xl">404</p>
       <p class="mt-6 max-w-2xl text-lg leading-8 text-muted">{copy.notFound.body}</p>
 
@@ -38,8 +37,5 @@ const copy = getSiteCopy(locale);
       </div>
     </div>
 
-    <div class="mt-8">
-      <PlaceholderNotice title={copy.common.placeholderTitle} body={copy.notFound.placeholder} />
-    </div>
   </section>
 </BaseLayout>
