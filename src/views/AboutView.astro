@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionHeading from "../components/SectionHeading.astro";
 import { getSiteCopy } from "../data/site";
 import type { Locale } from "../i18n/config";
 import { withBase } from "../utils/paths";
@@ -15,11 +14,34 @@ const copy = getSiteCopy(locale);
 
 <BaseLayout locale={locale} title={copy.about.metaTitle} description={copy.about.metaDescription}>
   <section class="mx-auto max-w-5xl px-5 pt-16 md:px-8">
-    <SectionHeading
-      kicker={copy.about.kicker}
-      title={copy.about.title}
-      intro={copy.about.intro}
-    />
+    <div class="max-w-4xl">
+      <p class="section-kicker">{copy.about.kicker}</p>
+      <h1 class="mt-4 font-display text-[clamp(2.9rem,6vw,5rem)] leading-[0.96] text-text md:whitespace-nowrap">
+        {copy.about.title}
+      </h1>
+      <p class="mt-5 max-w-3xl text-base leading-7 text-muted md:text-lg md:leading-8">
+        {copy.about.intro}
+      </p>
+
+      <div class="mt-6 grid gap-3">
+        {copy.about.affiliations.map((item) =>
+          item.href ? (
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex w-fit items-center gap-2 rounded-full border border-line bg-white/76 px-4 py-2 text-sm text-text transition-colors hover:border-line-strong hover:text-accent-deep md:text-base"
+            >
+              {item.text}
+            </a>
+          ) : (
+            <p class="inline-flex w-fit items-center rounded-full border border-line bg-white/72 px-4 py-2 text-sm text-muted md:text-base">
+              {item.text}
+            </p>
+          )
+        )}
+      </div>
+    </div>
 
     <div class="mt-10 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
       <div class="paper-panel rounded-[2.5rem] px-7 py-8 md:px-10">

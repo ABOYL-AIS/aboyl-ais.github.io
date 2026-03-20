@@ -110,6 +110,10 @@ type SiteCopy = {
     kicker: string;
     title: string;
     intro: string;
+    affiliations: Array<{
+      text: string;
+      href?: string;
+    }>;
     profileLabel: string;
     backgroundLabel: string;
     keywordsLabel: string;
@@ -127,7 +131,7 @@ type SiteCopy = {
     intro: string;
     placeholder: string;
     emailHint: string;
-    items: Array<{ label: string; value: string; href: string }>;
+    items: Array<{ label: string; value: string; href: string; icon?: string; iconAlt?: string }>;
   };
   notFound: {
     metaTitle: string;
@@ -196,13 +200,13 @@ const siteCopy: Record<Locale, SiteCopy> = {
     ],
     brand: {
       markLetter: "A",
-      markImage: "/public/images/about/icon.jpg",
-      markImageAlt: "ABOYL-AIS logo mark",
+      markImage: "/images/brand/icon.jpg",
+      markImageAlt: "ABOYL-AIS anime icon",
       wordmarkImage: "",
       wordmarkImageAlt: "ABOYL-AIS wordmark",
       editionLabel: "You can be more than you seem!",
-      aboutPortrait: "",
-      aboutPortraitAlt: "ABOYL-AIS portrait placeholder"
+      aboutPortrait: "/images/about/二存.jpg",
+      aboutPortraitAlt: "Qi Liu portrait"
     },
     common: {
       skipToContent: "跳到主要内容",
@@ -316,7 +320,12 @@ const siteCopy: Record<Locale, SiteCopy> = {
       metaDescription: "关于 ABOYL-AIS",
       kicker: "About",
       title: "INFJ | Qi Liu（刘琪）",
-      intro: "西北大学（中国）软件工程大四本科（现在） | 上海交通大学直博博士生（待入学）| Advanced Informatics Scholar团队负责人 ",
+      intro: "把当前学术阶段、下一阶段去向与团队身份更清楚地放在同一层呈现。",
+      affiliations: [
+        { text: "西北大学（中国）软件工程本科在读", href: "https://www.nwu.edu.cn/" },
+        { text: "上海交通大学直博博士生（待入学）", href: "https://www.sjtu.edu.cn/" },
+        { text: "Advanced Informatics Scholar 团队负责人" }
+      ],
       profileLabel: "Profile",
       backgroundLabel: "Background",
       keywordsLabel: "Keywords",
@@ -337,9 +346,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
       placeholder: "本页当前保留公开演示联系方式，其中邮箱字段仍为占位内容。正式上线前，请替换为真实且愿意公开展示的联系渠道。",
       emailHint: "当前为占位说明，建议替换为正式公开邮箱或其他可用联络方式。",
       items: [
-        { label: "GitHub", value: "ABOYL-AIS", href: "https://github.com/ABOYL-AIS" },
-        { label: "Site", value: "aboyl-ais.github.io", href: "https://aboyl-ais.github.io/" },
-        { label: "Email", value: "18372779323@163.com", href: "" }
+        { label: "GitHub", value: "ABOYL-AIS", href: "https://github.com/ABOYL-AIS", icon: "/icons/icon.jpg", iconAlt: "GitHub icon" },
+        { label: "Site", value: "aboyl-ais.github.io", href: "https://aboyl-ais.github.io/", icon: "/icons/icon.jpg", iconAlt: "Site icon" },
+        { label: "Email", value: "18372779323@163.com", href: "", icon: "/icons/icon.jpg", iconAlt: "Email icon" }
       ]
     },
     notFound: {
@@ -407,13 +416,13 @@ const siteCopy: Record<Locale, SiteCopy> = {
     ],
     brand: {
       markLetter: "A",
-      markImage: "/public/images/about/icon.jpg",
-      markImageAlt: "ABOYL-AIS logo mark",
+      markImage: "/images/brand/icon.jpg",
+      markImageAlt: "ABOYL-AIS anime icon",
       wordmarkImage: "",
       wordmarkImageAlt: "ABOYL-AIS wordmark",
       editionLabel: "You can be more than you seem!",
-      aboutPortrait: "",
-      aboutPortraitAlt: "ABOYL-AIS portrait placeholder"
+      aboutPortrait: "/images/about/二存.jpg",
+      aboutPortraitAlt: "Qi Liu portrait"
     },
     common: {
       skipToContent: "Skip to main content",
@@ -527,7 +536,18 @@ const siteCopy: Record<Locale, SiteCopy> = {
       metaDescription: "About ABOYL-AIS",
       kicker: "About",
       title: "INFJ | Qi Liu（刘琪）",
-      intro: "Senior undergraduate student in Software Engineering @ Northwest University (China) | Prospective direct Ph.D student @ Shanghai Jiao Tong University | Team Leader of Advanced Informatics Scholar",
+      intro: "A clearer profile layer for current study, next academic step, and team leadership.",
+      affiliations: [
+        {
+          text: "Senior undergraduate student in Software Engineering @ Northwest University (China)",
+          href: "https://www.nwu.edu.cn/"
+        },
+        {
+          text: "Prospective direct Ph.D. student @ Shanghai Jiao Tong University",
+          href: "https://www.sjtu.edu.cn/"
+        },
+        { text: "Team Leader of Advanced Informatics Scholar" }
+      ],
       profileLabel: "Profile",
       backgroundLabel: "Background",
       keywordsLabel: "Keywords",
@@ -548,9 +568,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
       placeholder: "This page still contains placeholder-safe public contact data, and the email field is not final. Replace it with your actual public contact channel before launch.",
       emailHint: "This is still placeholder guidance. Replace it with a real public email or another active contact channel.",
       items: [
-        { label: "GitHub", value: "ABOYL-AIS", href: "https://github.com/ABOYL-AIS" },
-        { label: "Site", value: "aboyl-ais.github.io", href: "https://aboyl-ais.github.io/" },
-        { label: "Email", value: "18372779323@163.com", href: "" }
+        { label: "GitHub", value: "ABOYL-AIS", href: "https://github.com/ABOYL-AIS", icon: "/icons/icon.jpg", iconAlt: "GitHub icon" },
+        { label: "Site", value: "aboyl-ais.github.io", href: "https://aboyl-ais.github.io/", icon: "/icons/icon.jpg", iconAlt: "Site icon" },
+        { label: "Email", value: "18372779323@163.com", href: "", icon: "/icons/icon.jpg", iconAlt: "Email icon" }
       ]
     },
     notFound: {
