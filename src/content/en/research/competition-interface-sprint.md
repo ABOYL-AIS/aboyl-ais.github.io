@@ -4,6 +4,8 @@ summary: A competition-style entry documenting work around interface systems and
 date: 2026-03-10
 kind: Competition
 venue: Design Sprint
+cover: /images/about/icon.jpg
+coverAlt: Interface competition cover
 tags:
   - Competition
   - UI

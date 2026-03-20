@@ -3,15 +3,23 @@ interface Props {
   kicker: string;
   title: string;
   intro?: string;
+  titleClass?: string;
+  introClass?: string;
 }
 
-const { kicker, title, intro } = Astro.props;
+const {
+  kicker,
+  title,
+  intro,
+  titleClass = "max-w-[18ch] text-[clamp(2.3rem,4.5vw,4.3rem)] leading-[0.95] tracking-[-0.02em]",
+  introClass = "max-w-3xl text-base leading-7 text-muted md:text-lg md:leading-8",
+} = Astro.props;
 ---
 
 <div class="max-w-4xl">
   <p class="section-kicker">{kicker}</p>
-  <h2 class="mt-4 max-w-none font-display text-[clamp(2rem,4.1vw,4.15rem)] leading-[0.94] tracking-[-0.02em] text-text md:whitespace-nowrap">
+  <h2 class:list={["mt-4 font-display text-text", titleClass]}>
     {title}
   </h2>
-  {intro && <p class="mt-5 max-w-3xl text-base leading-7 text-muted md:text-lg md:leading-8">{intro}</p>}
+  {intro && <p class:list={["mt-5", introClass]}>{intro}</p>}
 </div>

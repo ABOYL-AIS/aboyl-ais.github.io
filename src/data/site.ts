@@ -136,6 +136,10 @@ type SiteCopy = {
       title: string;
       body: string;
       items?: string[];
+      subsections?: Array<{
+        title: string;
+        body: string;
+      }>;
     }>;
   };
   contact: {
@@ -431,7 +435,20 @@ const siteCopy: Record<Locale, SiteCopy> = {
           title: "研究相关内容会按更正式的学术主页方式逐步整理。",
           body:
             "这里后续会继续收纳研究方向、论文与预印本，形成一个更稳定的研究展示入口。",
-          items: ["Recent Interest", "Publication", "Preprint"],
+          subsections: [
+            {
+              title: "Recent Interest",
+              body: "当前更关注 Agent 应用、大模型能力边界、软件智能以及真实场景中的系统落地问题。",
+            },
+            {
+              title: "Publication",
+              body: "正式论文与可公开展示的学术成果会逐步在这里补充，后续也会保持更清晰的时间线整理。",
+            },
+            {
+              title: "Preprint",
+              body: "对于仍在推进中的工作，会优先以预印本或阶段性公开文本的形式放在这里，方便持续更新。",
+            },
+          ],
         },
         {
           kicker: "Collaborators",
@@ -779,7 +796,20 @@ const siteCopy: Record<Locale, SiteCopy> = {
           title: "Research-facing content will be organized in a more academic-homepage style.",
           body:
             "Over time, this block can gather research directions, publications, and preprints into one more stable research entry point.",
-          items: ["Recent Interest", "Publication", "Preprint"],
+          subsections: [
+            {
+              title: "Recent Interest",
+              body: "My current focus is gradually converging around agent applications, large-model capability boundaries, software intelligence, and deployment in real settings.",
+            },
+            {
+              title: "Publication",
+              body: "Formal papers and public academic outputs can be accumulated here over time with a cleaner and more readable timeline.",
+            },
+            {
+              title: "Preprint",
+              body: "Work still in progress can appear here first as preprints or stage-based public drafts, making the page easier to update continuously.",
+            },
+          ],
         },
         {
           kicker: "Collaborators",

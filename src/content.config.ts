@@ -35,6 +35,8 @@ const research = defineCollection({
     date: z.coerce.date(),
     kind: z.enum(["Paper", "Competition", "Report", "Achievement"]),
     venue: z.string(),
+    cover: z.string().optional(),
+    coverAlt: z.string().optional(),
     tags: z.array(z.string()),
     featured: z.boolean().default(false)
   })

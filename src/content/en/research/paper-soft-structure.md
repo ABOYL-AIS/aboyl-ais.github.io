@@ -4,6 +4,8 @@ summary: A research-oriented text on how personal publishing can balance aesthet
 date: 2026-03-19
 kind: Paper
 venue: Personal Publication
+cover: /images/hero/main-visual.jpg
+coverAlt: Personal publishing research cover
 tags:
   - Information Architecture
   - Editorial Design

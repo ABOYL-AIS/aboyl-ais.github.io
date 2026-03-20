@@ -4,6 +4,8 @@ summary: A placeholder entry for awards, stage-based outcomes, or public recogni
 date: 2026-02-28
 kind: Achievement
 venue: Public Record
+cover: /团队LOGO.png
+coverAlt: Team achievement cover
 tags:
   - Achievement
 featured: false

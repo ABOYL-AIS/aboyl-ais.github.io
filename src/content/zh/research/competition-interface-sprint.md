@@ -4,6 +4,8 @@ summary: 记录一次面向界面系统与信息组织的竞赛型成果展示�
 date: 2026-03-10
 kind: Competition
 venue: Design Sprint
+cover: /images/about/icon.jpg
+coverAlt: 界面竞赛主题图
 tags:
   - Competition
   - UI

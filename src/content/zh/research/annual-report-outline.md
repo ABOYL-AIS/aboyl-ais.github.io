@@ -4,6 +4,8 @@ summary: 用于承载阶段性报告、专题总结和结构化成果文档。
 date: 2026-03-05
 kind: Report
 venue: Internal Summary
+cover: /images/covers/dual-deploy.svg
+coverAlt: 报告与阶段总结封面
 tags:
   - Report
   - Summary

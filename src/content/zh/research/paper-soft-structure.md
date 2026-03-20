@@ -4,6 +4,8 @@ summary: 关于个人内容站如何在审美表达与正式展示之间取得�
 date: 2026-03-19
 kind: Paper
 venue: Personal Publication
+cover: /images/hero/main-visual.jpg
+coverAlt: 个人内容研究封面
 tags:
   - Information Architecture
   - Editorial Design

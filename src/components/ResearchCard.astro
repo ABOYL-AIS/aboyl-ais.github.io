@@ -9,6 +9,8 @@ interface Props {
   date: string;
   tags: string[];
   href: string;
+  cover?: string;
+  coverAlt?: string;
   venueLabel?: string;
   detailLabel?: string;
 }
@@ -21,32 +23,52 @@ const {
   date,
   tags,
   href,
+  cover,
+  coverAlt = title,
   venueLabel = "Venue",
   detailLabel = "View details"
 } = Astro.props;
 ---
 
-<article class="paper-panel card-lift surface-mist rounded-[2.2rem] px-6 py-6 md:px-7">
-  <div class="flex flex-wrap items-center gap-3">
-    <span class="rounded-full border border-line bg-white/78 px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
-      {kind}
-    </span>
-    <span class="text-xs tracking-[0.16em] text-muted">{date}</span>
+<article class="paper-panel card-lift surface-mist overflow-hidden rounded-[2.3rem] p-4 md:p-5">
+  <div class="grid gap-5 md:grid-cols-[17rem_1fr] md:items-stretch">
+    <div class="overflow-hidden rounded-[1.75rem] border border-line bg-white/70">
+      {cover ? (
+        <img
+          src={withBase(cover)}
+          alt={coverAlt}
+          class="block h-full min-h-[13rem] w-full object-cover"
+        />
+      ) : (
+        <div class="h-full min-h-[13rem] bg-[radial-gradient(circle_at_top_left,rgba(244,228,234,0.72),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.96),rgba(239,243,249,0.88))]" />
+      )}
+    </div>
+
+    <div class="px-2 py-2 md:px-3">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="rounded-full border border-line bg-white/78 px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
+          {kind}
+        </span>
+        <span class="text-xs tracking-[0.16em] text-muted">{date}</span>
+      </div>
+
+      <h3 class="mt-4 max-w-[20ch] font-display text-[2rem] leading-[1.02] text-text md:text-[2.45rem]">
+        {title}
+      </h3>
+      <p class="mt-4 max-w-3xl text-base leading-8 text-muted">{summary}</p>
+      <p class="mt-4 text-sm text-text/80">{venueLabel}: {venue}</p>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <span class="rounded-full bg-accent-soft px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <a href={withBase(href)} class="inline-link mt-6">
+        {detailLabel}
+      </a>
+    </div>
   </div>
-
-  <h3 class="mt-4 font-display text-3xl text-text">{title}</h3>
-  <p class="mt-4 text-base leading-8 text-muted">{summary}</p>
-  <p class="mt-4 text-sm text-text/80">{venueLabel}: {venue}</p>
-
-  <div class="mt-5 flex flex-wrap gap-2">
-    {tags.map((tag) => (
-      <span class="rounded-full bg-accent-soft px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
-        {tag}
-      </span>
-    ))}
-  </div>
-
-  <a href={withBase(href)} class="inline-link mt-6">
-    {detailLabel}
-  </a>
 </article>
