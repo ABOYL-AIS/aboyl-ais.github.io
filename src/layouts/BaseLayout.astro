@@ -14,6 +14,7 @@ interface Props {
   title?: string;
   description?: string;
   locale?: Locale;
+  htmlClass?: string;
   bodyClass?: string;
   mainClass?: string;
 }
@@ -22,6 +23,7 @@ const {
   locale = getLocaleFromPathname(Astro.url.pathname),
   title = getSiteCopy(locale).meta.title,
   description = getSiteCopy(locale).meta.description,
+  htmlClass = "",
   bodyClass = "",
   mainClass = ""
 } = Astro.props;
@@ -35,7 +37,7 @@ const alternateUrl = Astro.site
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class={htmlClass}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

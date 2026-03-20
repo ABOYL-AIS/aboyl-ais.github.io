@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PlaceholderNotice from "../components/PlaceholderNotice.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import { getSiteCopy } from "../data/site";
 import type { Locale } from "../i18n/config";
@@ -22,10 +21,6 @@ const copy = getSiteCopy(locale);
       intro={copy.about.intro}
     />
 
-    <div class="mt-10">
-      <PlaceholderNotice title={copy.common.placeholderTitle} body={copy.about.placeholder} />
-    </div>
-
     <div class="mt-10 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
       <div class="paper-panel rounded-[2.5rem] px-7 py-8 md:px-10">
       <div class="grid gap-8 md:grid-cols-2">
@@ -40,34 +35,12 @@ const copy = getSiteCopy(locale);
         </div>
       </div>
 
-      <div class="mt-10 grid gap-8 md:grid-cols-3">
+      <div class="mt-10">
         <div>
           <p class="section-kicker">{copy.about.keywordsLabel}</p>
           <div class="mt-4 flex flex-wrap gap-2">
             {copy.about.profile.keywords.map((item) => (
               <span class="rounded-full bg-accent-soft px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <p class="section-kicker">{copy.about.skillsLabel}</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            {copy.about.profile.skills.map((item) => (
-              <span class="rounded-full border border-line bg-white/78 px-3 py-1 text-xs tracking-[0.14em] text-text">
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <p class="section-kicker">{copy.about.interestsLabel}</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            {copy.about.profile.interests.map((item) => (
-              <span class="rounded-full border border-line bg-white/78 px-3 py-1 text-xs tracking-[0.14em] text-text">
                 {item}
               </span>
             ))}

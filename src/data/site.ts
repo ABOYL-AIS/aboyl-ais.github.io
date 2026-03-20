@@ -110,18 +110,13 @@ type SiteCopy = {
     kicker: string;
     title: string;
     intro: string;
-    placeholder: string;
     profileLabel: string;
     backgroundLabel: string;
     keywordsLabel: string;
-    skillsLabel: string;
-    interestsLabel: string;
     profile: {
       summary: string;
       background: string;
       keywords: string[];
-      skills: string[];
-      interests: string[];
     };
   };
   contact: {
@@ -201,11 +196,11 @@ const siteCopy: Record<Locale, SiteCopy> = {
     ],
     brand: {
       markLetter: "A",
-      markImage: "",
+      markImage: "/public/images/about/icon.jpg",
       markImageAlt: "ABOYL-AIS logo mark",
       wordmarkImage: "",
       wordmarkImageAlt: "ABOYL-AIS wordmark",
-      editionLabel: "QUIET PERSONAL EDITION",
+      editionLabel: "You can be more than you seem!",
       aboutPortrait: "",
       aboutPortraitAlt: "ABOYL-AIS portrait placeholder"
     },
@@ -320,22 +315,17 @@ const siteCopy: Record<Locale, SiteCopy> = {
       metaTitle: "关于 | ABOYL-AIS",
       metaDescription: "关于 ABOYL-AIS",
       kicker: "About",
-      title: "把个人信息、背景与方向判断清晰地放在同一页面。",
-      intro: "About 不只是自我介绍，也承担站点定位说明。这里会长期承载个人简介、方向关键词、技能栈与兴趣标签。",
-      placeholder: "本页当前使用公开安全的演示文案，用于确认布局、信息层级与风格方向。上线前建议替换为真实个人简介、背景与技能信息。",
+      title: "INFJ | Qi Liu（刘琪）",
+      intro: "西北大学（中国）软件工程大四本科（现在） | 上海交通大学直博博士生（待入学）| Advanced Informatics Scholar团队负责人 ",
       profileLabel: "Profile",
       backgroundLabel: "Background",
       keywordsLabel: "Keywords",
-      skillsLabel: "Skill Stack",
-      interestsLabel: "Interest Tags",
       profile: {
         summary:
           "这里暂时使用公开安全的演示型个人简介：一位偏内容导向、关注信息结构与视觉秩序的创作者。这个网站会承载个人介绍、项目、研究、记录与审美收藏。",
         background:
           "当前背景说明同样属于占位文本，用于展示站点定位与信息层级。整体方向不是传统 academic homepage，也不是常见的 developer portfolio，而是更克制、更长期主义的个人品牌站。",
-        keywords: ["Content-led", "Research-aware", "Editorial", "Static-first", "Anime-soft"],
-        skills: ["Astro", "Tailwind CSS", "TypeScript", "Content Architecture", "UI System"],
-        interests: ["前端设计", "个人出版", "信息架构", "二次元审美", "图文收藏"]
+        keywords: ["统筹组织", "INFJ-深度思考", "Agent应用研究", "AI-LLM", "自然风景","二次元萌系","樱花粉"]
       }
     },
     contact: {
@@ -349,7 +339,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       items: [
         { label: "GitHub", value: "ABOYL-AIS", href: "https://github.com/ABOYL-AIS" },
         { label: "Site", value: "aboyl-ais.github.io", href: "https://aboyl-ais.github.io/" },
-        { label: "Email", value: "可在上线前替换为正式邮箱", href: "" }
+        { label: "Email", value: "18372779323@163.com", href: "" }
       ]
     },
     notFound: {
@@ -417,11 +407,11 @@ const siteCopy: Record<Locale, SiteCopy> = {
     ],
     brand: {
       markLetter: "A",
-      markImage: "",
+      markImage: "/public/images/about/icon.jpg",
       markImageAlt: "ABOYL-AIS logo mark",
       wordmarkImage: "",
       wordmarkImageAlt: "ABOYL-AIS wordmark",
-      editionLabel: "QUIET PERSONAL EDITION",
+      editionLabel: "You can be more than you seem!",
       aboutPortrait: "",
       aboutPortraitAlt: "ABOYL-AIS portrait placeholder"
     },
@@ -536,22 +526,17 @@ const siteCopy: Record<Locale, SiteCopy> = {
       metaTitle: "About | ABOYL-AIS",
       metaDescription: "About ABOYL-AIS",
       kicker: "About",
-      title: "Put profile, background, and directional judgment on one clear page.",
-      intro: "About is not only a personal introduction. It also explains what kind of site this is and how it should evolve.",
-      placeholder: "This page still uses safe placeholder copy to validate layout, hierarchy, and tone. Replace it with real profile and background content before launch.",
+      title: "INFJ | Qi Liu（刘琪）",
+      intro: "Senior undergraduate student in Software Engineering @ Northwest University (China) | Prospective direct Ph.D student @ Shanghai Jiao Tong University | Team Leader of Advanced Informatics Scholar",
       profileLabel: "Profile",
       backgroundLabel: "Background",
       keywordsLabel: "Keywords",
-      skillsLabel: "Skill Stack",
-      interestsLabel: "Interest Tags",
       profile: {
         summary:
           "This is still a safe placeholder profile: a creator who leans toward content structure, editorial rhythm, and calm visual order. The site is meant to hold profile, projects, research, notes, and personal collections.",
         background:
           "This background paragraph is also placeholder copy used to establish the site's positioning and hierarchy. The direction is neither a traditional academic homepage nor a standard developer portfolio, but a more restrained long-term personal archive.",
-        keywords: ["Content-led", "Research-aware", "Editorial", "Static-first", "Anime-soft"],
-        skills: ["Astro", "Tailwind CSS", "TypeScript", "Content Architecture", "UI System"],
-        interests: ["Frontend design", "Personal publishing", "Information architecture", "Anime aesthetics", "Visual collections"]
+        keywords: ["Organized People", "INFJ-Deep Thinker", "Agent Application Research", "AI-LLM", "Natural Scenery","Moe Anime","Sakura Pink"]
       }
     },
     contact: {
@@ -565,7 +550,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       items: [
         { label: "GitHub", value: "ABOYL-AIS", href: "https://github.com/ABOYL-AIS" },
         { label: "Site", value: "aboyl-ais.github.io", href: "https://aboyl-ais.github.io/" },
-        { label: "Email", value: "Replace with a public email before launch", href: "" }
+        { label: "Email", value: "18372779323@163.com", href: "" }
       ]
     },
     notFound: {

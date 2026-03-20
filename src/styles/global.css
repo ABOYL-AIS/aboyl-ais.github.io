@@ -151,12 +151,13 @@ a {
 }
 
 @media (min-width: 1024px) {
-  body.home-snap-page {
+  html.home-snap-page {
     scroll-snap-type: y proximity;
     scroll-padding-top: 6.75rem;
   }
 
   .home-snap-section {
+    min-height: min(90svh, 58rem);
     scroll-snap-align: start;
     scroll-snap-stop: normal;
   }
@@ -603,6 +604,28 @@ a {
 [data-theme="dark"] .paper-panel .absolute.text-accent-deep,
 [data-theme="dark"] .paper-panel .text-accent-deep {
   color: rgba(225, 219, 230, 0.82);
+}
+
+[data-theme="dark"] .paper-panel [class*="bg-accent-soft"] {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(230, 225, 235, 0.84);
+}
+
+[data-theme="dark"] .paper-panel [class*="text-accent-deep"] {
+  color: rgba(230, 224, 235, 0.84);
+}
+
+[data-theme="dark"] .paper-panel [class*="border-accent"] {
+  border-color: rgba(201, 168, 181, 0.28);
+}
+
+[data-theme="dark"] .paper-panel .inline-link {
+  border-color: rgba(214, 218, 234, 0.26);
+}
+
+[data-theme="dark"] .paper-panel .inline-link:hover {
+  color: rgba(239, 235, 242, 0.92);
+  border-color: rgba(214, 218, 234, 0.42);
 }
 
 [data-theme="dark"] .paper-panel .bg-accent-soft,
