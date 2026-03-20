@@ -10,7 +10,7 @@ const { locale } = Astro.props;
 const copy = getSiteCopy(locale);
 ---
 
-<section class="hero-stage mx-auto max-w-6xl px-5 pt-10 md:px-8 md:pt-16">
+<section class="hero-stage home-snap-section mx-auto max-w-6xl px-5 pt-10 md:px-8 md:pt-16">
   <div class="hero-stage__rail hero-stage__rail--left hidden xl:flex" aria-hidden="true">
     <span class="hero-stage__line"></span>
     <span class="hero-stage__label">{copy.hero.kicker}</span>
@@ -24,7 +24,7 @@ const copy = getSiteCopy(locale);
 
   <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
     <div class="paper-panel surface-rose relative rounded-[2.8rem] px-7 py-10 md:px-10 md:py-12">
-      <div class="absolute right-6 top-6 rounded-full border border-line bg-white/70 px-3 py-1 text-[0.65rem] tracking-[0.3em] text-accent-deep">
+      <div class="hero-panel__meta-chip absolute right-6 top-6 rounded-full border border-line bg-white/70 px-3 py-1 text-[0.65rem] tracking-[0.3em] text-accent-deep">
         {copy.hero.label}
       </div>
 
@@ -36,7 +36,7 @@ const copy = getSiteCopy(locale);
         <p class="mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">
           {copy.hero.intro}
         </p>
-        <p class="mt-8 max-w-2xl border-l border-accent/60 pl-4 text-sm leading-7 text-accent-deep">
+        <p class="hero-panel__note mt-8 max-w-2xl border-l border-accent/60 pl-4 text-sm leading-7 text-accent-deep">
           {copy.hero.note}
         </p>
       </div>
@@ -86,7 +86,7 @@ const copy = getSiteCopy(locale);
 
         <div class="mt-6 flex flex-wrap gap-2">
           {copy.hero.status.map((item) => (
-            <span class="rounded-full border border-line bg-white/76 px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
+            <span class="hero-status-chip rounded-full border border-line bg-white/76 px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
               {item}
             </span>
           ))}

@@ -14,12 +14,16 @@ interface Props {
   title?: string;
   description?: string;
   locale?: Locale;
+  bodyClass?: string;
+  mainClass?: string;
 }
 
 const {
   locale = getLocaleFromPathname(Astro.url.pathname),
   title = getSiteCopy(locale).meta.title,
-  description = getSiteCopy(locale).meta.description
+  description = getSiteCopy(locale).meta.description,
+  bodyClass = "",
+  mainClass = ""
 } = Astro.props;
 const copy = getSiteCopy(locale);
 const lang = getLangTag(locale);
@@ -68,13 +72,13 @@ const alternateUrl = Astro.site
       })();
     </script>
   </head>
-  <body>
+  <body class={bodyClass}>
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-text">
       {copy.common.skipToContent}
     </a>
     <div class="page-shell">
       <SiteHeader locale={locale} />
-      <main id="main-content">
+      <main id="main-content" class={mainClass}>
         <slot />
       </main>
       <SiteFooter locale={locale} />

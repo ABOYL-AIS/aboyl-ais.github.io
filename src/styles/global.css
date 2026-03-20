@@ -150,6 +150,18 @@ a {
   pointer-events: none;
 }
 
+@media (min-width: 1024px) {
+  body.home-snap-page {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 6.75rem;
+  }
+
+  .home-snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+}
+
 .paper-panel {
   position: relative;
   background: var(--surface);
@@ -563,7 +575,50 @@ a {
 
 [data-theme="dark"] .soft-chip {
   border-color: rgba(214, 218, 234, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(232, 229, 236, 0.86);
+}
+
+[data-theme="dark"] .section-kicker {
+  color: rgba(226, 220, 231, 0.78);
+}
+
+[data-theme="dark"] .hero-visual__caption + .soft-chip,
+[data-theme="dark"] .hero-visual .soft-chip {
+  color: rgba(229, 225, 233, 0.82);
+}
+
+[data-theme="dark"] .hero-panel__meta-chip,
+[data-theme="dark"] .hero-status-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(214, 218, 234, 0.12);
+  color: rgba(229, 224, 233, 0.82);
+}
+
+[data-theme="dark"] .hero-panel__note {
+  border-left-color: rgba(201, 168, 181, 0.34);
+  color: rgba(220, 214, 226, 0.76);
+}
+
+[data-theme="dark"] .paper-panel .absolute.text-accent-deep,
+[data-theme="dark"] .paper-panel .text-accent-deep {
+  color: rgba(225, 219, 230, 0.82);
+}
+
+[data-theme="dark"] .paper-panel .bg-accent-soft,
+[data-theme="dark"] .paper-panel .bg-accent-soft\/92,
+[data-theme="dark"] .paper-panel .bg-accent-soft\/70,
+[data-theme="dark"] .paper-panel .bg-accent-soft\/55 {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .hero-visual .rounded-full.border.border-line.bg-white\/70,
+[data-theme="dark"] .hero-visual .rounded-full.border.border-line.bg-white\/76,
+[data-theme="dark"] .surface-rose .rounded-full.border.border-line.bg-white\/70,
+[data-theme="dark"] .surface-rose .rounded-full.border.border-line.bg-white\/76,
+[data-theme="dark"] .surface-rose .rounded-full.border.border-line.bg-white\/80 {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(214, 218, 234, 0.12);
 }
 
 .toggle-cluster {

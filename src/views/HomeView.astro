@@ -41,10 +41,10 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
   .slice(0, 2);
 ---
 
-<BaseLayout locale={locale}>
+<BaseLayout locale={locale} bodyClass="home-snap-page">
   <HeroPanel locale={locale} />
 
-  <section class="mx-auto mt-20 max-w-6xl px-5 md:px-8">
+  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 md:px-8">
     <div class="paper-panel surface-lilac rounded-[2.8rem] px-7 py-9 md:px-10">
       <p class="section-kicker">{copy.home.designPrinciple.kicker}</p>
       <p class="mt-5 max-w-4xl font-display text-3xl leading-tight text-text md:text-5xl">
@@ -54,7 +54,7 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
     </div>
   </section>
 
-  <section class="mx-auto mt-20 max-w-6xl px-5 md:px-8">
+  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 md:px-8">
     <SectionHeading
       kicker={copy.home.structure.kicker}
       title={copy.home.structure.title}
@@ -118,7 +118,7 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
     </div>
   </section>
 
-  <section class="mx-auto mt-20 max-w-6xl px-5 md:px-8">
+  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 md:px-8">
     <SectionHeading
       kicker={copy.home.selectedProjects.kicker}
       title={copy.home.selectedProjects.title}
@@ -144,7 +144,7 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
     </div>
   </section>
 
-  <section class="mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
+  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
     <SectionHeading
       kicker={copy.home.research.kicker}
       title={copy.home.research.title}
@@ -168,7 +168,7 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
     </div>
   </section>
 
-  <section class="mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
+  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
     <SectionHeading
       kicker={copy.home.notes.kicker}
       title={copy.home.notes.title}
@@ -190,7 +190,7 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
   </section>
 
   {quote && (
-    <section class="mx-auto mt-20 max-w-6xl px-5 md:px-8">
+    <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 md:px-8">
       <SectionHeading
         kicker={copy.home.quote.kicker}
         title={copy.home.quote.title}
@@ -210,7 +210,7 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
     </section>
   )}
 
-  <section class="mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
+  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
     <SectionHeading
       kicker={copy.home.galleryPreview.kicker}
       title={copy.home.galleryPreview.title}
