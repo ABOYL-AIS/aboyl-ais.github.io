@@ -49,21 +49,23 @@ const alternateUrl = Astro.site
     <meta property="og:site_name" content={copy.name} />
     <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>
-      const THEME_KEY = "aboyl-theme";
-      const storedTheme = localStorage.getItem(THEME_KEY);
-      const preferredTheme =
-        storedTheme === "light" || storedTheme === "dark"
-          ? storedTheme
-          : window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
+      (() => {
+        const THEME_KEY = "aboyl-theme";
+        const storedTheme = localStorage.getItem(THEME_KEY);
+        const preferredTheme =
+          storedTheme === "light" || storedTheme === "dark"
+            ? storedTheme
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
 
-      document.documentElement.dataset.theme = preferredTheme;
-      document.documentElement.style.colorScheme = preferredTheme;
-      const metaTheme = document.querySelector('meta[name="theme-color"]');
-      if (metaTheme) {
-        metaTheme.setAttribute("content", preferredTheme === "dark" ? "#16161d" : "#fcf9f4");
-      }
+        document.documentElement.dataset.theme = preferredTheme;
+        document.documentElement.style.colorScheme = preferredTheme;
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (metaTheme) {
+          metaTheme.setAttribute("content", preferredTheme === "dark" ? "#16161d" : "#fcf9f4");
+        }
+      })();
     </script>
   </head>
   <body>

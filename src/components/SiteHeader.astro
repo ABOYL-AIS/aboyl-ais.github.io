@@ -18,7 +18,7 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
 <header class="sticky top-0 z-30">
   <div class="mx-auto max-w-6xl px-5 pt-4 md:px-8">
     <div class="paper-panel rounded-[2rem] px-5 py-3 md:rounded-full">
-      <div class="flex items-center justify-between gap-6">
+      <div class="flex items-center justify-between gap-6 md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-8">
         <a href={withBase(localizePath(locale, "/"))} class="flex items-center gap-3 text-text">
           <span class="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong bg-white/90 font-display text-lg font-semibold text-accent-deep shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
             A
@@ -29,8 +29,7 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
           </div>
         </a>
 
-        <div class="hidden items-center gap-4 md:flex">
-          <nav class="flex items-center gap-3 text-sm text-muted">
+        <nav class="hidden items-center justify-center gap-2 text-sm text-muted md:flex">
             {copy.nav.map((item) => {
               const localizedHref = localizePath(locale, item.href);
               const resolvedHref = withBase(localizedHref);
@@ -45,22 +44,25 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
                   class:list={[
                     "rounded-full px-3 py-1.5 transition-colors",
                     active
-                      ? "bg-white/80 text-text shadow-[0_8px_20px_rgba(125,97,118,0.06)]"
-                      : "text-muted hover:bg-white/55 hover:text-text"
+                      ? "bg-white/92 text-text shadow-[0_10px_24px_rgba(125,97,118,0.08)]"
+                      : "text-muted hover:bg-white/70 hover:text-text"
                   ]}
                 >
                   {item.label}
                 </a>
               );
             })}
-          </nav>
+        </nav>
 
+        <div class="hidden items-center justify-end gap-3 md:flex">
+          <div class="header-utility-panel">
           <LanguageToggle locale={locale} pathname={pathname} label={copy.common.languageToggle} />
           <ThemeToggle
             label={copy.common.themeToggle}
             dayLabel={copy.common.dayMode}
             nightLabel={copy.common.nightMode}
           />
+          </div>
         </div>
 
         <details class="group relative md:hidden">
@@ -117,52 +119,59 @@ const pathWithoutLocale = stripLocaleFromPathname(pathname);
 </header>
 
 <script is:inline>
-  const THEME_KEY = "aboyl-theme";
-  const root = document.documentElement;
-  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  (() => {
+    const THEME_KEY = "aboyl-theme";
+    const root = document.documentElement;
+    const body = document.body;
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
 
-  const setTheme = (value) => {
-    root.dataset.theme = value;
-    root.style.colorScheme = value;
-    if (metaTheme) {
-      metaTheme.setAttribute("content", value === "dark" ? "#16161d" : "#fcf9f4");
-    }
+    const setTheme = (value) => {
+      root.dataset.theme = value;
+      root.style.colorScheme = value;
+      if (body) {
+        body.dataset.theme = value;
+        body.style.colorScheme = value;
+      }
+      if (metaTheme) {
+        metaTheme.setAttribute("content", value === "dark" ? "#16161d" : "#fcf9f4");
+      }
+      document.querySelectorAll(".js-theme-toggle").forEach((toggle) => {
+        toggle.querySelectorAll("[data-theme-value]").forEach((item) => {
+          const active = item.dataset.themeValue === value;
+          item.classList.toggle("toggle-chip--active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+      });
+    };
+
+    const getStoredTheme = () => {
+      const stored = localStorage.getItem(THEME_KEY);
+      if (stored === "light" || stored === "dark") {
+        return stored;
+      }
+      return root.dataset.theme === "dark" ? "dark" : "light";
+    };
+
+    const sync = () => setTheme(getStoredTheme());
+
+    sync();
+
     document.querySelectorAll(".js-theme-toggle").forEach((toggle) => {
-      toggle.querySelectorAll("[data-theme-value]").forEach((item) => {
-        const active = item.dataset.themeValue === value;
-        item.classList.toggle("toggle-chip--active", active);
-        item.setAttribute("aria-pressed", String(active));
+      toggle.querySelectorAll("[data-theme-value]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const value = button.dataset.themeValue;
+          if (value !== "light" && value !== "dark") return;
+          localStorage.setItem(THEME_KEY, value);
+          setTheme(value);
+        });
       });
     });
-  };
 
-  const getStoredTheme = () => {
-    const stored = localStorage.getItem(THEME_KEY);
-    if (stored === "light" || stored === "dark") {
-      return stored;
-    }
-    return root.dataset.theme === "dark" ? "dark" : "light";
-  };
-
-  const sync = () => setTheme(getStoredTheme());
-
-  sync();
-
-  document.querySelectorAll(".js-theme-toggle").forEach((toggle) => {
-    toggle.querySelectorAll("[data-theme-value]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const value = button.dataset.themeValue;
-        if (value !== "light" && value !== "dark") return;
-        localStorage.setItem(THEME_KEY, value);
-        setTheme(value);
-      });
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    media.addEventListener("change", () => {
+      if (!localStorage.getItem(THEME_KEY)) {
+        setTheme(media.matches ? "dark" : "light");
+      }
     });
-  });
-
-  const media = window.matchMedia("(prefers-color-scheme: dark)");
-  media.addEventListener("change", () => {
-    if (!localStorage.getItem(THEME_KEY)) {
-      setTheme(media.matches ? "dark" : "light");
-    }
-  });
+  })();
 </script>
