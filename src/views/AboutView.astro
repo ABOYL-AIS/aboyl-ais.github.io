@@ -4,6 +4,7 @@ import PlaceholderNotice from "../components/PlaceholderNotice.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import { getSiteCopy } from "../data/site";
 import type { Locale } from "../i18n/config";
+import { withBase } from "../utils/paths";
 
 interface Props {
   locale: Locale;
@@ -25,7 +26,8 @@ const copy = getSiteCopy(locale);
       <PlaceholderNotice title={copy.common.placeholderTitle} body={copy.about.placeholder} />
     </div>
 
-    <div class="paper-panel mt-10 rounded-[2.5rem] px-7 py-8 md:px-10">
+    <div class="mt-10 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+      <div class="paper-panel rounded-[2.5rem] px-7 py-8 md:px-10">
       <div class="grid gap-8 md:grid-cols-2">
         <div>
           <p class="section-kicker">{copy.about.profileLabel}</p>
@@ -72,6 +74,30 @@ const copy = getSiteCopy(locale);
           </div>
         </div>
       </div>
+      </div>
+
+      {copy.brand.aboutPortrait ? (
+        <aside class="paper-panel surface-rose rounded-[2.5rem] p-5">
+          <div class="overflow-hidden rounded-[2rem] border border-line bg-bg-soft">
+            <img
+              src={withBase(copy.brand.aboutPortrait)}
+              alt={copy.brand.aboutPortraitAlt}
+              class="h-full w-full object-cover"
+            />
+          </div>
+        </aside>
+      ) : (
+        <aside class="paper-panel surface-mist rounded-[2.5rem] px-6 py-7">
+          <p class="section-kicker">Brand Assets</p>
+          <p class="mt-4 font-display text-3xl leading-tight text-text">
+            About 页头像、形象图或 Logo 卡片后续可以直接接到这里。
+          </p>
+          <p class="mt-4 text-base leading-8 text-muted">
+            资源建议放到 <code>/public/images/about/</code> 或 <code>/public/images/brand/</code>，
+            然后在 <code>src/data/site.ts</code> 里填写对应路径。
+          </p>
+        </aside>
+      )}
     </div>
   </section>
 </BaseLayout>

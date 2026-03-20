@@ -547,3 +547,25 @@ a {
     linear-gradient(135deg, rgba(122, 85, 100, 0.12), rgba(86, 100, 136, 0.12));
   border-color: rgba(214, 218, 234, 0.08);
 }
+
+.header-utility-island {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.header-utility-island__panel {
+  border-color: rgba(191, 134, 152, 0.14);
+  box-shadow:
+    0 22px 48px rgba(191, 134, 152, 0.16),
+    0 10px 24px rgba(71, 78, 102, 0.06);
+}
+
+[data-theme="dark"] .header-utility-island__panel {
+  border-color: rgba(214, 218, 234, 0.1);
+  box-shadow:
+    0 24px 54px rgba(0, 0, 0, 0.3),
+    0 10px 24px rgba(213, 166, 180, 0.08);
+}

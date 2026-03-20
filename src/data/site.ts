@@ -9,6 +9,16 @@ type SiteCopy = {
     description: string;
   };
   nav: Array<{ label: string; href: string }>;
+  brand: {
+    markLetter: string;
+    markImage: string;
+    markImageAlt: string;
+    wordmarkImage: string;
+    wordmarkImageAlt: string;
+    editionLabel: string;
+    aboutPortrait: string;
+    aboutPortraitAlt: string;
+  };
   common: {
     skipToContent: string;
     menu: string;
@@ -189,6 +199,16 @@ const siteCopy: Record<Locale, SiteCopy> = {
       { label: "图集", href: "/gallery/" },
       { label: "联系", href: "/contact/" }
     ],
+    brand: {
+      markLetter: "A",
+      markImage: "",
+      markImageAlt: "ABOYL-AIS logo mark",
+      wordmarkImage: "",
+      wordmarkImageAlt: "ABOYL-AIS wordmark",
+      editionLabel: "QUIET PERSONAL EDITION",
+      aboutPortrait: "",
+      aboutPortraitAlt: "ABOYL-AIS portrait placeholder"
+    },
     common: {
       skipToContent: "跳到主要内容",
       menu: "菜单",
@@ -395,6 +415,16 @@ const siteCopy: Record<Locale, SiteCopy> = {
       { label: "Gallery", href: "/gallery/" },
       { label: "Contact", href: "/contact/" }
     ],
+    brand: {
+      markLetter: "A",
+      markImage: "",
+      markImageAlt: "ABOYL-AIS logo mark",
+      wordmarkImage: "",
+      wordmarkImageAlt: "ABOYL-AIS wordmark",
+      editionLabel: "QUIET PERSONAL EDITION",
+      aboutPortrait: "",
+      aboutPortraitAlt: "ABOYL-AIS portrait placeholder"
+    },
     common: {
       skipToContent: "Skip to main content",
       menu: "Menu",

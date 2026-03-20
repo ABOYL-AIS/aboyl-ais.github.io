@@ -25,7 +25,10 @@
 ```text
 .
 ├─ public/
+│  ├─ icons/
 │  └─ images/
+│     ├─ about/
+│     ├─ brand/
 │     ├─ covers/
 │     └─ gallery/
 ├─ src/
@@ -65,7 +68,10 @@
 
 说明：
 
-- `public/` 放静态资源，如项目封面图和 Gallery 图片。
+- `public/images/brand/` 放站点 logo、wordmark 等品牌资源。
+- `public/images/about/` 放 About 页肖像或页面专属图片。
+- `public/icons/` 放社交平台和联系方式图标。
+- `public/` 其余目录继续放项目封面图和 Gallery 图片。
 - `src/content/` 放结构化内容条目。
 - `src/content/zh/*` 与 `src/content/en/*` 分别维护中英文内容。
 - `src/pages/` 放页面路由和详情页模板。
@@ -77,7 +83,7 @@
 
 内容集合定义在 `src/content.config.ts`。
 
-站点级文案和导航文案统一维护在 `src/data/site.ts`，语言识别与路径切换辅助函数维护在 `src/i18n/config.ts`。
+站点级文案、导航文案和品牌资源路径统一维护在 `src/data/site.ts`，语言识别与路径切换辅助函数维护在 `src/i18n/config.ts`。
 
 当前包含 4 类：
 
@@ -100,13 +106,17 @@
   - About 页个人简介
   - Background 文案
   - Contact 页中的邮箱说明
-- `src/content/projects/`
+- `src/content/zh/projects/`
+- `src/content/en/projects/`
   - 当前项目条目均为演示型样例
-- `src/content/research/`
+- `src/content/zh/research/`
+- `src/content/en/research/`
   - 当前研究条目均为演示型样例
-- `src/content/notes/`
+- `src/content/zh/notes/`
+- `src/content/en/notes/`
   - 当前笔记条目均为演示型样例
-- `src/content/gallery/`
+- `src/content/zh/gallery/`
+- `src/content/en/gallery/`
   - 当前图集与 Quote 条目均为演示型样例
 
 这些内容的作用是：
@@ -239,7 +249,9 @@ image: /images/gallery/example.svg
 
 - 中文为默认语言，使用根路径，例如 `/about/`
 - 英文使用 `/en/` 前缀，例如 `/en/about/`
-- Header 中提供语言切换按钮，并尽量跳转到当前页面对应语言版本
+- Header 主胶囊仅承载品牌与导航
+- 桌面端将语言 / 主题切换放在右上角独立工具岛，并尽量跳转到当前页面对应语言版本
+- 移动端将语言 / 主题切换保留在菜单面板内
 - 日 / 夜主题切换通过全局设计变量实现，用户选择会保存在本地
 
 内容层遵循：
@@ -249,6 +261,20 @@ image: /images/gallery/example.svg
 - 组件、布局和大部分页面模板只保留一套共享实现
 
 ## 后续维护说明
+
+### 品牌资源放置
+
+- Logo mark 放在 `public/images/brand/`
+- Wordmark 放在 `public/images/brand/`
+- About 肖像或页面专属视觉放在 `public/images/about/`
+- 联系方式和社交图标放在 `public/icons/`
+- 对应路径统一在 `src/data/site.ts` 的 `brand` 字段中登记
+
+当前已预留：
+
+- `brand.markImage`
+- `brand.wordmarkImage`
+- `brand.aboutPortrait`
 
 ### 新增项目
 
