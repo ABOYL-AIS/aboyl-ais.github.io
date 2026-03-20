@@ -1,0 +1,29 @@
+---
+import { localeLabels, switchLocalePath, type Locale } from "../i18n/config";
+import { withBase } from "../utils/paths";
+
+interface Props {
+  locale: Locale;
+  pathname: string;
+  label: string;
+}
+
+const { locale, pathname, label } = Astro.props;
+---
+
+<div class="toggle-cluster" aria-label={label}>
+  {Object.entries(localeLabels).map(([value, shortLabel]) => {
+    const active = value === locale;
+    const target = withBase(switchLocalePath(pathname, value as Locale));
+
+    return (
+      <a
+        href={target}
+        class:list={["toggle-chip", active && "toggle-chip--active"]}
+        aria-current={active ? "page" : undefined}
+      >
+        {shortLabel}
+      </a>
+    );
+  })}
+</div>

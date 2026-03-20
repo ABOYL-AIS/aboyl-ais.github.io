@@ -1,0 +1,54 @@
+---
+import PlaceholderNotice from "../components/PlaceholderNotice.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import WritingCard from "../components/WritingCard.astro";
+import { getSiteCopy } from "../data/site";
+import type { Locale } from "../i18n/config";
+import { localizePath } from "../i18n/config";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getEntrySlug, getLocalizedCollection } from "../utils/content";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getSiteCopy(locale);
+const notes = (await getLocalizedCollection("notes", locale)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout
+  locale={locale}
+  title={copy.collections.notes.metaTitle}
+  description={copy.collections.notes.metaDescription}
+>
+  <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8">
+    <SectionHeading
+      kicker={copy.collections.notes.kicker}
+      title={copy.collections.notes.title}
+      intro={copy.collections.notes.intro}
+    />
+
+    <div class="mt-10">
+      <PlaceholderNotice
+        title={copy.common.placeholderTitle}
+        body={copy.collections.notes.placeholder}
+      />
+    </div>
+
+    <div class="mt-10 grid gap-6">
+      {notes.map((entry) => (
+        <WritingCard
+          title={entry.data.title}
+          summary={entry.data.summary}
+          date={entry.data.date.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US")}
+          readingTime={entry.data.kind}
+          href={localizePath(locale, `/notes/${getEntrySlug(entry.id)}/`)}
+          viewLabel={copy.common.viewContent}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

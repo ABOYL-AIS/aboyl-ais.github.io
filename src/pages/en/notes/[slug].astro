@@ -1,0 +1,17 @@
+---
+import NotesDetailView from "../../../views/NotesDetailView.astro";
+import { getEntrySlug, getLocalizedCollection } from "../../../utils/content";
+
+export async function getStaticPaths() {
+  const entries = await getLocalizedCollection("notes", "en");
+
+  return entries.map((entry) => ({
+    params: { slug: getEntrySlug(entry.id) },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<NotesDetailView locale="en" entry={entry} />

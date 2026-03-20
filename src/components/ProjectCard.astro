@@ -6,6 +6,8 @@ interface Props {
   summary: string;
   year: string;
   role: string;
+  roleLabel?: string;
+  detailLabel?: string;
   status: string;
   tags: string[];
   cover: string;
@@ -13,7 +15,19 @@ interface Props {
   href: string;
 }
 
-const { title, summary, year, role, status, tags, cover, coverAlt, href } = Astro.props;
+const {
+  title,
+  summary,
+  year,
+  role,
+  roleLabel = "Role",
+  detailLabel = "View details",
+  status,
+  tags,
+  cover,
+  coverAlt,
+  href
+} = Astro.props;
 ---
 
 <article class="paper-panel card-lift surface-rose rounded-[2.2rem] px-6 py-6 md:px-7">
@@ -32,7 +46,7 @@ const { title, summary, year, role, status, tags, cover, coverAlt, href } = Astr
   </div>
 
   <p class="mt-4 text-base leading-8 text-muted">{summary}</p>
-  <p class="mt-4 text-sm text-text/80">定位：{role}</p>
+  <p class="mt-4 text-sm text-text/80">{roleLabel}: {role}</p>
 
   <div class="mt-5 flex flex-wrap gap-2">
     {tags.map((tag) => (
@@ -43,6 +57,6 @@ const { title, summary, year, role, status, tags, cover, coverAlt, href } = Astr
   </div>
 
   <a href={withBase(href)} class="inline-link mt-6">
-    查看详情
+    {detailLabel}
   </a>
 </article>

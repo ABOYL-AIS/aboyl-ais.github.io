@@ -1,0 +1,233 @@
+---
+import HeroPanel from "../components/HeroPanel.astro";
+import BentoCard from "../components/BentoCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import QuoteCard from "../components/QuoteCard.astro";
+import ResearchCard from "../components/ResearchCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import WritingCard from "../components/WritingCard.astro";
+import { getSiteCopy } from "../data/site";
+import type { Locale } from "../i18n/config";
+import { localizePath } from "../i18n/config";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getLocalizedCollection, getEntrySlug } from "../utils/content";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getSiteCopy(locale);
+
+const projects = (await getLocalizedCollection("projects", locale))
+  .filter((entry) => entry.data.featured)
+  .slice(0, 2);
+
+const research = (await getLocalizedCollection("research", locale))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+
+const notes = (await getLocalizedCollection("notes", locale))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+
+const quote = (await getLocalizedCollection("gallery", locale))
+  .filter((entry) => entry.data.kind === "Quote")
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())[0];
+
+const galleryPreview = (await getLocalizedCollection("gallery", locale))
+  .filter((entry) => entry.data.kind !== "Quote")
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+---
+
+<BaseLayout locale={locale}>
+  <HeroPanel locale={locale} />
+
+  <section class="mx-auto mt-20 max-w-6xl px-5 md:px-8">
+    <div class="paper-panel surface-lilac rounded-[2.8rem] px-7 py-9 md:px-10">
+      <p class="section-kicker">{copy.home.designPrinciple.kicker}</p>
+      <p class="mt-5 max-w-4xl font-display text-3xl leading-tight text-text md:text-5xl">
+        {copy.home.designPrinciple.title}
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{copy.home.designPrinciple.body}</p>
+    </div>
+  </section>
+
+  <section class="mx-auto mt-20 max-w-6xl px-5 md:px-8">
+    <SectionHeading
+      kicker={copy.home.structure.kicker}
+      title={copy.home.structure.title}
+      intro={copy.home.structure.intro}
+    />
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      {copy.home.highlights.map((item) => (
+        <BentoCard
+          kicker={item.kicker}
+          title={item.title}
+          body={item.body}
+          tone={item.tone}
+          href={localizePath(locale, item.href)}
+          className={item.className}
+          viewLabel={copy.common.viewContent}
+        />
+      ))}
+
+      <BentoCard
+        kicker={copy.home.keywordCard.kicker}
+        title={copy.about.profile.keywords.join(" · ")}
+        body={copy.home.keywordCard.body}
+        href={localizePath(locale, copy.home.keywordCard.href)}
+        tone={copy.home.keywordCard.tone}
+        viewLabel={copy.common.viewContent}
+      />
+
+      {notes.slice(0, 1).map((entry) => (
+        <BentoCard
+          kicker="Notes"
+          title={entry.data.title}
+          body={entry.data.summary}
+          href={localizePath(locale, `/notes/${getEntrySlug(entry.id)}/`)}
+          tone="soft"
+          viewLabel={copy.common.viewContent}
+        />
+      ))}
+
+      {research.slice(0, 1).map((entry) => (
+        <BentoCard
+          kicker="Research"
+          title={entry.data.title}
+          body={entry.data.summary}
+          href={localizePath(locale, `/research/${getEntrySlug(entry.id)}/`)}
+          tone="neutral"
+          viewLabel={copy.common.viewContent}
+        />
+      ))}
+
+      {galleryPreview.map((entry) => (
+        <BentoCard
+          kicker={entry.data.kind}
+          title={entry.data.title}
+          body={entry.data.summary}
+          href={localizePath(locale, `/gallery/${getEntrySlug(entry.id)}/`)}
+          tone="soft"
+          viewLabel={copy.common.viewContent}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto mt-20 max-w-6xl px-5 md:px-8">
+    <SectionHeading
+      kicker={copy.home.selectedProjects.kicker}
+      title={copy.home.selectedProjects.title}
+      intro={copy.home.selectedProjects.intro}
+    />
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {projects.map((entry) => (
+        <ProjectCard
+          title={entry.data.title}
+          summary={entry.data.summary}
+          year={entry.data.year}
+          role={entry.data.role}
+          roleLabel={copy.common.roleLabel}
+          detailLabel={copy.common.viewDetail}
+          status={entry.data.status}
+          tags={entry.data.tags}
+          cover={entry.data.cover}
+          coverAlt={entry.data.coverAlt}
+          href={localizePath(locale, `/projects/${getEntrySlug(entry.id)}/`)}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
+    <SectionHeading
+      kicker={copy.home.research.kicker}
+      title={copy.home.research.title}
+      intro={copy.home.research.intro}
+    />
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {research.map((entry) => (
+        <ResearchCard
+          title={entry.data.title}
+          summary={entry.data.summary}
+          kind={entry.data.kind}
+          venue={entry.data.venue}
+          venueLabel={copy.common.venueLabel}
+          detailLabel={copy.common.viewDetail}
+          date={entry.data.date.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US")}
+          tags={entry.data.tags}
+          href={localizePath(locale, `/research/${getEntrySlug(entry.id)}/`)}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
+    <SectionHeading
+      kicker={copy.home.notes.kicker}
+      title={copy.home.notes.title}
+      intro={copy.home.notes.intro}
+    />
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {notes.map((entry) => (
+        <WritingCard
+          title={entry.data.title}
+          summary={entry.data.summary}
+          date={entry.data.date.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US")}
+          readingTime={entry.data.kind}
+          href={localizePath(locale, `/notes/${getEntrySlug(entry.id)}/`)}
+          viewLabel={copy.common.viewContent}
+        />
+      ))}
+    </div>
+  </section>
+
+  {quote && (
+    <section class="mx-auto mt-20 max-w-6xl px-5 md:px-8">
+      <SectionHeading
+        kicker={copy.home.quote.kicker}
+        title={copy.home.quote.title}
+        intro={copy.home.quote.intro}
+      />
+
+      <div class="mt-10">
+        <QuoteCard
+          title={quote.data.title}
+          summary={quote.data.summary}
+          source={quote.data.source}
+          href={localizePath(locale, `/gallery/${getEntrySlug(quote.id)}/`)}
+          kickerLabel={copy.common.favoriteQuote}
+          viewLabel={copy.common.viewCollection}
+        />
+      </div>
+    </section>
+  )}
+
+  <section class="mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
+    <SectionHeading
+      kicker={copy.home.galleryPreview.kicker}
+      title={copy.home.galleryPreview.title}
+      intro={copy.home.galleryPreview.intro}
+    />
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {galleryPreview.map((entry) => (
+        <BentoCard
+          kicker={entry.data.medium}
+          title={entry.data.title}
+          body={entry.data.summary}
+          href={localizePath(locale, `/gallery/${getEntrySlug(entry.id)}/`)}
+          tone="soft"
+          viewLabel={copy.common.viewContent}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

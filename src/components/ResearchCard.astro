@@ -9,9 +9,21 @@ interface Props {
   date: string;
   tags: string[];
   href: string;
+  venueLabel?: string;
+  detailLabel?: string;
 }
 
-const { title, summary, kind, venue, date, tags, href } = Astro.props;
+const {
+  title,
+  summary,
+  kind,
+  venue,
+  date,
+  tags,
+  href,
+  venueLabel = "Venue",
+  detailLabel = "View details"
+} = Astro.props;
 ---
 
 <article class="paper-panel card-lift surface-mist rounded-[2.2rem] px-6 py-6 md:px-7">
@@ -24,7 +36,7 @@ const { title, summary, kind, venue, date, tags, href } = Astro.props;
 
   <h3 class="mt-4 font-display text-3xl text-text">{title}</h3>
   <p class="mt-4 text-base leading-8 text-muted">{summary}</p>
-  <p class="mt-4 text-sm text-text/80">载体：{venue}</p>
+  <p class="mt-4 text-sm text-text/80">{venueLabel}: {venue}</p>
 
   <div class="mt-5 flex flex-wrap gap-2">
     {tags.map((tag) => (
@@ -35,6 +47,6 @@ const { title, summary, kind, venue, date, tags, href } = Astro.props;
   </div>
 
   <a href={withBase(href)} class="inline-link mt-6">
-    查看详情
+    {detailLabel}
   </a>
 </article>

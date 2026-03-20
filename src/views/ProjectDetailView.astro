@@ -1,0 +1,58 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { Locale } from "../i18n/config";
+import { withBase } from "../utils/paths";
+
+interface Props {
+  locale: Locale;
+  entry: CollectionEntry<"projects">;
+}
+
+const { locale, entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout locale={locale} title={`${entry.data.title} | ABOYL-AIS`} description={entry.data.summary}>
+  <article class="mx-auto max-w-4xl px-5 pt-16 md:px-8">
+    <div class="paper-panel rounded-[2.5rem] px-7 py-9 md:px-10">
+      <p class="section-kicker">{entry.data.year} · {entry.data.role}</p>
+      <h1 class="mt-4 font-display text-5xl text-text md:text-6xl">{entry.data.title}</h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{entry.data.summary}</p>
+
+      <div class="mt-6 overflow-hidden rounded-[1.8rem] border border-line bg-bg-soft">
+        <img src={withBase(entry.data.cover)} alt={entry.data.coverAlt} class="h-72 w-full object-cover" loading="lazy" />
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        {entry.data.tags.map((tag) => (
+          <span class="rounded-full bg-accent-soft px-3 py-1 text-xs tracking-[0.16em] text-accent-deep">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        {entry.data.github && (
+          <a href={withBase(entry.data.github)} class="rounded-full border border-line bg-white/78 px-4 py-2 text-sm text-text hover:border-line-strong hover:text-accent-deep">
+            GitHub
+          </a>
+        )}
+        {entry.data.demo && (
+          <a href={withBase(entry.data.demo)} class="rounded-full border border-line bg-white/78 px-4 py-2 text-sm text-text hover:border-line-strong hover:text-accent-deep">
+            Demo
+          </a>
+        )}
+        {entry.data.writeup && (
+          <a href={withBase(entry.data.writeup)} class="rounded-full border border-line bg-white/78 px-4 py-2 text-sm text-text hover:border-line-strong hover:text-accent-deep">
+            Write-up
+          </a>
+        )}
+      </div>
+    </div>
+
+    <div class="rich-copy paper-panel mt-8 rounded-[2rem] px-7 py-8 md:px-10">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

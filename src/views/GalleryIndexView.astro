@@ -1,0 +1,61 @@
+---
+import BentoCard from "../components/BentoCard.astro";
+import PlaceholderNotice from "../components/PlaceholderNotice.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { getSiteCopy } from "../data/site";
+import type { Locale } from "../i18n/config";
+import { localizePath } from "../i18n/config";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getEntrySlug, getLocalizedCollection } from "../utils/content";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getSiteCopy(locale);
+const gallery = (await getLocalizedCollection("gallery", locale)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout
+  locale={locale}
+  title={copy.collections.gallery.metaTitle}
+  description={copy.collections.gallery.metaDescription}
+>
+  <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8">
+    <SectionHeading
+      kicker={copy.collections.gallery.kicker}
+      title={copy.collections.gallery.title}
+      intro={copy.collections.gallery.intro}
+    />
+
+    <div class="mt-10">
+      <PlaceholderNotice
+        title={copy.common.placeholderTitle}
+        body={copy.collections.gallery.placeholder}
+      />
+    </div>
+
+    <div class="paper-panel gallery-wash mt-10 rounded-[2.2rem] px-6 py-7 md:px-8">
+      <p class="section-kicker">{copy.collections.gallery.moodKicker}</p>
+      <p class="mt-4 max-w-3xl font-display text-3xl leading-tight text-text md:text-4xl">
+        {copy.collections.gallery.moodTitle}
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {gallery.map((entry) => (
+        <BentoCard
+          kicker={entry.data.kind}
+          title={entry.data.title}
+          body={entry.data.summary}
+          href={localizePath(locale, `/gallery/${getEntrySlug(entry.id)}/`)}
+          tone="soft"
+          viewLabel={copy.common.viewContent}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

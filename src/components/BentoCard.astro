@@ -6,11 +6,20 @@ interface Props {
   title: string;
   body: string;
   href?: string;
+  viewLabel?: string;
   tone?: "rose" | "neutral" | "soft";
   className?: string;
 }
 
-const { kicker, title, body, href, tone = "neutral", className } = Astro.props;
+const {
+  kicker,
+  title,
+  body,
+  href,
+  viewLabel = "View content",
+  tone = "neutral",
+  className
+} = Astro.props;
 
 const toneClasses = {
   rose: "surface-rose",
@@ -29,7 +38,7 @@ const toneClasses = {
   <p class="mt-4 max-w-[28rem] text-base leading-8 text-muted">{body}</p>
   {href && (
     <a href={withBase(href)} class="inline-link mt-6">
-      查看内容
+      {viewLabel}
     </a>
   )}
 </article>

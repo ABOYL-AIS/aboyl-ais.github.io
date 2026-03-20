@@ -1,0 +1,57 @@
+---
+import PlaceholderNotice from "../components/PlaceholderNotice.astro";
+import ResearchCard from "../components/ResearchCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { getSiteCopy } from "../data/site";
+import type { Locale } from "../i18n/config";
+import { localizePath } from "../i18n/config";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getEntrySlug, getLocalizedCollection } from "../utils/content";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getSiteCopy(locale);
+const research = (await getLocalizedCollection("research", locale)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout
+  locale={locale}
+  title={copy.collections.research.metaTitle}
+  description={copy.collections.research.metaDescription}
+>
+  <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8">
+    <SectionHeading
+      kicker={copy.collections.research.kicker}
+      title={copy.collections.research.title}
+      intro={copy.collections.research.intro}
+    />
+
+    <div class="mt-10">
+      <PlaceholderNotice
+        title={copy.common.placeholderTitle}
+        body={copy.collections.research.placeholder}
+      />
+    </div>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {research.map((entry) => (
+        <ResearchCard
+          title={entry.data.title}
+          summary={entry.data.summary}
+          kind={entry.data.kind}
+          venue={entry.data.venue}
+          venueLabel={copy.common.venueLabel}
+          detailLabel={copy.common.viewDetail}
+          date={entry.data.date.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US")}
+          tags={entry.data.tags}
+          href={localizePath(locale, `/research/${getEntrySlug(entry.id)}/`)}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

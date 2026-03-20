@@ -1,6 +1,6 @@
 ---
 title: Favorite Quote
-summary: “好的个人站不是模板的复制，而是判断、审美与结构的长期沉淀。”
+summary: 好的个人站不是模板的复制，而是判断、审美与结构的长期沉淀。
 date: 2026-03-18
 kind: Quote
 medium: Favorite Quotes

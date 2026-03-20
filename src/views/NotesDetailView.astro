@@ -1,0 +1,29 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { Locale } from "../i18n/config";
+
+interface Props {
+  locale: Locale;
+  entry: CollectionEntry<"notes">;
+}
+
+const { locale, entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout locale={locale} title={`${entry.data.title} | ABOYL-AIS`} description={entry.data.summary}>
+  <article class="mx-auto max-w-4xl px-5 pt-16 md:px-8">
+    <div class="paper-panel rounded-[2.5rem] px-7 py-9 md:px-10">
+      <p class="section-kicker">
+        {entry.data.date.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US")} · {entry.data.kind}
+      </p>
+      <h1 class="mt-4 font-display text-5xl text-text md:text-6xl">{entry.data.title}</h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{entry.data.summary}</p>
+    </div>
+
+    <div class="rich-copy paper-panel mt-8 rounded-[2rem] px-7 py-8 md:px-10">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

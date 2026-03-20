@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PlaceholderNotice from "../components/PlaceholderNotice.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { getSiteCopy } from "../data/site";
+import { getLocaleFromPathname, localizePath } from "../i18n/config";
+import { withBase } from "../utils/paths";
+
+const locale = getLocaleFromPathname(Astro.url.pathname);
+const copy = getSiteCopy(locale);
+---
+
+<BaseLayout locale={locale} title={copy.notFound.metaTitle} description={copy.notFound.metaDescription}>
+  <section class="mx-auto max-w-5xl px-5 pt-16 md:px-8">
+    <SectionHeading
+      kicker={copy.notFound.kicker}
+      title={copy.notFound.title}
+      intro={copy.notFound.intro}
+    />
+
+    <div class="paper-panel surface-mist mt-10 rounded-[2.6rem] px-7 py-10 md:px-10 md:py-12">
+      <p class="font-display text-6xl leading-none text-text md:text-8xl">404</p>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-muted">{copy.notFound.body}</p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href={withBase(localizePath(locale, "/"))}
+          class="rounded-full border border-line bg-white/85 px-5 py-2.5 text-sm text-text transition-colors hover:border-line-strong hover:text-accent-deep"
+        >
+          {copy.notFound.homeLink}
+        </a>
+        <a
+          href={withBase(localizePath(locale, "/notes/"))}
+          class="rounded-full border border-line bg-white/85 px-5 py-2.5 text-sm text-text transition-colors hover:border-line-strong hover:text-accent-deep"
+        >
+          {copy.notFound.notesLink}
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <PlaceholderNotice title={copy.common.placeholderTitle} body={copy.notFound.placeholder} />
+    </div>
+  </section>
+</BaseLayout>

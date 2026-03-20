@@ -1,0 +1,17 @@
+---
+import GalleryDetailView from "../../../views/GalleryDetailView.astro";
+import { getEntrySlug, getLocalizedCollection } from "../../../utils/content";
+
+export async function getStaticPaths() {
+  const entries = await getLocalizedCollection("gallery", "en");
+
+  return entries.map((entry) => ({
+    params: { slug: getEntrySlug(entry.id) },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<GalleryDetailView locale="en" entry={entry} />

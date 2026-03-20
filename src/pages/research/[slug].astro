@@ -1,39 +1,17 @@
 ---
-import { getCollection, render } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import ResearchDetailView from "../../views/ResearchDetailView.astro";
+import { getEntrySlug, getLocalizedCollection } from "../../utils/content";
 
 export async function getStaticPaths() {
-  const entries = await getCollection("research");
+  const entries = await getLocalizedCollection("research", "zh");
 
   return entries.map((entry) => ({
-    params: { slug: entry.id },
+    params: { slug: getEntrySlug(entry.id) },
     props: { entry }
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
 ---
 
-<BaseLayout title={`${entry.data.title} | ABOYL-AIS`} description={entry.data.summary}>
-  <article class="mx-auto max-w-4xl px-5 pt-16 md:px-8">
-    <div class="paper-panel rounded-[2.5rem] px-7 py-9 md:px-10">
-      <p class="section-kicker">
-        {entry.data.kind} · {entry.data.venue}
-      </p>
-      <h1 class="mt-4 font-display text-5xl text-text md:text-6xl">{entry.data.title}</h1>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{entry.data.summary}</p>
-      <div class="mt-6 flex flex-wrap gap-2">
-        {entry.data.tags.map((tag) => (
-          <span class="rounded-full bg-accent-soft px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-
-    <div class="rich-copy paper-panel mt-8 rounded-[2rem] px-7 py-8 md:px-10">
-      <Content />
-    </div>
-  </article>
-</BaseLayout>
+<ResearchDetailView locale="zh" entry={entry} />

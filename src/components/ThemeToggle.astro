@@ -1,0 +1,18 @@
+---
+interface Props {
+  label: string;
+  dayLabel: string;
+  nightLabel: string;
+}
+
+const { label, dayLabel, nightLabel } = Astro.props;
+---
+
+<div class="toggle-cluster js-theme-toggle" aria-label={label}>
+  <button type="button" class="toggle-chip" data-theme-value="light">
+    {dayLabel}
+  </button>
+  <button type="button" class="toggle-chip" data-theme-value="dark">
+    {nightLabel}
+  </button>
+</div>

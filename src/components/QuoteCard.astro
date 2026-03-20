@@ -6,19 +6,28 @@ interface Props {
   summary: string;
   source?: string;
   href: string;
+  kickerLabel?: string;
+  viewLabel?: string;
 }
 
-const { title, summary, source, href } = Astro.props;
+const {
+  title,
+  summary,
+  source,
+  href,
+  kickerLabel = "Favorite Quote",
+  viewLabel = "View collection"
+} = Astro.props;
 ---
 
 <article class="paper-panel quote-wash card-lift rounded-[2.25rem] px-6 py-7 md:px-8 md:py-8">
-  <p class="section-kicker">Favorite Quote</p>
+  <p class="section-kicker">{kickerLabel}</p>
   <h3 class="mt-4 font-display text-3xl leading-tight text-text">{title}</h3>
   <p class="mt-6 max-w-3xl font-display text-[1.7rem] leading-[1.65] text-text/85 md:text-[1.95rem]">
     “{summary}”
   </p>
   {source && <p class="mt-5 text-sm tracking-[0.16em] text-accent-deep">{source}</p>}
   <a href={withBase(href)} class="inline-link mt-7">
-    查看收藏
+    {viewLabel}
   </a>
 </article>

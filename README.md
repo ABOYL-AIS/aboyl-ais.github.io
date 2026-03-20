@@ -7,6 +7,8 @@
 - 静态优先
 - 组件化
 - 内容与展示分离
+- 中文默认 + 英文 `/en/` 双语路由
+- 日 / 夜主题切换
 - 同时兼容 GitHub Pages 与 Vercel
 
 ## 技术栈
@@ -14,6 +16,7 @@
 - `Astro`
 - `Tailwind CSS`
 - `Astro Content Collections`
+- `Astro file-based i18n-style routing`
 - `GitHub Actions`
 - `Vercel`
 
@@ -29,12 +32,22 @@
 │  ├─ components/
 │  ├─ content/
 │  │  ├─ gallery/
+│  │  │  ├─ zh/
+│  │  │  └─ en/
 │  │  ├─ notes/
+│  │  │  ├─ zh/
+│  │  │  └─ en/
 │  │  ├─ projects/
+│  │  │  ├─ zh/
+│  │  │  └─ en/
 │  │  └─ research/
+│  │     ├─ zh/
+│  │     └─ en/
 │  ├─ data/
+│  ├─ i18n/
 │  ├─ layouts/
 │  ├─ pages/
+│  │  ├─ en/
 │  │  ├─ gallery/
 │  │  ├─ notes/
 │  │  ├─ projects/
@@ -56,13 +69,17 @@
 
 - `public/` 放静态资源，如项目封面图和 Gallery 图片。
 - `src/content/` 放结构化内容条目。
+- `src/content/*/zh` 与 `src/content/*/en` 分别维护中英文内容。
 - `src/pages/` 放页面路由和详情页模板。
+- `src/pages/en/` 提供英文页面路由，中文仍保持根路径。
 - `src/components/` 放可复用 UI 组件。
 - `src/utils/paths.ts` 统一处理 `base path`，避免 GitHub Pages 子路径兼容问题。
 
 ## 内容集合
 
 内容集合定义在 `src/content.config.ts`。
+
+站点级文案和导航文案统一维护在 `src/data/site.ts`，语言识别与路径切换辅助函数维护在 `src/i18n/config.ts`。
 
 当前包含 4 类：
 
@@ -99,6 +116,7 @@
 - 验证页面结构是否成立
 - 验证内容集合字段是否合理
 - 验证 GitHub Pages / Vercel 构建与路由是否稳定
+- 验证中英双语路由和主题切换是否稳定
 
 ## 本地运行
 
@@ -118,6 +136,12 @@ npm run dev
 
 ```text
 http://localhost:4321
+```
+
+英文首页地址为：
+
+```text
+http://localhost:4321/en/
 ```
 
 ## 构建与预览
@@ -213,11 +237,24 @@ image: /images/gallery/example.svg
 - Vercel 根域名可直接使用
 - 后续如果改成子路径部署，不需要全站手动改链接
 
+## 语言与主题切换
+
+- 中文为默认语言，使用根路径，例如 `/about/`
+- 英文使用 `/en/` 前缀，例如 `/en/about/`
+- Header 中提供语言切换按钮，并尽量跳转到当前页面对应语言版本
+- 日 / 夜主题切换通过全局设计变量实现，用户选择会保存在本地
+
+内容层遵循：
+
+- UI 文案集中在 `src/data/site.ts`
+- 长内容分别维护中英文版本
+- 组件、布局和大部分页面模板只保留一套共享实现
+
 ## 后续维护说明
 
 ### 新增项目
 
-在 `src/content/projects/` 下新增一个 `md` 文件，至少填写：
+在 `src/content/projects/zh/` 或 `src/content/projects/en/` 下新增一个 `md` 文件，至少填写：
 
 ```yaml
 title:
@@ -238,7 +275,7 @@ writeup:
 
 ### 新增研究内容
 
-在 `src/content/research/` 下新增 `md` 文件，至少填写：
+在 `src/content/research/zh/` 或 `src/content/research/en/` 下新增 `md` 文件，至少填写：
 
 ```yaml
 title:
@@ -259,7 +296,7 @@ featured:
 
 ### 新增笔记
 
-在 `src/content/notes/` 下新增 `md` 文件，至少填写：
+在 `src/content/notes/zh/` 或 `src/content/notes/en/` 下新增 `md` 文件，至少填写：
 
 ```yaml
 title:
@@ -278,7 +315,7 @@ featured:
 
 ### 新增图集或 Quote
 
-在 `src/content/gallery/` 下新增 `md` 文件，至少填写：
+在 `src/content/gallery/zh/` 或 `src/content/gallery/en/` 下新增 `md` 文件，至少填写：
 
 ```yaml
 title:
@@ -312,5 +349,6 @@ featured:
 
 - 真实上线前，优先替换 `src/data/site.ts` 中的占位个人信息。
 - 真实上线前，检查 `Contact` 页面中的公开联系方式是否已经替换为正式值。
+- 新增内容时，中英文 slug 应保持一致，便于语言切换时映射到对应详情页。
 - 新增内容时优先复用现有字段，不要随意增加 frontmatter 结构。
 - 若后续确实需要独立的 `quotes` 集合，再单独扩展内容模型，不建议在当前 MVP 阶段提前拆分。

@@ -1,60 +1,98 @@
 ---
-import { siteMeta } from "../data/site";
+import LanguageToggle from "./LanguageToggle.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import { getSiteCopy } from "../data/site";
+import { localizePath, stripLocaleFromPathname, type Locale } from "../i18n/config";
 import { withBase } from "../utils/paths";
 
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
 const { pathname } = Astro.url;
+const copy = getSiteCopy(locale);
+const pathWithoutLocale = stripLocaleFromPathname(pathname);
 ---
 
 <header class="sticky top-0 z-30">
   <div class="mx-auto max-w-6xl px-5 pt-4 md:px-8">
     <div class="paper-panel rounded-[2rem] px-5 py-3 md:rounded-full">
       <div class="flex items-center justify-between gap-6">
-        <a href={withBase("/")} class="flex items-center gap-3 text-text">
+        <a href={withBase(localizePath(locale, "/"))} class="flex items-center gap-3 text-text">
           <span class="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong bg-white/90 font-display text-lg font-semibold text-accent-deep shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
             A
           </span>
           <div>
-            <p class="font-display text-lg leading-none">{siteMeta.name}</p>
+            <p class="font-display text-lg leading-none">{copy.name}</p>
             <p class="mt-1 text-xs tracking-[0.2em] text-muted">QUIET PERSONAL EDITION</p>
           </div>
         </a>
 
-        <nav class="hidden items-center gap-5 text-sm text-muted md:flex">
-          {siteMeta.nav.map((item) => {
-            const resolvedHref = withBase(item.href);
-            const active =
-              item.href === "/" ? pathname === withBase("/") : pathname.startsWith(resolvedHref);
+        <div class="hidden items-center gap-4 md:flex">
+          <nav class="flex items-center gap-3 text-sm text-muted">
+            {copy.nav.map((item) => {
+              const localizedHref = localizePath(locale, item.href);
+              const resolvedHref = withBase(localizedHref);
+              const active =
+                item.href === "/"
+                  ? pathWithoutLocale === "/"
+                  : pathWithoutLocale.startsWith(item.href);
 
-            return (
-              <a
-                href={resolvedHref}
-                class:list={[
-                  "rounded-full px-3 py-1.5 transition-colors",
-                  active
-                    ? "bg-white/80 text-text shadow-[0_8px_20px_rgba(125,97,118,0.06)]"
-                    : "text-muted hover:bg-white/55 hover:text-text"
-                ]}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-        </nav>
+              return (
+                <a
+                  href={resolvedHref}
+                  class:list={[
+                    "rounded-full px-3 py-1.5 transition-colors",
+                    active
+                      ? "bg-white/80 text-text shadow-[0_8px_20px_rgba(125,97,118,0.06)]"
+                      : "text-muted hover:bg-white/55 hover:text-text"
+                  ]}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
+
+          <LanguageToggle locale={locale} pathname={pathname} label={copy.common.languageToggle} />
+          <ThemeToggle
+            label={copy.common.themeToggle}
+            dayLabel={copy.common.dayMode}
+            nightLabel={copy.common.nightMode}
+          />
+        </div>
 
         <details class="group relative md:hidden">
           <summary class="flex cursor-pointer list-none items-center gap-2 rounded-full border border-line bg-white/75 px-3 py-2 text-sm text-text shadow-[0_8px_20px_rgba(125,97,118,0.06)] marker:content-none">
-            <span class="font-display text-base">Menu</span>
+            <span class="font-display text-base">{copy.common.menu}</span>
             <span class="text-xs tracking-[0.16em] text-muted transition-transform group-open:rotate-45">
               +
             </span>
           </summary>
 
           <div class="absolute right-0 top-[calc(100%+0.9rem)] w-[min(18rem,78vw)] overflow-hidden rounded-[1.6rem] border border-line bg-white/88 p-3 shadow-[0_24px_50px_rgba(71,78,102,0.12)] backdrop-blur-xl">
+            <div class="mb-3 flex items-center justify-between gap-3 px-1">
+              <LanguageToggle
+                locale={locale}
+                pathname={pathname}
+                label={copy.common.languageToggle}
+              />
+              <ThemeToggle
+                label={copy.common.themeToggle}
+                dayLabel={copy.common.dayMode}
+                nightLabel={copy.common.nightMode}
+              />
+            </div>
+
             <nav class="grid gap-1">
-              {siteMeta.nav.map((item) => {
-                const resolvedHref = withBase(item.href);
+              {copy.nav.map((item) => {
+                const localizedHref = localizePath(locale, item.href);
+                const resolvedHref = withBase(localizedHref);
                 const active =
-                  item.href === "/" ? pathname === withBase("/") : pathname.startsWith(resolvedHref);
+                  item.href === "/"
+                    ? pathWithoutLocale === "/"
+                    : pathWithoutLocale.startsWith(item.href);
 
                 return (
                   <a
@@ -77,3 +115,54 @@ const { pathname } = Astro.url;
     </div>
   </div>
 </header>
+
+<script is:inline>
+  const THEME_KEY = "aboyl-theme";
+  const root = document.documentElement;
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+
+  const setTheme = (value) => {
+    root.dataset.theme = value;
+    root.style.colorScheme = value;
+    if (metaTheme) {
+      metaTheme.setAttribute("content", value === "dark" ? "#16161d" : "#fcf9f4");
+    }
+    document.querySelectorAll(".js-theme-toggle").forEach((toggle) => {
+      toggle.querySelectorAll("[data-theme-value]").forEach((item) => {
+        const active = item.dataset.themeValue === value;
+        item.classList.toggle("toggle-chip--active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+    });
+  };
+
+  const getStoredTheme = () => {
+    const stored = localStorage.getItem(THEME_KEY);
+    if (stored === "light" || stored === "dark") {
+      return stored;
+    }
+    return root.dataset.theme === "dark" ? "dark" : "light";
+  };
+
+  const sync = () => setTheme(getStoredTheme());
+
+  sync();
+
+  document.querySelectorAll(".js-theme-toggle").forEach((toggle) => {
+    toggle.querySelectorAll("[data-theme-value]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const value = button.dataset.themeValue;
+        if (value !== "light" && value !== "dark") return;
+        localStorage.setItem(THEME_KEY, value);
+        setTheme(value);
+      });
+    });
+  });
+
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  media.addEventListener("change", () => {
+    if (!localStorage.getItem(THEME_KEY)) {
+      setTheme(media.matches ? "dark" : "light");
+    }
+  });
+</script>

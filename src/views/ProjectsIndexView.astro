@@ -1,0 +1,59 @@
+---
+import PlaceholderNotice from "../components/PlaceholderNotice.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { getSiteCopy } from "../data/site";
+import type { Locale } from "../i18n/config";
+import { localizePath } from "../i18n/config";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getEntrySlug, getLocalizedCollection } from "../utils/content";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getSiteCopy(locale);
+const projects = (await getLocalizedCollection("projects", locale)).sort((a, b) =>
+  b.data.year.localeCompare(a.data.year)
+);
+---
+
+<BaseLayout
+  locale={locale}
+  title={copy.collections.projects.metaTitle}
+  description={copy.collections.projects.metaDescription}
+>
+  <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8">
+    <SectionHeading
+      kicker={copy.collections.projects.kicker}
+      title={copy.collections.projects.title}
+      intro={copy.collections.projects.intro}
+    />
+
+    <div class="mt-10">
+      <PlaceholderNotice
+        title={copy.common.placeholderTitle}
+        body={copy.collections.projects.placeholder}
+      />
+    </div>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {projects.map((entry) => (
+        <ProjectCard
+          title={entry.data.title}
+          summary={entry.data.summary}
+          year={entry.data.year}
+          role={entry.data.role}
+          roleLabel={copy.common.roleLabel}
+          detailLabel={copy.common.viewDetail}
+          status={entry.data.status}
+          tags={entry.data.tags}
+          cover={entry.data.cover}
+          coverAlt={entry.data.coverAlt}
+          href={localizePath(locale, `/projects/${getEntrySlug(entry.id)}/`)}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
