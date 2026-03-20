@@ -147,7 +147,7 @@ a {
   background-size: cover, auto, cover;
   background-position: center, top left, center top;
   background-repeat: no-repeat;
-  opacity: 0.58;
+  opacity: 0.36;
 }
 
 .page-shell::after {
@@ -667,7 +667,7 @@ a {
   background-size: cover, auto, cover;
   background-position: center, top left, center top;
   background-repeat: no-repeat;
-  opacity: 0.32;
+  opacity: 0.2;
 }
 
 [data-theme="dark"] .hero-visual__image {

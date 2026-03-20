@@ -56,8 +56,10 @@ type SiteCopy = {
     contacts: Array<{
       label: string;
       value: string;
-      href: string;
+      href?: string;
       kind: "phone" | "email" | "qq" | "wechat" | "github" | "team";
+      imageSrc?: string;
+      imageAlt?: string;
     }>;
   };
   home: {
@@ -260,44 +262,39 @@ const siteCopy: Record<Locale, SiteCopy> = {
       status: ["项目", "论文", "记录", "图集", "语句集合"],
     },
     footer: {
-      note: "欢迎随时联系，期待您的交流。",
-      tagline: "无论是学术、项目、团队合作，还是日常沟通，我都很欢迎。",
+      note: "欢迎随时联系，期待您的交流！",
+      tagline: "无论是学术、项目、团队合作，还是日常沟通，我都很欢迎！",
       contacts: [
         {
           label: "电话",
           value: "18372779323",
-          href: "tel:18372779323",
           kind: "phone",
         },
         {
           label: "Email",
           value: "18372779323@qq.com",
-          href: "mailto:18372779323@qq.com",
           kind: "email",
-        },
-        {
-          label: "QQ",
-          value: "1286735016",
-          href: "https://qm.qq.com/cgi-bin/qm/qr?k=1286735016",
-          kind: "qq",
         },
         {
           label: "微信",
           value: "GuGuai_MR7",
-          href: "https://weixin.qq.com/",
+          imageSrc: "/Wechat.png",
+          imageAlt: "WeChat QR code",
           kind: "wechat",
         },
         {
-          label: "个人 GitHub",
-          value: "ABOYL-AIS",
+          label: "GitHub",
+          value: "个人主页",
           href: "https://github.com/ABOYL-AIS",
           kind: "github",
         },
         {
-          label: "AIS 团队 GitHub",
-          value: "Advanced-Informatics-Scholar",
+          label: "AIS Team",
+          value: "团队主页",
           href: "https://github.com/Advanced-Informatics-Scholar",
           kind: "team",
+          imageSrc: "/团队LOGO.png",
+          imageAlt: "Advanced Informatics Scholar team logo",
         },
       ],
     },
@@ -418,17 +415,23 @@ const siteCopy: Record<Locale, SiteCopy> = {
             "包括升学进展、阶段成果、团队动态、公开活动与值得记录的小节点。当前版本先保留栏目结构，后续再逐条补上真实内容。",
         },
         {
-          kicker: "Research",
-          title: "研究相关内容会按更正式的学术主页方式逐步整理。",
-          body:
-            "这里后续会继续收纳研究方向、论文、预印本、产品化尝试与其他阶段成果，形成一个更稳定的研究展示入口。",
-          items: ["Recent Interest", "Publication", "Preprint", "Product"],
-        },
-        {
           kicker: "Award",
           title: "奖项、荣誉与阶段性认可可以集中放在这一栏。",
           body:
             "它适合用来整理竞赛、学术、团队或项目相关的代表性奖项，也方便后续在学术主页语境下快速浏览个人阶段成果。",
+        },
+        {
+          kicker: "Products",
+          title: "产品、系统与可公开展示的工程化成果可以单独放在这里。",
+          body:
+            "相比混在研究条目里，单独保留一个 Products 栏目会更适合放系统实现、应用原型、网站项目与真实落地成果。",
+        },
+        {
+          kicker: "Research",
+          title: "研究相关内容会按更正式的学术主页方式逐步整理。",
+          body:
+            "这里后续会继续收纳研究方向、论文与预印本，形成一个更稳定的研究展示入口。",
+          items: ["Recent Interest", "Publication", "Preprint"],
         },
         {
           kicker: "Collaborators",
@@ -605,38 +608,33 @@ const siteCopy: Record<Locale, SiteCopy> = {
         {
           label: "Phone",
           value: "18372779323",
-          href: "tel:18372779323",
           kind: "phone",
         },
         {
           label: "Email",
           value: "18372779323@qq.com",
-          href: "mailto:18372779323@qq.com",
           kind: "email",
-        },
-        {
-          label: "QQ",
-          value: "1286735016",
-          href: "https://qm.qq.com/cgi-bin/qm/qr?k=1286735016",
-          kind: "qq",
         },
         {
           label: "WeChat",
           value: "GuGuai_MR7",
-          href: "https://weixin.qq.com/",
+          imageSrc: "/Wechat.png",
+          imageAlt: "WeChat QR code",
           kind: "wechat",
         },
         {
-          label: "Personal GitHub",
-          value: "ABOYL-AIS",
+          label: "GitHub",
+          value: "Personal",
           href: "https://github.com/ABOYL-AIS",
           kind: "github",
         },
         {
-          label: "AIS Team GitHub",
-          value: "Advanced-Informatics-Scholar",
+          label: "AIS Team",
+          value: "Team",
           href: "https://github.com/Advanced-Informatics-Scholar",
           kind: "team",
+          imageSrc: "/团队LOGO.png",
+          imageAlt: "Advanced Informatics Scholar team logo",
         },
       ],
     },
@@ -765,17 +763,23 @@ const siteCopy: Record<Locale, SiteCopy> = {
             "This section can hold admission updates, recent progress, team news, public activities, and other small but meaningful milestones. The structure is ready, and real items can be added over time.",
         },
         {
-          kicker: "Research",
-          title: "Research-facing content will be organized in a more academic-homepage style.",
-          body:
-            "Over time, this block can gather research directions, publications, preprints, product work, and other outputs into one more stable research entry point.",
-          items: ["Recent Interest", "Publication", "Preprint", "Product"],
-        },
-        {
           kicker: "Award",
           title: "Awards, honors, and milestone recognition can be collected here.",
           body:
             "It is a useful place for organizing representative distinctions from competitions, academic activities, team work, or project-based achievements in one quick overview.",
+        },
+        {
+          kicker: "Products",
+          title: "Products, systems, and public engineering outputs can stand on their own here.",
+          body:
+            "Keeping a separate Products block makes it easier to present systems, prototypes, websites, and applied work without forcing them into the research list.",
+        },
+        {
+          kicker: "Research",
+          title: "Research-facing content will be organized in a more academic-homepage style.",
+          body:
+            "Over time, this block can gather research directions, publications, and preprints into one more stable research entry point.",
+          items: ["Recent Interest", "Publication", "Preprint"],
         },
         {
           kicker: "Collaborators",
