@@ -400,7 +400,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
         summary:
           "我更在意长期主义的表达方式，而不是一次性地堆满信息。这个站点会持续承载个人经历、研究兴趣、团队建设、项目实践与一些更私人的文字沉淀。",
         background:
-          "当前正从软件工程本科阶段走向博士阶段，关注如何把研究、技术、组织与长期表达慢慢整理成同一条清晰的个人路径。站点本身也是这条路径的一部分。",
+          "目前正处在从本科阶段向博士阶段过渡的时期，我希望能逐步把研究、工程、领导力和长文表达组织成一个连贯的个人轨迹。未来很长一段时间将围绕Agent技术及相关应用展开，希望可以做一些有意义的工作！",
         keywords: [
           "统筹组织",
           "INFJ-深度思考",
@@ -414,47 +414,47 @@ const siteCopy: Record<Locale, SiteCopy> = {
       sections: [
         {
           kicker: "News",
-          title: "近期动态与阶段更新会优先放在这里。",
+          title: "个人 & 团队的最新动态与阶段性里程碑",
           body:
-            "包括升学进展、阶段成果、团队动态、公开活动与值得记录的小节点。当前版本先保留栏目结构，后续再逐条补上真实内容。",
+            "",
         },
         {
           kicker: "Award",
-          title: "奖项、荣誉与阶段性认可可以集中放在这一栏。",
+          title: "个人 & 团队的奖项、荣誉与阶段性认可",
           body:
-            "它适合用来整理竞赛、学术、团队或项目相关的代表性奖项，也方便后续在学术主页语境下快速浏览个人阶段成果。",
+            "",
         },
         {
           kicker: "Products",
-          title: "产品、系统与可公开展示的工程化成果可以单独放在这里。",
+          title: "个人 & 团队的系统、应用与公开工程成果",
           body:
-            "相比混在研究条目里，单独保留一个 Products 栏目会更适合放系统实现、应用原型、网站项目与真实落地成果。",
+            "",
         },
         {
           kicker: "Research",
-          title: "研究相关内容会按更正式的学术主页方式逐步整理。",
+          title: "个人 & 团队的研究方向、论文、竞赛、报告与成果",
           body:
-            "这里后续会继续收纳研究方向、论文与预印本，形成一个更稳定的研究展示入口。",
+            "",
           subsections: [
             {
               title: "Recent Interest",
-              body: "当前更关注 Agent 应用、大模型能力边界、软件智能以及真实场景中的系统落地问题。",
+              body: "",
             },
             {
               title: "Publication",
-              body: "正式论文与可公开展示的学术成果会逐步在这里补充，后续也会保持更清晰的时间线整理。",
+              body: "",
             },
             {
               title: "Preprint",
-              body: "对于仍在推进中的工作，会优先以预印本或阶段性公开文本的形式放在这里，方便持续更新。",
+              body: "",
             },
           ],
         },
         {
           kicker: "Collaborators",
-          title: "合作导师、同学、团队伙伴与长期协作者可以在这里统一呈现。",
+          title: "合作导师、同学、团队伙伴（友链）",
           body:
-            "后续可以按导师、实验室、团队成员或合作项目维度逐步补充，让页面更接近一份完整而清晰的个人学术主页。",
+            "",
         },
       ],
     },
@@ -751,7 +751,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
         summary:
           "I care more about building a long-term line of expression than displaying everything at once. This site is meant to hold my academic path, research interests, team work, technical projects, and more personal writing over time.",
         background:
-          "I am now moving from the undergraduate stage toward the Ph.D. stage, and I want to gradually organize research, engineering, leadership, and long-form expression into one coherent personal trajectory.",
+          "I am currently in the transition from undergraduate to Ph.D., hoping to gradually organize research, engineering, leadership, and long-form expression into a coherent personal trajectory. For a long time to come, I will focus on agent technology and related applications, hoping to do some meaningful work in this area!",
         keywords: [
           "Organized People",
           "INFJ-Deep Thinker",
@@ -765,47 +765,47 @@ const siteCopy: Record<Locale, SiteCopy> = {
       sections: [
         {
           kicker: "News",
-          title: "Recent updates and milestone notes can live here first.",
+          title: "Latest news and milestones for both myself and the team",
           body:
-            "This section can hold admission updates, recent progress, team news, public activities, and other small but meaningful milestones. The structure is ready, and real items can be added over time.",
+            "",
         },
         {
           kicker: "Award",
-          title: "Awards, honors, and milestone recognition can be collected here.",
+          title: "Awards, honors, and recognitions for both myself and the team",
           body:
-            "It is a useful place for organizing representative distinctions from competitions, academic activities, team work, or project-based achievements in one quick overview.",
+            "",
         },
         {
           kicker: "Products",
-          title: "Products, systems, and public engineering outputs can stand on their own here.",
+          title: "Systems, applications, and public engineering outcomes for both myself and the team",
           body:
-            "Keeping a separate Products block makes it easier to present systems, prototypes, websites, and applied work without forcing them into the research list.",
+            "",
         },
         {
           kicker: "Research",
-          title: "Research-facing content will be organized in a more academic-homepage style.",
+          title: "Research directions, papers, competitions, reports, and achievements for both myself and the team",
           body:
-            "Over time, this block can gather research directions, publications, and preprints into one more stable research entry point.",
+            "",
           subsections: [
             {
               title: "Recent Interest",
-              body: "My current focus is gradually converging around agent applications, large-model capability boundaries, software intelligence, and deployment in real settings.",
+              body: "",
             },
             {
               title: "Publication",
-              body: "Formal papers and public academic outputs can be accumulated here over time with a cleaner and more readable timeline.",
+              body: ""
             },
             {
               title: "Preprint",
-              body: "Work still in progress can appear here first as preprints or stage-based public drafts, making the page easier to update continuously.",
+              body: "",
             },
           ],
         },
         {
           kicker: "Collaborators",
-          title: "Advisors, teammates, collaborators, and long-term partners can be presented together here.",
+          title: "Collaborators, including advisors, classmates, team members, and friendly links",
           body:
-            "Later this can be expanded by advisor, lab, team, or project relationship so the page reads more like a complete and structured academic profile.",
+            "",
         },
       ],
     },
