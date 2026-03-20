@@ -18,7 +18,7 @@ const { Content } = await render(entry);
       <p class="section-kicker">
         {entry.data.date.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US")} · {entry.data.kind}
       </p>
-      <h1 class="mt-4 font-display text-5xl text-text md:text-6xl">{entry.data.title}</h1>
+      <h1 class="mt-4 font-display text-[2.4rem] leading-[1.02] text-text md:text-[3.2rem]">{entry.data.title}</h1>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{entry.data.summary}</p>
     </div>
 
