@@ -23,19 +23,19 @@ const copy = getSiteCopy(locale);
         {copy.about.intro}
       </p>
 
-      <div class="mt-6 grid gap-3">
+      <div class="mt-6 flex flex-wrap gap-3">
         {copy.about.affiliations.map((item) =>
           item.href ? (
             <a
               href={item.href}
               target="_blank"
               rel="noreferrer"
-              class="inline-flex w-fit items-center gap-2 rounded-full border border-line bg-white/76 px-4 py-2 text-sm text-text transition-colors hover:border-line-strong hover:text-accent-deep md:text-base"
+              class="inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-line bg-white/76 px-4 py-2 text-sm text-text transition-colors hover:border-line-strong hover:text-accent-deep md:text-base"
             >
               {item.text}
             </a>
           ) : (
-            <p class="inline-flex w-fit items-center rounded-full border border-line bg-white/72 px-4 py-2 text-sm text-muted md:text-base">
+            <p class="inline-flex w-fit max-w-full items-center rounded-full border border-line bg-white/72 px-4 py-2 text-sm text-muted md:text-base">
               {item.text}
             </p>
           )
@@ -72,12 +72,12 @@ const copy = getSiteCopy(locale);
       </div>
 
       {copy.brand.aboutPortrait ? (
-        <aside class="paper-panel surface-rose rounded-[2.5rem] p-5">
-          <div class="overflow-hidden rounded-[2rem] border border-line bg-bg-soft">
+        <aside class="about-portrait-panel paper-panel rounded-[2.5rem] p-4 md:p-5">
+          <div class="about-portrait-frame overflow-hidden rounded-[2rem] border border-line bg-white/86">
             <img
               src={withBase(copy.brand.aboutPortrait)}
               alt={copy.brand.aboutPortraitAlt}
-              class="h-full w-full object-cover"
+              class="block h-full w-full object-cover"
             />
           </div>
         </aside>

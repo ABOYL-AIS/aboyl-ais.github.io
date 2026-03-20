@@ -15,9 +15,12 @@ const copy = getSiteCopy(locale);
 const pathWithoutLocale = stripLocaleFromPathname(pathname);
 const navWrapClass =
   locale === "en"
-    ? "flex items-center justify-center gap-1 text-[0.92rem] text-muted lg:gap-1.5 xl:gap-2"
+    ? "flex items-center justify-center gap-0.5 text-[0.84rem] text-muted lg:gap-1 xl:gap-1.5"
     : "flex items-center justify-center gap-2 text-sm text-muted";
-const navItemClass = locale === "en" ? "rounded-full px-2.5 py-1.5 transition-colors xl:px-3" : "rounded-full px-3 py-1.5 transition-colors";
+const navItemClass =
+  locale === "en"
+    ? "rounded-full px-2 py-1.5 transition-colors lg:px-2.5 xl:px-3"
+    : "rounded-full px-3 py-1.5 transition-colors";
 ---
 
 <header class="sticky top-0 z-30">
@@ -25,9 +28,9 @@ const navItemClass = locale === "en" ? "rounded-full px-2.5 py-1.5 transition-co
     <div class="hidden items-center gap-4 md:grid md:grid-cols-[minmax(0,1fr)_auto] xl:gap-6">
       <div class="paper-panel surface-rose rounded-full px-6 py-3">
         <div class="grid items-center gap-8 md:grid-cols-[auto_1fr]">
-          <a href={withBase(localizePath(locale, "/"))} class="flex items-center gap-3 text-text">
+          <a href={withBase(localizePath(locale, "/"))} class="flex min-w-0 items-center gap-3 text-text">
             {copy.brand.markImage ? (
-              <span class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-line-strong bg-white/90 shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-line-strong bg-white/90 shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
                 <img
                   src={withBase(copy.brand.markImage)}
                   alt={copy.brand.markImageAlt}
@@ -35,11 +38,11 @@ const navItemClass = locale === "en" ? "rounded-full px-2.5 py-1.5 transition-co
                 />
               </span>
             ) : (
-              <span class="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong bg-white/90 font-display text-lg font-semibold text-accent-deep shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line-strong bg-white/90 font-display text-lg font-semibold text-accent-deep shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
                 {copy.brand.markLetter}
               </span>
             )}
-            <div>
+            <div class="min-w-0">
               {copy.brand.wordmarkImage ? (
                 <img
                   src={withBase(copy.brand.wordmarkImage)}
@@ -49,7 +52,9 @@ const navItemClass = locale === "en" ? "rounded-full px-2.5 py-1.5 transition-co
               ) : (
                 <p class="font-display text-lg leading-none">{copy.name}</p>
               )}
-              <p class="mt-1 text-xs tracking-[0.2em] text-muted">{copy.brand.editionLabel}</p>
+              <p class="mt-1 max-w-[11rem] text-[0.68rem] leading-[1.2] tracking-[0.16em] text-muted">
+                {copy.brand.editionLabel}
+              </p>
             </div>
           </a>
 
@@ -95,9 +100,9 @@ const navItemClass = locale === "en" ? "rounded-full px-2.5 py-1.5 transition-co
     <div class="md:hidden">
       <div class="paper-panel rounded-[2rem] px-5 py-3">
         <div class="flex items-center justify-between gap-6">
-          <a href={withBase(localizePath(locale, "/"))} class="flex items-center gap-3 text-text">
+          <a href={withBase(localizePath(locale, "/"))} class="flex min-w-0 items-center gap-3 text-text">
             {copy.brand.markImage ? (
-              <span class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-line-strong bg-white/90 shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-line-strong bg-white/90 shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
                 <img
                   src={withBase(copy.brand.markImage)}
                   alt={copy.brand.markImageAlt}
@@ -105,11 +110,11 @@ const navItemClass = locale === "en" ? "rounded-full px-2.5 py-1.5 transition-co
                 />
               </span>
             ) : (
-              <span class="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong bg-white/90 font-display text-lg font-semibold text-accent-deep shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line-strong bg-white/90 font-display text-lg font-semibold text-accent-deep shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
                 {copy.brand.markLetter}
               </span>
             )}
-            <div>
+            <div class="min-w-0">
               {copy.brand.wordmarkImage ? (
                 <img
                   src={withBase(copy.brand.wordmarkImage)}
@@ -119,7 +124,9 @@ const navItemClass = locale === "en" ? "rounded-full px-2.5 py-1.5 transition-co
               ) : (
                 <p class="font-display text-lg leading-none">{copy.name}</p>
               )}
-              <p class="mt-1 text-xs tracking-[0.2em] text-muted">{copy.brand.editionLabel}</p>
+              <p class="mt-1 max-w-[10.5rem] text-[0.68rem] leading-[1.2] tracking-[0.16em] text-muted">
+                {copy.brand.editionLabel}
+              </p>
             </div>
           </a>
 

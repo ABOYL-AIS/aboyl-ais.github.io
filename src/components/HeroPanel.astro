@@ -1,6 +1,7 @@
 ---
 import type { Locale } from "../i18n/config";
 import { getSiteCopy } from "../data/site";
+import { withBase } from "../utils/paths";
 
 interface Props {
   locale: Locale;
@@ -50,19 +51,29 @@ const copy = getSiteCopy(locale);
         </div>
 
         <div class="hero-visual__frame mt-5">
-          <div class="anime-figure">
-            <div class="anime-figure__halo"></div>
-            <div class="anime-figure__moon"></div>
-            <div class="anime-figure__veil"></div>
-            <div class="anime-figure__petal anime-figure__petal--1"></div>
-            <div class="anime-figure__petal anime-figure__petal--2"></div>
-            <div class="anime-figure__petal anime-figure__petal--3"></div>
-            <div class="anime-figure__hair"></div>
-            <div class="anime-figure__face"></div>
-            <div class="anime-figure__neck"></div>
-            <div class="anime-figure__shoulder"></div>
-            <div class="anime-figure__ribbon"></div>
-          </div>
+          {copy.hero.visualImage ? (
+            <img
+              src={withBase(copy.hero.visualImage)}
+              alt={copy.hero.visualImageAlt}
+              class="hero-visual__image"
+              loading="eager"
+              decoding="async"
+            />
+          ) : (
+            <div class="anime-figure">
+              <div class="anime-figure__halo"></div>
+              <div class="anime-figure__moon"></div>
+              <div class="anime-figure__veil"></div>
+              <div class="anime-figure__petal anime-figure__petal--1"></div>
+              <div class="anime-figure__petal anime-figure__petal--2"></div>
+              <div class="anime-figure__petal anime-figure__petal--3"></div>
+              <div class="anime-figure__hair"></div>
+              <div class="anime-figure__face"></div>
+              <div class="anime-figure__neck"></div>
+              <div class="anime-figure__shoulder"></div>
+              <div class="anime-figure__ribbon"></div>
+            </div>
+          )}
         </div>
 
         <div class="mt-5 flex items-end justify-between gap-4">

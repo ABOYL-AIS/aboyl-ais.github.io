@@ -43,6 +43,8 @@ type SiteCopy = {
     note: string;
     visualKicker: string;
     palette: string;
+    visualImage: string;
+    visualImageAlt: string;
     visualCaption: string;
     visualTag: string;
     scopeKicker: string;
@@ -233,6 +235,8 @@ const siteCopy: Record<Locale, SiteCopy> = {
       note: "内容优先 / 轻主视觉 / 低饱和配色 / GitHub Pages & Vercel Ready",
       visualKicker: "Main Visual",
       palette: "Mist Blue · Sakura Pink",
+      visualImage: "/images/hero/main-visual.jpg",
+      visualImageAlt: "Anime-style homepage visual",
       visualCaption: "主视觉更像一张情绪插页，只给首页留下一点辨识度，不抢走阅读的重心。",
       visualTag: "Editorial Anime",
       scopeKicker: "Site Scope",
@@ -320,7 +324,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       metaDescription: "关于 ABOYL-AIS",
       kicker: "About",
       title: "INFJ | Qi Liu（刘琪）",
-      intro: "把当前学术阶段、下一阶段去向与团队身份更清楚地放在同一层呈现。",
+      intro: "攀至小坡，仰高山远上!同不失道上所景，亦可伴偕侧良人，向阳逐心中所念!",
       affiliations: [
         { text: "西北大学（中国）软件工程本科在读", href: "https://www.nwu.edu.cn/" },
         { text: "上海交通大学直博博士生（待入学）", href: "https://www.sjtu.edu.cn/" },
@@ -449,6 +453,8 @@ const siteCopy: Record<Locale, SiteCopy> = {
       note: "Content first / Light main visual / Low-saturation palette / GitHub Pages & Vercel Ready",
       visualKicker: "Main Visual",
       palette: "Mist Blue · Sakura Pink",
+      visualImage: "/images/hero/main-visual.jpg",
+      visualImageAlt: "Anime-style homepage visual",
       visualCaption: "The hero visual behaves more like an editorial insert: enough identity for the homepage, without stealing attention from reading.",
       visualTag: "Editorial Anime",
       scopeKicker: "Site Scope",
@@ -536,7 +542,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       metaDescription: "About ABOYL-AIS",
       kicker: "About",
       title: "INFJ | Qi Liu（刘琪）",
-      intro: "A clearer profile layer for current study, next academic step, and team leadership.",
+      intro: "Climb the hill, look up to the distant mountains! You can enjoy the view and chase your dreams with good company along the way!",
       affiliations: [
         {
           text: "Senior undergraduate student in Software Engineering @ Northwest University (China)",

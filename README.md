@@ -276,6 +276,14 @@ image: /images/gallery/example.svg
 - `brand.wordmarkImage`
 - `brand.aboutPortrait`
 
+当前首页与品牌视觉资源：
+
+- 浏览器页签图标：`public/favicon.jpg`
+- 首页主视觉图：`public/images/hero/main-visual.jpg`
+- 首页背景图：`public/images/covers/background.png`
+
+建议背景图仅用于首页氛围层，不要全站铺满，以免影响内容页阅读。
+
 ### 新增项目
 
 在 `src/content/zh/projects/` 或 `src/content/en/projects/` 下新增一个 `md` 文件，至少填写：
