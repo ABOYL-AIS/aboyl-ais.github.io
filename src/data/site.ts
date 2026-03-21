@@ -55,11 +55,6 @@ type SiteCopy = {
     }>;
   };
   home: {
-    designPrinciple: {
-      kicker: string;
-      title: string;
-      body: string;
-    };
     selectedProjects: {
       kicker: string;
       title: string;
@@ -214,7 +209,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       kicker: "Quiet Presence",
       title: "欢迎来到 ABOYL-AIS",
       intro:
-        "我是刘琪，一名偏 INFJ 气质、重视长期主义表达的学生研究者。这里会持续整理我与团队正在做的项目、研究、笔记，以及一些个人化的图像收藏。",
+        "我是一名偏 INFJ 气质、重视长期主义表达的学生研究者。这里会持续整理我与团队正在做的项目、研究、笔记，以及一些个人化的图像收藏。",
       note: "Agent 研究 / 项目实践 / 团队建设 / 长期写作 / 图像收藏",
       visualKicker: "Main Visual",
       visualImage: "/images/hero/main-visual.jpg",
@@ -261,30 +256,25 @@ const siteCopy: Record<Locale, SiteCopy> = {
       ],
     },
     home: {
-      designPrinciple: {
-        kicker: "Design Principle",
-        title: "我偏爱低饱和、轻二次元、重排版的个人表达，也希望这个网站长期保持克制、安静、可阅读。",
-        body: "比起把首页做成强展示型模板，我更希望它像一份持续更新的个人归档：保留柔和的视觉气质，强调文字、留白与秩序，让项目、研究、笔记和图像都能自然地被放进来。",
-      },
       selectedProjects: {
         kicker: "Selected Projects",
-        title: "这里放目前更接近真实状态的项目与公开成果。",
-        intro: "它们不是单纯的作品集陈列，而是我这条个人路径里真正持续推进的工作。",
+        title: "个人 & 团队 代表性项目成果",
+        intro: "",
       },
       research: {
         kicker: "Research",
-        title: "研究总结、报告与阶段性成果也会放在同一条公开线索里。",
-        intro: "和项目相比，Research 更偏正式输出，用来承载研究兴趣、阶段总结与可公开展示的结果。",
+        title: "个人 & 团队 代表性研究成果",
+        intro: "",
       },
       notes: {
         kicker: "Notes",
-        title: "笔记用于放置那些还在生长中的思考与记录。",
-        intro: "有些内容还不适合写成正式项目或研究，于是先在 Notes 里留下过程、判断与一些更个人的文字。",
+        title: "INFJ-绿老头的深度思考与记录",
+        intro: "",
       },
       galleryPreview: {
         kicker: "Gallery Preview",
         title: "美好照片与你分享!",
-        intro: "这里会随机展示一部分收藏的网络图片和生活实拍，让首页保留一点轻松和呼吸感。",
+        intro: "",
       },
     },
     about: {
@@ -500,7 +490,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       kicker: "Quiet Presence",
       title: "Welcome to ABOYL-AIS",
       intro:
-        "I am Qi Liu, a student researcher with a distinctly INFJ temperament and a strong preference for long-term expression. This site gradually gathers the projects, research, notes, and image collections that matter to me and my team.",
+        "I am a student researcher with a distinctly INFJ temperament and a strong preference for long-term expression. This site gradually gathers the projects, research, notes, and image collections that matter to me and my team.",
       note: "Agent research / project building / team leadership / long-form writing / image collection",
       visualKicker: "Main Visual",
       visualImage: "/images/hero/main-visual.jpg",
@@ -547,38 +537,32 @@ const siteCopy: Record<Locale, SiteCopy> = {
       ],
     },
     home: {
-      designPrinciple: {
-        kicker: "Design Principle",
-        title:
-          "I prefer a low-saturation, anime-adjacent, typography-led personal style, and I want this site to stay quiet, restrained, and readable over time.",
-        body: "Rather than turning the homepage into a hard-selling showcase template, I want it to feel like a personal archive in progress: soft in tone, ordered in layout, and flexible enough to hold projects, research, notes, and images together.",
-      },
       selectedProjects: {
         kicker: "Selected Projects",
         title:
-          "This section holds the projects and public outcomes that feel closest to my real work right now.",
+          "A showcase of representative project outcomes for both myself and my team.",
         intro:
-          "They are not here to imitate a portfolio template, but to document the work I am actually continuing to build.",
+          "",
       },
       research: {
         kicker: "Research",
         title:
-          "Research summaries, reports, and stage-level outputs remain on the same public thread.",
+          "A showcase of representative research outcomes for both myself and my team.",
         intro:
-          "Compared with projects, the Research section is more formal, and is used for research interests, structured summaries, and results that can be shared publicly.",
+          "",
       },
       notes: {
         kicker: "Notes",
-        title: "Notes keeps the thoughts and records that are still growing.",
+        title: "Some deep thoughts from an INFJ-Green Older......",
         intro:
-          "Some things are not ready to become formal projects or research entries yet, so they stay in Notes first as process, judgment, and more personal writing.",
+          "",
       },
       galleryPreview: {
         kicker: "Gallery Preview",
         title:
-          "A few images and personal photos keep some breath and softness on the homepage.",
+          "Sharing small, beautiful images!",
         intro:
-          "This area randomly shows part of my collected internet images and life photos, so the homepage keeps a lighter visual rhythm.",
+          "",
       },
     },
     about: {
