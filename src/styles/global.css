@@ -143,12 +143,11 @@ a {
   pointer-events: none;
   background:
     linear-gradient(180deg, rgba(252, 249, 244, 0.24), rgba(252, 249, 244, 0.34)),
-    radial-gradient(circle at top left, rgba(246, 226, 233, 0.06), transparent 32%),
-    url("/images/covers/background.png");
-  background-size: cover, auto, cover;
-  background-position: center, top left, center 8%;
+    radial-gradient(circle at top left, rgba(246, 226, 233, 0.06), transparent 32%);
+  background-size: cover, auto;
+  background-position: center, top left;
   background-repeat: no-repeat;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .page-shell::after {
@@ -305,7 +304,8 @@ a {
 .section-kicker {
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
+  line-height: 1.2;
   color: var(--accent-deep);
 }
 
