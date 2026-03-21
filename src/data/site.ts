@@ -75,6 +75,11 @@ type SiteCopy = {
       title: string;
       intro: string;
     };
+    quote: {
+      kicker: string;
+      title: string;
+      intro: string;
+    };
     galleryPreview: {
       kicker: string;
       title: string;
@@ -208,20 +213,30 @@ const siteCopy: Record<Locale, SiteCopy> = {
       viewCollection: "查看收藏",
       roleLabel: "定位",
       venueLabel: "载体",
+      favoriteQuote: "Favorite Quote",
       closingNote: "Closing Note",
     },
     hero: {
+      label: "PERSONAL EDITION",
       kicker: "Quiet Presence",
       title: "欢迎来到ABOYL-AIS个人主页",
       intro:
-        "我是刘琪，一名偏 INFJ 气质、重视长期主义表达的学生研究者。这里会持续整理我与团队正在做的项目、研究、笔记，以及一些个人化的图像收藏。",
-      note: "Agent 研究 / 项目实践 / 团队建设 / 长期写作 / 图像收藏",
+        "在这里将向你展示我&我的团队所研究、研发的一些有意思的工作和产品！",
+      note: "学术论文 / 开源技术 / 项目成果 / 图文收藏 / 个人表达",
       visualKicker: "Main Visual",
+      palette: "Mist Blue · Sakura Pink",
       visualImage: "/images/hero/main-visual.jpg",
       visualImageAlt: "Anime-style homepage visual",
-      visualTitle: "INFJ · 温和、克制，也习惯长期思考",
-      visualIntro:
-        "我更在意长期主义的表达方式，而不是一次性堆满信息。这个站点会持续承载我的研究兴趣、项目实践、团队建设，以及一些更私人的文字与审美偏好。",
+      visualCaption:
+        "主视觉更像一张情绪插页，只给首页留下一点辨识度，不抢走阅读的重心。",
+      visualTag: "Editorial Anime",
+      scopeKicker: "Site Scope",
+      facts: [
+        { label: "气质方向", value: "柔和 · 克制 · 典雅" },
+        { label: "内容核心", value: "排版优先" },
+        { label: "部署方式", value: "GitHub Pages / Vercel" },
+      ],
+      status: ["项目", "论文", "记录", "图集", "语句集合"],
     },
     footer: {
       note: "欢迎随时联系，期待您的交流！",
@@ -263,32 +278,74 @@ const siteCopy: Record<Locale, SiteCopy> = {
     home: {
       designPrinciple: {
         kicker: "Design Principle",
-        title: "我偏爱低饱和、轻二次元、重排版的个人表达，也希望这个网站长期保持克制、安静、可阅读。",
-        body: "比起把首页做成强展示型模板，我更希望它像一份持续更新的个人归档：保留柔和的视觉气质，强调文字、留白与秩序，让项目、研究、笔记和图像都能自然地被放进来。",
+        title: "保留一点二次元主视觉的气息，但让图片只做点缀。",
+        body: "真正支撑整个网站的，是排版、留白、层级和内容组织。当前版本先把长期维护的基础结构搭稳：页面不是模板拼装，内容也不被某一种展示形式锁死。",
+      },
+      structure: {
+        kicker: "Homepage Structure",
+        title: "首页负责建立气质与层级，而不是试图解释一切。",
+        intro:
+          "这里保留卡片式入口，但把模板味压低，让每个区块更像一张安静的内容索引卡。",
+      },
+      highlights: [
+        {
+          kicker: "About",
+          title:
+            "个人信息、背景、关键词、技能与兴趣会集中在 About 中完整展开。",
+          body: "首页只给出清晰入口，详细自我介绍留在单独页面，保持阅读节奏和信息密度。",
+          href: "/about/",
+          tone: "rose",
+          className: "lg:col-span-2",
+        },
+        {
+          kicker: "Research",
+          title: "论文、竞赛、报告与成果统一进入 Research。",
+          body: "研究型内容共享一套更正式的展示框架，但通过类型字段区分它们的语义与语气。",
+          href: "/research/",
+          tone: "neutral",
+        },
+        {
+          kicker: "Gallery",
+          title: "图集、二次元收藏、Favorite Quotes 与图文碎片进入 Gallery。",
+          body: "审美表达被保留，但始终作为节奏和氛围的一部分，不压过内容本身。",
+          href: "/gallery/",
+          tone: "soft",
+        },
+      ],
+      keywordCard: {
+        kicker: "Keywords",
+        body: "方向关键词会在 About 中作为更完整的个人信息展开。",
+        href: "/about/",
+        tone: "soft",
       },
       selectedProjects: {
         kicker: "Selected Projects",
-        title: "这里放目前更接近真实状态的项目与公开成果。",
+        title: "个人 & 团队 代表性项目",
         intro:
-          "它们不是单纯的作品集陈列，而是我这条个人路径里真正持续推进的工作。",
+          "",
       },
       research: {
         kicker: "Research",
-        title: "研究总结、报告与阶段性成果也会放在同一条公开线索里。",
+        title: "个人 & 团队 代表性论文",
         intro:
-          "和项目相比，Research 更偏正式输出，用来承载研究兴趣、阶段总结与可公开展示的结果。",
+          "",
       },
       notes: {
         kicker: "Notes",
-        title: "笔记用于放置那些还在生长中的思考与记录。",
+        title: "INFJ深度思考分享......",
         intro:
-          "有些内容还不适合写成正式项目或研究，于是先在 Notes 里留下过程、判断与一些更个人的文字。",
+          "",
+      },
+      quote: {
+        kicker: "Quote",
+        title: "美好照片与你分享!",
+        intro: "",
       },
       galleryPreview: {
         kicker: "Gallery Preview",
-        title: "收藏的图片与生活照片，让页面保留一点轻松和呼吸感。",
+        title: "美好照片与你分享!",
         intro:
-          "这里会放一些喜欢的网络图片和生活实拍，它们不承担信息说明，只负责补充气质。",
+          "",
       },
     },
     about: {
@@ -498,20 +555,31 @@ const siteCopy: Record<Locale, SiteCopy> = {
       viewCollection: "View collection",
       roleLabel: "Role",
       venueLabel: "Venue",
+      favoriteQuote: "Favorite Quote",
       closingNote: "Closing Note",
     },
     hero: {
+      label: "PERSONAL EDITION",
       kicker: "Quiet Presence",
-      title: "Welcome to ABOYL-AIS",
+      title:
+        "Let personal expression settle softly,\nand let content keep growing.",
       intro:
-        "I am Qi Liu, a student researcher with a distinctly INFJ temperament and a strong preference for long-term expression. This site gradually gathers the projects, research, notes, and image collections that matter to me and my team.",
-      note: "Agent research / project building / team leadership / long-form writing / image collection",
+        "This is not an academic homepage, a corporate site, or a typical developer portfolio. It is a restrained, soft, extensible personal brand archive for projects, research, notes, and aesthetic fragments.",
+      note: "Content first / Light main visual / Low-saturation palette / GitHub Pages & Vercel Ready",
       visualKicker: "Main Visual",
+      palette: "Mist Blue · Sakura Pink",
       visualImage: "/images/hero/main-visual.jpg",
       visualImageAlt: "Anime-style homepage visual",
-      visualTitle: "INFJ · gentle, restrained, and inclined toward long-term thinking",
-      visualIntro:
-        "I care more about building a long-term line of expression than displaying everything at once. This site will keep carrying my research interests, project practice, team building, and some more personal writing and aesthetic preferences.",
+      visualCaption:
+        "The hero visual behaves more like an editorial insert: enough identity for the homepage, without stealing attention from reading.",
+      visualTag: "Editorial Anime",
+      scopeKicker: "Site Scope",
+      facts: [
+        { label: "Visual tone", value: "Soft · Restrained · Elegant" },
+        { label: "Content core", value: "Typography first" },
+        { label: "Deployment", value: "GitHub Pages / Vercel" },
+      ],
+      status: ["Projects", "Papers", "Notes", "Gallery", "Quotes"],
     },
     footer: {
       note: "Feel free to reach out. I would be glad to hear from you.",
@@ -554,35 +622,81 @@ const siteCopy: Record<Locale, SiteCopy> = {
       designPrinciple: {
         kicker: "Design Principle",
         title:
-          "I prefer a low-saturation, anime-adjacent, typography-led personal style, and I want this site to stay quiet, restrained, and readable over time.",
-        body: "Rather than turning the homepage into a hard-selling showcase template, I want it to feel like a personal archive in progress: soft in tone, ordered in layout, and flexible enough to hold projects, research, notes, and images together.",
+          "Keep a trace of anime softness in the hero, but let imagery stay secondary.",
+        body: "What truly holds the site together is typography, spacing, hierarchy, and content structure. The current version stabilizes the long-term foundation before expanding the archive further.",
+      },
+      structure: {
+        kicker: "Homepage Structure",
+        title:
+          "The homepage sets tone and hierarchy. It does not need to explain everything.",
+        intro:
+          "The card structure stays, but the template feel is reduced so each block reads like a quiet editorial index.",
+      },
+      highlights: [
+        {
+          kicker: "About",
+          title:
+            "Personal info, background, keywords, skills, and interests are fully presented in the About page.",
+          body: "",
+          href: "/about/",
+          tone: "rose",
+          className: "lg:col-span-2",
+        },
+        {
+          kicker: "Research",
+          title:
+            "Papers, competitions, reports, and achievements are unified in Research.",
+          body: "",
+          href: "/research/",
+          tone: "neutral",
+        },
+        {
+          kicker: "Gallery",
+          title:
+            "",
+          body: "Aesthetic expression stays present, but always as part of rhythm and atmosphere rather than the dominant voice.",
+          href: "/gallery/",
+          tone: "soft",
+        },
+      ],
+      keywordCard: {
+        kicker: "Keywords",
+        body: "These directional keywords are unpacked more fully on the About page.",
+        href: "/about/",
+        tone: "soft",
       },
       selectedProjects: {
         kicker: "Selected Projects",
         title:
-          "This section holds the projects and public outcomes that feel closest to my real work right now.",
+          "Projects are visible here, without turning the whole site into a portfolio template.",
         intro:
-          "They are not here to imitate a portfolio template, but to document the work I am actually continuing to build.",
+          "Projects are one part of the archive, not its entire identity. This section presents ongoing modules, focused experiments, and public outcomes.",
       },
       research: {
         kicker: "Research",
         title:
-          "Research summaries, reports, and stage-level outputs remain on the same public thread.",
+          "Papers, competitions, reports, and achievements share the same formal layer.",
         intro:
-          "Compared with projects, the Research section is more formal, and is used for research interests, structured summaries, and results that can be shared publicly.",
+          "The Research page is meant for more formal outputs, keeping them from being scattered between ordinary notes and project lists.",
       },
       notes: {
         kicker: "Notes",
-        title: "Notes keeps the thoughts and records that are still growing.",
+        title: "Notes and essays keep their own weight and rhythm.",
         intro:
-          "Some things are not ready to become formal projects or research entries yet, so they stay in Notes first as process, judgment, and more personal writing.",
+          "Notes collects technical records, idea fragments, stage summaries, and long-term writing in progress.",
+      },
+      quote: {
+        kicker: "Quote",
+        title: "A small space is reserved for lines worth revisiting.",
+        intro:
+          "Quotes are not buried inside article lists. They remain a lighter, more private entry point.",
       },
       galleryPreview: {
         kicker: "Gallery Preview",
         title:
-          "Collected images and personal photos keep a little room for breath and softness.",
+          "Let images support the atmosphere instead of becoming the page itself.",
         intro:
-          "This space holds favorite internet images and photos from life. They are not here to explain information, only to extend the mood of the site.",
+          "These previews keep visuals present, but typography still leads the reading rhythm and structure.",
       },
     },
     about: {
