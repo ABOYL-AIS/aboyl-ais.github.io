@@ -4,12 +4,12 @@ import ProjectCard from "../components/ProjectCard.astro";
 import ResearchCard from "../components/ResearchCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import WritingCard from "../components/WritingCard.astro";
-import BentoCard from "../components/BentoCard.astro";
 import { getSiteCopy } from "../data/site";
 import type { Locale } from "../i18n/config";
 import { localizePath } from "../i18n/config";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getLocalizedCollection, getEntrySlug } from "../utils/content";
+import { withBase } from "../utils/paths";
 
 interface Props {
   locale: Locale;
@@ -17,6 +17,15 @@ interface Props {
 
 const { locale } = Astro.props;
 const copy = getSiteCopy(locale);
+
+function shuffleEntries<T>(items: T[]) {
+  const shuffled = [...items];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
 
 const projects = (await getLocalizedCollection("projects", locale))
   .filter((entry) => entry.data.featured)
@@ -30,10 +39,11 @@ const notes = (await getLocalizedCollection("notes", locale))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
 
-const galleryPreview = (await getLocalizedCollection("gallery", locale))
+const galleryPreview = shuffleEntries(
+  (await getLocalizedCollection("gallery", locale))
   .filter((entry) => entry.data.kind !== "Quote")
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 2);
+  .filter((entry) => Boolean(entry.data.image))
+).slice(0, 4);
 
 const projectGridClass =
   projects.length > 1 ? "mt-10 grid gap-6 lg:grid-cols-2" : "mt-10";
@@ -132,16 +142,28 @@ const researchGridClass =
       intro={copy.home.galleryPreview.intro}
     />
 
-    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
       {galleryPreview.map((entry) => (
-        <BentoCard
-          kicker={entry.data.medium}
-          title={entry.data.title}
-          body={entry.data.summary}
+        <a
           href={localizePath(locale, `/gallery/${getEntrySlug(entry.id)}/`)}
-          tone="soft"
-          viewLabel={copy.common.viewContent}
-        />
+          class="gallery-image-tile paper-panel block overflow-hidden rounded-[2rem]"
+        >
+          <div class="aspect-[4/5] overflow-hidden">
+            <img
+              src={withBase(entry.data.image!)}
+              alt={entry.data.title}
+              loading="lazy"
+              class="gallery-image-tile__image h-full w-full object-cover"
+            />
+          </div>
+          <div class="px-5 py-5">
+            <p class="section-kicker">{entry.data.medium}</p>
+            <h3 class="mt-3 font-display text-[1.65rem] leading-[1.02] text-text">
+              {entry.data.title}
+            </h3>
+            <p class="mt-3 text-sm leading-7 text-muted">{entry.data.summary}</p>
+          </div>
+        </a>
       ))}
     </div>
   </section>
