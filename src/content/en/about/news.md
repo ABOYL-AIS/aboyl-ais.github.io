@@ -6,13 +6,10 @@ title: Latest updates and milestone moments for myself and the team
 timeline:
   - date: 2022.09-2026.07
     title: Undergraduate in Software Engineering, School of Computer Science (Software School), Northwest University, expected to graduate in July 2026
-    body: This period forms the main starting stage of my work in software engineering, competitions, research, and team organization.
   - date: 2025.09-present
     title: Founded AIS (Advanced Informatics Scholar), a student team that is now being gradually built and led
-    body: The team homepage is still under construction, and the public GitHub organization is currently the main entrance.
     href: https://github.com/Advanced-Informatics-Scholar
     linkLabel: GitHub
   - date: 2026.09-present (future)
     title: Direct-entry PhD at the School of Computer Science, Shanghai Jiao Tong University
-    body: I was successfully admitted through postgraduate recommendation in September 2025, and will continue future work there in the direct PhD track.
 ---
