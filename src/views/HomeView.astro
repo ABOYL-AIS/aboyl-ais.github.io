@@ -1,11 +1,10 @@
 ---
 import HeroPanel from "../components/HeroPanel.astro";
-import BentoCard from "../components/BentoCard.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import QuoteCard from "../components/QuoteCard.astro";
 import ResearchCard from "../components/ResearchCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import WritingCard from "../components/WritingCard.astro";
+import BentoCard from "../components/BentoCard.astro";
 import { getSiteCopy } from "../data/site";
 import type { Locale } from "../i18n/config";
 import { localizePath } from "../i18n/config";
@@ -31,14 +30,15 @@ const notes = (await getLocalizedCollection("notes", locale))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
 
-const quote = (await getLocalizedCollection("gallery", locale))
-  .filter((entry) => entry.data.kind === "Quote")
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())[0];
-
 const galleryPreview = (await getLocalizedCollection("gallery", locale))
   .filter((entry) => entry.data.kind !== "Quote")
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
+
+const projectGridClass =
+  projects.length > 1 ? "mt-10 grid gap-6 lg:grid-cols-2" : "mt-10";
+const researchGridClass =
+  research.length > 1 ? "mt-10 grid gap-6 lg:grid-cols-2" : "mt-10";
 ---
 
 <BaseLayout locale={locale} htmlClass="home-snap-page" bodyClass="home-snap-page">
@@ -56,43 +56,12 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
 
   <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 md:px-8">
     <SectionHeading
-      kicker={copy.home.structure.kicker}
-      title={copy.home.structure.title}
-      intro={copy.home.structure.intro}
-    />
-
-    <div class="mt-10 grid gap-6 lg:grid-cols-3">
-      {copy.home.highlights.map((item) => (
-        <BentoCard
-          kicker={item.kicker}
-          title={item.title}
-          body={item.body}
-          tone={item.tone}
-          href={localizePath(locale, item.href)}
-          className={item.className}
-          viewLabel={copy.common.viewContent}
-        />
-      ))}
-
-      <BentoCard
-        kicker={copy.home.keywordCard.kicker}
-        title={copy.about.profile.keywords.join(" · ")}
-        body={copy.home.keywordCard.body}
-        href={localizePath(locale, copy.home.keywordCard.href)}
-        tone={copy.home.keywordCard.tone}
-        viewLabel={copy.common.viewContent}
-      />
-    </div>
-  </section>
-
-  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 md:px-8">
-    <SectionHeading
       kicker={copy.home.selectedProjects.kicker}
       title={copy.home.selectedProjects.title}
       intro={copy.home.selectedProjects.intro}
     />
 
-    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+    <div class={projectGridClass}>
       {projects.map((entry) => (
         <ProjectCard
           title={entry.data.title}
@@ -118,7 +87,7 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
       intro={copy.home.research.intro}
     />
 
-    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+    <div class={researchGridClass}>
       {research.map((entry) => (
         <ResearchCard
           title={entry.data.title}
@@ -155,27 +124,6 @@ const galleryPreview = (await getLocalizedCollection("gallery", locale))
       ))}
     </div>
   </section>
-
-  {quote && (
-    <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 md:px-8">
-      <SectionHeading
-        kicker={copy.home.quote.kicker}
-        title={copy.home.quote.title}
-        intro={copy.home.quote.intro}
-      />
-
-      <div class="mt-10">
-        <QuoteCard
-          title={quote.data.title}
-          summary={quote.data.summary}
-          source={quote.data.source}
-          href={localizePath(locale, `/gallery/${getEntrySlug(quote.id)}/`)}
-          kickerLabel={copy.common.favoriteQuote}
-          viewLabel={copy.common.viewCollection}
-        />
-      </div>
-    </section>
-  )}
 
   <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
     <SectionHeading

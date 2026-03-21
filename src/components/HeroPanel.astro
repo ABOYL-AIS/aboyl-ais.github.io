@@ -17,18 +17,8 @@ const copy = getSiteCopy(locale);
     <span class="hero-stage__label">{copy.hero.kicker}</span>
   </div>
 
-  <div class="hero-stage__rail hero-stage__rail--right hidden xl:flex" aria-hidden="true">
-    <span class="hero-stage__petal"></span>
-    <span class="hero-stage__petal hero-stage__petal--small"></span>
-    <span class="hero-stage__label hero-stage__label--soft">{copy.hero.palette}</span>
-  </div>
-
   <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
     <div class="paper-panel card-lift surface-rose relative rounded-[2.8rem] px-7 py-10 md:px-10 md:py-12">
-      <div class="hero-panel__meta-chip absolute right-6 top-6 rounded-full border border-line bg-white/70 px-3 py-1 text-[0.65rem] tracking-[0.3em] text-accent-deep">
-        {copy.hero.label}
-      </div>
-
       <div class="max-w-3xl">
         <p class="section-kicker">{copy.hero.kicker}</p>
         <h1 class="mt-5 whitespace-pre-line font-display text-5xl leading-[0.92] text-text md:text-7xl">
@@ -45,12 +35,12 @@ const copy = getSiteCopy(locale);
 
     <aside class="grid gap-6">
       <div class="paper-panel card-lift hero-visual relative overflow-hidden rounded-[2.3rem] px-6 py-7 min-h-[24rem]">
-        <div class="flex items-start justify-between gap-3">
-          <p class="section-kicker">{copy.hero.visualKicker}</p>
-          <span class="soft-chip">{copy.hero.palette}</span>
-        </div>
+        <p class="section-kicker">{copy.hero.visualKicker}</p>
+        <h2 class="mt-4 max-w-xl font-display text-[2rem] leading-tight text-text md:text-[2.45rem]">
+          {copy.hero.visualTitle}
+        </h2>
 
-        <div class="hero-visual__frame mt-5">
+        <div class="hero-visual__frame mt-5 aspect-[6/5] overflow-hidden">
           {copy.hero.visualImage ? (
             <img
               src={withBase(copy.hero.visualImage)}
@@ -76,32 +66,9 @@ const copy = getSiteCopy(locale);
           )}
         </div>
 
-        <div class="mt-5 flex items-end justify-between gap-4">
-          <p class="hero-visual__caption">
-            {copy.hero.visualCaption}
-          </p>
-          <span class="soft-chip">{copy.hero.visualTag}</span>
-        </div>
-      </div>
-
-      <div class="paper-panel card-lift surface-mist rounded-[2rem] px-6 py-7">
-        <p class="section-kicker">{copy.hero.scopeKicker}</p>
-        <div class="mt-5 space-y-5">
-          {copy.hero.facts.map((fact) => (
-            <div class="border-b border-line pb-4 last:border-b-0 last:pb-0">
-              <p class="text-xs uppercase tracking-[0.22em] text-muted">{fact.label}</p>
-              <p class="mt-2 font-display text-2xl text-text">{fact.value}</p>
-            </div>
-          ))}
-        </div>
-
-        <div class="mt-6 flex flex-wrap gap-2">
-          {copy.hero.status.map((item) => (
-            <span class="hero-status-chip rounded-full border border-line bg-white/76 px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
-              {item}
-            </span>
-          ))}
-        </div>
+        <p class="hero-visual__caption mt-5">
+          {copy.hero.visualIntro}
+        </p>
       </div>
     </aside>
   </div>
