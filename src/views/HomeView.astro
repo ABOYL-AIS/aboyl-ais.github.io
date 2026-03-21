@@ -55,7 +55,7 @@ const researchGridClass =
 <BaseLayout locale={locale} htmlClass="home-snap-page" bodyClass="home-snap-page">
   <HeroPanel locale={locale} />
 
-  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 md:px-8">
+  <section class="home-snap-section mx-auto mt-14 max-w-6xl px-5 md:mt-20 md:px-8">
     <SectionHeading
       kicker={copy.home.selectedProjects.kicker}
       title={copy.home.selectedProjects.title}
@@ -81,7 +81,7 @@ const researchGridClass =
     </div>
   </section>
 
-  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
+  <section class="home-snap-section mx-auto mt-14 max-w-6xl px-5 pb-8 md:mt-20 md:px-8">
     <SectionHeading
       kicker={copy.home.research.kicker}
       title={copy.home.research.title}
@@ -107,14 +107,14 @@ const researchGridClass =
     </div>
   </section>
 
-  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
+  <section class="home-snap-section mx-auto mt-14 max-w-6xl px-5 pb-8 md:mt-20 md:px-8">
     <SectionHeading
       kicker={copy.home.notes.kicker}
       title={copy.home.notes.title}
       intro={copy.home.notes.intro}
     />
 
-    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+    <div class="mt-8 grid gap-5 md:mt-10 md:gap-6 lg:grid-cols-2">
       {notes.map((entry) => (
         <WritingCard
           title={entry.data.title}
@@ -128,16 +128,16 @@ const researchGridClass =
     </div>
   </section>
 
-  <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
+  <section class="home-snap-section mx-auto mt-14 max-w-6xl px-5 pb-8 md:mt-20 md:px-8">
     <p class="section-kicker">{copy.home.galleryPreview.kicker}</p>
-    <h2 class="mt-2 font-display text-[2.2rem] leading-[0.98] text-text md:text-[3rem]">
+    <h2 class="mt-2 font-display text-[clamp(2rem,10vw,3rem)] leading-[0.98] text-text">
       {copy.home.galleryPreview.title}
     </h2>
-    <div class="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+    <div class="mt-7 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-5 xl:grid-cols-4">
       {galleryPreview.map((entry) => (
         <a
           href={localizePath(locale, `/gallery/${getEntrySlug(entry.id)}/`)}
-          class="gallery-image-tile block overflow-hidden rounded-[1.9rem]"
+          class="gallery-image-tile block overflow-hidden rounded-[1.2rem] sm:rounded-[1.9rem]"
         >
           <div class="aspect-[4/5] overflow-hidden">
             <img

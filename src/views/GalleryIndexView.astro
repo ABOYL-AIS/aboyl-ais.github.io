@@ -58,7 +58,7 @@ const categories = await Promise.all(
   title={copy.collections.gallery.metaTitle}
   description={copy.collections.gallery.metaDescription}
 >
-  <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8" data-gallery-root data-default-category="avatar">
+  <section class="mx-auto max-w-6xl px-5 pt-12 md:px-8 md:pt-16" data-gallery-root data-default-category="avatar">
     <div class="w-full">
       <p class="section-kicker">{copy.collections.gallery.kicker}</p>
       <h1 class="mt-4 w-full max-w-none font-display text-[clamp(2.05rem,3.35vw,3.4rem)] leading-[0.96] tracking-[-0.02em] text-text">
@@ -69,11 +69,11 @@ const categories = await Promise.all(
       </p>
     </div>
 
-    <div class="gallery-filter-bar mt-10 flex flex-wrap gap-3">
+    <div class="gallery-filter-bar mt-8 flex gap-3 overflow-x-auto pb-1 md:mt-10 md:flex-wrap">
       {categories.map((category, index) => (
         <button
           type="button"
-          class:list={["gallery-filter", index === 0 && "is-active"]}
+          class:list={["gallery-filter shrink-0", index === 0 && "is-active"]}
           data-gallery-filter={category.id}
         >
           {category.label}
@@ -88,13 +88,13 @@ const categories = await Promise.all(
           hidden={index !== 0}
         >
           <p class="section-kicker">{category.title}</p>
-          <div class="gallery-image-wall mt-5 columns-1 gap-5 sm:columns-2 xl:columns-3">
+          <div class="gallery-image-wall mt-5 columns-2 gap-3 sm:gap-5 xl:columns-3">
             {category.images.map((image) => (
               <a
                 href={image.src}
                 target="_blank"
                 rel="noreferrer"
-                class="gallery-image-tile mb-5 block break-inside-avoid overflow-hidden rounded-[1.8rem]"
+                class="gallery-image-tile mb-3 block break-inside-avoid overflow-hidden rounded-[1.1rem] sm:mb-5 sm:rounded-[1.8rem]"
               >
                 <img
                   src={image.src}

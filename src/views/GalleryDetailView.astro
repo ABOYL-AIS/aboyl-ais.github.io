@@ -14,9 +14,9 @@ const { Content } = await render(entry);
 ---
 
 <BaseLayout locale={locale} title={`${entry.data.title} | ABOYL-AIS`} description={entry.data.summary}>
-  <article class="mx-auto max-w-4xl px-5 pt-16 md:px-8">
+  <article class="mx-auto max-w-4xl px-5 pt-12 md:px-8 md:pt-16">
     <div class:list={[
-      "paper-panel rounded-[2.5rem] px-7 py-9 md:px-10",
+      "paper-panel rounded-[2rem] px-5 py-7 md:rounded-[2.5rem] md:px-10 md:py-9",
       entry.data.kind === "Quote" ? "quote-wash" : "gallery-wash"
     ]}>
       <p class="section-kicker">
@@ -25,16 +25,16 @@ const { Content } = await render(entry);
         {" · "}
         {entry.data.medium}
       </p>
-      <h1 class="mt-4 font-display text-[2.4rem] leading-[1.02] text-text md:text-[3.2rem]">{entry.data.title}</h1>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{entry.data.summary}</p>
+      <h1 class="mt-4 font-display text-[clamp(2rem,10vw,3.2rem)] leading-[1.02] text-text">{entry.data.title}</h1>
+      <p class="mt-4 max-w-3xl text-[1rem] leading-7 text-muted md:mt-5 md:text-lg md:leading-8">{entry.data.summary}</p>
       {entry.data.image && (
-        <div class="mt-6 overflow-hidden rounded-[1.8rem] border border-line bg-bg-soft">
-          <img src={withBase(entry.data.image)} alt={entry.data.title} class="h-72 w-full object-cover" loading="lazy" />
+        <div class="mt-6 overflow-hidden rounded-[1.5rem] border border-line bg-bg-soft p-2 md:rounded-[1.8rem]">
+          <img src={withBase(entry.data.image)} alt={entry.data.title} class="max-h-[70svh] w-full rounded-[1.1rem] object-contain md:rounded-[1.25rem]" loading="lazy" />
         </div>
       )}
     </div>
 
-    <div class="rich-copy paper-panel mt-8 rounded-[2rem] px-7 py-8 md:px-10">
+    <div class="rich-copy paper-panel mt-8 rounded-[1.8rem] px-5 py-6 md:rounded-[2rem] md:px-10 md:py-8">
       <Content />
     </div>
   </article>

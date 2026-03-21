@@ -901,3 +901,51 @@ a {
   justify-content: flex-end;
   align-items: center;
 }
+
+@media (max-width: 767px) {
+  .inline-link {
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+  }
+
+  .rich-copy p,
+  .rich-copy ul {
+    line-height: 1.85;
+  }
+
+  .hero-visual__frame {
+    padding: 0.65rem;
+    border-radius: 1.35rem;
+  }
+
+  .hero-visual__image {
+    border-radius: 1rem;
+  }
+
+  .hero-visual__caption {
+    font-size: 0.98rem;
+    line-height: 1.8;
+  }
+
+  .anime-figure {
+    height: 15rem;
+    width: min(100%, 17rem);
+  }
+
+  .gallery-filter {
+    padding: 0.62rem 1rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+  }
+
+  .toggle-cluster {
+    gap: 0.22rem;
+    padding: 0.16rem;
+  }
+
+  .toggle-chip {
+    padding: 0.48rem 0.78rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+  }
+}

@@ -17,8 +17,8 @@ const github = copy.footer.contacts.find((item) => item.kind === "github");
 const team = copy.footer.contacts.find((item) => item.kind === "team");
 ---
 
-<footer class="mx-auto mt-24 max-w-6xl px-5 pb-10 md:px-8">
-  <div class="paper-panel card-lift surface-mist relative rounded-[2.2rem] px-6 py-8 md:px-10">
+<footer class="mx-auto mt-16 max-w-6xl px-5 pb-8 md:mt-24 md:px-8 md:pb-10">
+  <div class="paper-panel card-lift surface-mist relative rounded-[2rem] px-5 py-6 md:rounded-[2.2rem] md:px-10 md:py-8">
     <img
       src={withBase("/favicon.jpg")}
       alt={`${copy.name} favicon`}
@@ -27,14 +27,14 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
     <div class="max-w-3xl pr-0 md:pr-28">
       <p class="section-kicker">{copy.common.closingNote}</p>
       <p class="mt-3 font-display text-2xl text-text md:text-3xl">{copy.name}</p>
-      <p class="mt-3 text-base leading-8 text-muted">{copy.footer.note}</p>
+      <p class="mt-3 text-[0.98rem] leading-7 text-muted md:text-base md:leading-8">{copy.footer.note}</p>
       <p class="mt-2 text-sm leading-7 text-muted md:text-base">{copy.footer.tagline}</p>
     </div>
 
-    <div class="mt-8 space-y-5">
-      <div class="grid gap-4 lg:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_13.5rem_13.5rem]">
+    <div class="mt-7 space-y-4 md:mt-8 md:space-y-5">
+      <div class="grid gap-3.5 sm:grid-cols-2 md:gap-4 lg:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_13.5rem_13.5rem]">
         {phone && (
-          <div class="footer-meta-row flex min-w-0 items-center gap-4 rounded-[1.55rem] border border-line bg-white/72 px-4 py-4">
+          <div class="footer-meta-row flex min-w-0 items-start gap-3 rounded-[1.4rem] border border-line bg-white/72 px-4 py-4 sm:items-center md:gap-4 md:rounded-[1.55rem]">
             <span class="footer-icon-badge flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white/80 text-accent-deep">
               <svg viewBox="0 0 24 24" class="h-[1.05rem] w-[1.05rem]" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M6.8 4.8h2.8l1 3.5-1.8 1.6a14.4 14.4 0 0 0 6.6 6.6l1.6-1.8 3.5 1v2.8c0 .7-.5 1.2-1.2 1.2A16.3 16.3 0 0 1 5.6 6c0-.7.5-1.2 1.2-1.2Z" />
@@ -48,7 +48,7 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
         )}
 
         {email && (
-          <div class="footer-meta-row flex min-w-0 items-center gap-4 rounded-[1.55rem] border border-line bg-white/72 px-4 py-4">
+          <div class="footer-meta-row flex min-w-0 items-start gap-3 rounded-[1.4rem] border border-line bg-white/72 px-4 py-4 sm:items-center md:gap-4 md:rounded-[1.55rem]">
             <span class="footer-icon-badge flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white/80 text-accent-deep">
               <svg viewBox="0 0 24 24" class="h-[1.05rem] w-[1.05rem]" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4.5 6.5h15a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1Zm0 1.4 7.5 5.1 7.5-5.1" />
@@ -66,7 +66,7 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
             href={github.href}
             target="_blank"
             rel="noreferrer"
-            class="footer-social-card group flex min-w-0 flex-col items-center justify-center rounded-[1.55rem] border border-line bg-white/72 px-5 py-5 text-center hover:border-line-strong"
+            class="footer-social-card group flex min-w-0 flex-col items-center justify-center rounded-[1.4rem] border border-line bg-white/72 px-4 py-4 text-center hover:border-line-strong md:rounded-[1.55rem] md:px-5 md:py-5"
           >
             <span class="footer-icon-badge flex h-14 w-14 items-center justify-center rounded-full border border-line bg-white/82 text-accent-deep transition-transform duration-200 group-hover:scale-105">
               <svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
@@ -83,7 +83,7 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
             href={team.href}
             target="_blank"
             rel="noreferrer"
-            class="footer-social-card group flex min-w-0 flex-col items-center justify-center rounded-[1.55rem] border border-line bg-white/72 px-5 py-5 text-center hover:border-line-strong"
+            class="footer-social-card group flex min-w-0 flex-col items-center justify-center rounded-[1.4rem] border border-line bg-white/72 px-4 py-4 text-center hover:border-line-strong md:rounded-[1.55rem] md:px-5 md:py-5"
           >
             <span class="footer-icon-badge flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-line bg-white/82 transition-transform duration-200 group-hover:scale-105">
               {team.imageSrc ? (
@@ -99,18 +99,18 @@ const team = copy.footer.contacts.find((item) => item.kind === "team");
       </div>
 
       {wechat && (
-        <div class="rounded-[1.8rem] border border-line bg-white/72 px-5 py-5">
-          <div class="flex flex-col gap-5 md:flex-row md:items-center">
+        <div class="rounded-[1.55rem] border border-line bg-white/72 px-4 py-4 md:rounded-[1.8rem] md:px-5 md:py-5">
+          <div class="flex flex-col gap-4 md:flex-row md:items-center md:gap-5">
             {wechat.imageSrc && (
               <img
                 src={withBase(wechat.imageSrc)}
                 alt={wechat.imageAlt ?? wechat.label}
-                class="h-36 w-36 rounded-[1.35rem] border border-line object-cover"
+                class="mx-auto h-32 w-32 rounded-[1.2rem] border border-line object-cover md:mx-0 md:h-36 md:w-36 md:rounded-[1.35rem]"
               />
             )}
             <div class="max-w-2xl">
               <p class="section-kicker !text-[0.72rem] !tracking-[0.2em]">{wechat.label}</p>
-              <p class="mt-2 font-display text-2xl text-text md:text-[2.2rem]">{wechat.value}</p>
+              <p class="mt-2 font-display text-[2rem] text-text md:text-[2.2rem]">{wechat.value}</p>
               <p class="mt-3 text-sm leading-7 text-muted md:text-base">
                 {locale === "zh"
                   ? "可扫描二维码添加，也可直接通过微信号联系。"

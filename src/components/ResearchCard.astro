@@ -30,21 +30,21 @@ const {
 } = Astro.props;
 ---
 
-<article class="paper-panel card-lift surface-mist overflow-hidden rounded-[2.3rem] p-4 md:p-5">
-  <div class="grid gap-4 md:grid-cols-[24rem_minmax(0,1fr)] md:items-stretch xl:grid-cols-[25.5rem_minmax(0,1fr)]">
+<article class="paper-panel card-lift surface-mist overflow-hidden rounded-[1.9rem] p-3.5 sm:p-4 md:rounded-[2.3rem] md:p-5">
+  <div class="grid gap-3.5 md:grid-cols-[24rem_minmax(0,1fr)] md:items-stretch xl:grid-cols-[25.5rem_minmax(0,1fr)]">
     <div class="overflow-hidden rounded-[1.75rem] border border-line bg-white/70">
       {cover ? (
         <img
           src={withBase(cover)}
           alt={coverAlt}
-          class="block h-full min-h-[17rem] w-full object-cover"
+          class="block h-full min-h-[13.5rem] w-full object-cover md:min-h-[17rem]"
         />
       ) : (
-        <div class="h-full min-h-[17rem] bg-[radial-gradient(circle_at_top_left,rgba(244,228,234,0.72),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.96),rgba(239,243,249,0.88))]" />
+        <div class="h-full min-h-[13.5rem] bg-[radial-gradient(circle_at_top_left,rgba(244,228,234,0.72),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.96),rgba(239,243,249,0.88))] md:min-h-[17rem]" />
       )}
     </div>
 
-    <div class="px-2 py-2 md:px-1.5">
+    <div class="px-1 py-1.5 md:px-1.5 md:py-2">
       <div class="flex flex-wrap items-center gap-3">
         <span class="rounded-full border border-line bg-white/78 px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
           {kind}
@@ -52,13 +52,13 @@ const {
         <span class="text-xs tracking-[0.16em] text-muted">{date}</span>
       </div>
 
-      <h3 class="mt-4 w-full max-w-none font-display text-[1.7rem] leading-[1.05] text-text md:text-[1.95rem]">
+      <h3 class="mt-3.5 w-full max-w-none font-display text-[1.45rem] leading-[1.05] text-text sm:text-[1.6rem] md:mt-4 md:text-[1.95rem]">
         {title}
       </h3>
-      <p class="mt-4 w-full max-w-none text-[0.98rem] leading-7 text-muted">{summary}</p>
-      <p class="mt-4 text-sm text-text/80">{venueLabel}: {venue}</p>
+      <p class="mt-3.5 w-full max-w-none text-[0.95rem] leading-7 text-muted md:mt-4 md:text-[0.98rem]">{summary}</p>
+      <p class="mt-3.5 text-sm leading-6 text-text/80 md:mt-4">{venueLabel}: {venue}</p>
 
-      <div class="mt-5 flex flex-wrap gap-2">
+      <div class="mt-4 flex flex-wrap gap-2 md:mt-5">
         {tags.map((tag) => (
           <span class="rounded-full bg-accent-soft px-3 py-1 text-xs tracking-[0.14em] text-accent-deep">
             {tag}
@@ -66,7 +66,7 @@ const {
         ))}
       </div>
 
-      <a href={withBase(href)} class="inline-link mt-6">
+      <a href={withBase(href)} class="inline-link mt-5 md:mt-6">
         {detailLabel}
       </a>
     </div>
