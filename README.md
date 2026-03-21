@@ -344,51 +344,24 @@ featured:
 - `Essay`
 - `Summary`
 
-### 新增图集或 Quote
+### 维护图集
 
-在 `src/content/zh/gallery/` 或 `src/content/en/gallery/` 下新增 `md` 文件，至少填写：
+Gallery 不再为每张图单独维护一篇 `md` 内容，也不再生成图片详情页。现在的思路是：
 
-```yaml
-title:
-summary:
-date:
-kind:
-medium:
-image:
-source:
-featured:
-```
+- 图片统一放在 `public/Photos/`
+- 页面直接读取图片并允许点击查看原图
+- 分类标题与归属说明统一写在 `pages/gallery.md`
 
-`kind` 目前支持：
-
-- `Artwork`
-- `Collection`
-- `Quote`
-
-如果是图片内容：
-
-- 图片文件放到 `public/images/gallery/`
-- `image` 字段填 `/images/gallery/xxx.xxx`
-
-如果图片放在 `public/Photos/` 这一套自动图集目录下，也可以直接运行：
-
-```bash
-npm run generate:gallery
-```
-
-当前自动分类目录约定为：
+当前图片分类目录约定为：
 
 - `public/Photos/avatar/` -> `Anime Avatar`
 - `public/Photos/img/` -> `Anime Image`
 - `public/Photos/photo/` -> `Photography`
 
-脚本会自动为中英文 Gallery 生成对应条目，并按编号写入 `src/content/zh/gallery/` 与 `src/content/en/gallery/`。
+分类标题与归属说明统一写在：
 
-如果是 Favorite Quote：
-
-- `kind` 写 `Quote`
-- `source` 填作者、作品或出处
-- `image` 可留空
+- `src/content/zh/pages/gallery.md`
+- `src/content/en/pages/gallery.md`
 
 ## 当前维护建议
 

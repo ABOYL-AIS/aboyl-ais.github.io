@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "generate:gallery": "node scripts/generate-gallery.mjs",
+    "content:check": "node scripts/validate-content.mjs",
+    "content:prepare": "npm run content:check && astro build",
+    "content:publish": "node scripts/publish-site.mjs",
     "astro": "astro"
   },
   "dependencies": {

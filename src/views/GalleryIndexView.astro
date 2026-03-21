@@ -1,9 +1,8 @@
 ---
-import { readdir } from "node:fs/promises";
-import path from "node:path";
-import { getSiteCopy } from "../data/site";
 import type { Locale } from "../i18n/config";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { requireLocalizedPageEntry } from "../utils/content";
+import { getGalleryImages, type GalleryFolder } from "../utils/gallery";
 import { withBase } from "../utils/paths";
 
 interface Props {
@@ -11,61 +10,30 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const copy = getSiteCopy(locale);
-const categoryMeta = [
-  {
-    id: "avatar",
-    label: locale === "zh" ? "头像类" : "Avatar",
-    title: locale === "zh" ? "二次元头像" : "Anime Avatar"
-  },
-  {
-    id: "img",
-    label: locale === "zh" ? "网络图片" : "Image",
-    title: locale === "zh" ? "网络图片收藏" : "Anime Image"
-  },
-  {
-    id: "photo",
-    label: locale === "zh" ? "实拍照片" : "Photo",
-    title: locale === "zh" ? "实拍照片" : "Photography"
-  }
-];
-
-const galleryTitle =
-  copy.collections.gallery.title || (locale === "zh" ? "分类查看图片收藏。" : "Browse images by category.");
-
-async function getCategoryImages(folder: string) {
-  const dir = path.join(process.cwd(), "public", "Photos", folder);
-  const entries = await readdir(dir, { withFileTypes: true });
-  return entries
-    .filter((entry) => entry.isFile() && !entry.name.startsWith("."))
-    .sort((a, b) => a.name.localeCompare(b.name, "zh-CN"))
-    .map((entry) => ({
-      name: entry.name,
-      src: withBase(`/Photos/${folder}/${encodeURIComponent(entry.name)}`)
-    }));
-}
+const page = await requireLocalizedPageEntry(locale, "gallery");
+const categoryMeta = page.data.categories ?? [];
 
 const categories = await Promise.all(
   categoryMeta.map(async (item) => ({
     ...item,
-    images: await getCategoryImages(item.id)
+    images: await getGalleryImages(item.id as GalleryFolder)
   }))
 );
 ---
 
 <BaseLayout
   locale={locale}
-  title={copy.collections.gallery.metaTitle}
-  description={copy.collections.gallery.metaDescription}
+  title={page.data.metaTitle}
+  description={page.data.metaDescription}
 >
   <section class="mx-auto max-w-6xl px-5 pt-12 md:px-8 md:pt-16" data-gallery-root data-default-category="avatar">
     <div class="w-full">
-      <p class="section-kicker">{copy.collections.gallery.kicker}</p>
+      <p class="section-kicker">{page.data.kicker}</p>
       <h1 class="mt-4 w-full max-w-none font-display text-[clamp(2.05rem,3.35vw,3.4rem)] leading-[0.96] tracking-[-0.02em] text-text">
-        {galleryTitle}
+        {page.data.title}
       </h1>
       <p class="mt-5 w-full max-w-none text-base leading-7 text-muted md:text-lg md:leading-8">
-        {copy.collections.gallery.intro}
+        {page.data.intro}
       </p>
     </div>
 
@@ -88,10 +56,15 @@ const categories = await Promise.all(
           hidden={index !== 0}
         >
           <p class="section-kicker">{category.title}</p>
+          {category.note && (
+            <p class="mt-2 max-w-3xl text-sm leading-7 text-muted md:text-base">
+              {category.note}
+            </p>
+          )}
           <div class="gallery-image-wall mt-5 columns-2 gap-3 sm:gap-5 xl:columns-3">
             {category.images.map((image) => (
               <a
-                href={image.src}
+                href={withBase(image.src)}
                 target="_blank"
                 rel="noreferrer"
                 class="gallery-image-tile mb-3 block break-inside-avoid overflow-hidden rounded-[1.1rem] sm:mb-5 sm:rounded-[1.8rem]"

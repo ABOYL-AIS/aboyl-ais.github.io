@@ -5,7 +5,7 @@ import { getSiteCopy } from "../data/site";
 import type { Locale } from "../i18n/config";
 import { localizePath } from "../i18n/config";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getEntrySlug, getLocalizedCollection } from "../utils/content";
+import { getEntrySlug, getLocalizedCollection, requireLocalizedPageEntry } from "../utils/content";
 
 interface Props {
   locale: Locale;
@@ -13,6 +13,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const copy = getSiteCopy(locale);
+const page = await requireLocalizedPageEntry(locale, "notes");
 const notes = (await getLocalizedCollection("notes", locale)).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
@@ -20,14 +21,14 @@ const notes = (await getLocalizedCollection("notes", locale)).sort(
 
 <BaseLayout
   locale={locale}
-  title={copy.collections.notes.metaTitle}
-  description={copy.collections.notes.metaDescription}
+  title={page.data.metaTitle}
+  description={page.data.metaDescription}
 >
   <section class="mx-auto max-w-6xl px-5 pt-16 md:px-8">
     <SectionHeading
-      kicker={copy.collections.notes.kicker}
-      title={copy.collections.notes.title}
-      intro={copy.collections.notes.intro}
+      kicker={page.data.kicker ?? ""}
+      title={page.data.title ?? ""}
+      intro={page.data.intro}
       titleClass="w-full max-w-none text-[clamp(2rem,3.2vw,3.15rem)] leading-[0.97] tracking-[-0.02em]"
       introClass="w-full max-w-none text-base leading-7 text-muted md:text-lg md:leading-8"
     />
