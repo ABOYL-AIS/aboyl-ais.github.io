@@ -273,7 +273,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       },
       galleryPreview: {
         kicker: "Gallery Preview",
-        title: "美好照片与你分享!",
+        title: "美好的图片分享给你！",
         intro: "",
       },
     },
@@ -560,7 +560,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       galleryPreview: {
         kicker: "Gallery Preview",
         title:
-          "Sharing small, beautiful images!",
+          "Beautiful images to share with you!",
         intro:
           "",
       },

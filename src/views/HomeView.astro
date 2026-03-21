@@ -43,6 +43,7 @@ const galleryPreview = shuffleEntries(
   (await getLocalizedCollection("gallery", locale))
     .filter((entry) => entry.data.kind !== "Quote")
     .filter((entry) => Boolean(entry.data.image))
+    .filter((entry) => entry.data.image?.startsWith("/Photos/"))
 ).slice(0, 8);
 
 const projectGridClass =
@@ -128,7 +129,10 @@ const researchGridClass =
   </section>
 
   <section class="home-snap-section mx-auto mt-20 max-w-6xl px-5 pb-8 md:px-8">
-    <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+    <h2 class="font-display text-[2.2rem] leading-[0.98] text-text md:text-[3rem]">
+      {copy.home.galleryPreview.title}
+    </h2>
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
       {galleryPreview.map((entry) => (
         <a
           href={localizePath(locale, `/gallery/${getEntrySlug(entry.id)}/`)}
