@@ -1,6 +1,6 @@
-# ABOYL-AIS
+# Lior | ABOYL-AIS
 
-一个基于 `Astro + Tailwind CSS` 的静态个人网站，用于承载个人简介、项目、研究、笔记与审美收藏。
+一个基于 `Astro + Tailwind CSS` 的静态个人网站，以 `Lior` 为主名称、`ABOYL-AIS` 为副名称，用于承载个人简介、项目、研究、笔记与审美收藏。
 
 当前站点保持：
 

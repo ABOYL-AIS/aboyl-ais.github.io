@@ -1,7 +1,7 @@
 ---
 page: about
-metaTitle: 关于 | ABOYL-AIS
-metaDescription: 关于 ABOYL-AIS
+metaTitle: 关于 | Lior | ABOYL-AIS
+metaDescription: 关于 Lior（ABOYL-AIS）
 kicker: About
 title: INFJ | Qi Liu（刘琪）
 intro: 攀至小坡，仰高山远上!同不失道上所景，亦可伴偕侧良人，向阳逐心中所念!

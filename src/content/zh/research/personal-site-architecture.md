@@ -3,9 +3,9 @@ title: 个人内容站的信息架构与长期维护实践
 summary: 以当前个人站项目为对象，对内容集合、双语路由、静态部署兼容与整体视觉秩序进行一次阶段性总结。
 date: 2026-03-21
 kind: Report
-venue: ABOYL-AIS Project Summary
+venue: Lior / ABOYL-AIS Project Summary
 cover: /favicon.jpg
-coverAlt: ABOYL-AIS site favicon
+coverAlt: Lior / ABOYL-AIS site favicon
 tags:
   - Information Architecture
   - Static Publishing

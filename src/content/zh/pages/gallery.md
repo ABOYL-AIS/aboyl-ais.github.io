@@ -1,6 +1,6 @@
 ---
 page: gallery
-metaTitle: Gallery | ABOYL-AIS
+metaTitle: Gallery | Lior | ABOYL-AIS
 metaDescription: Gallery, visual collections and favorite quotes
 kicker: Gallery
 title: 分享好看的小图片！

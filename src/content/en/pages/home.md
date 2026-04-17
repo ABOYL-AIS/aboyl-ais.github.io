@@ -2,7 +2,7 @@
 page: home
 hero:
   kicker: Quiet Presence
-  title: Welcome to ABOYL-AIS
+  title: Welcome to Lior
   intro: I am a student researcher with a distinctly INFJ temperament and a strong preference for long-term expression. This site gradually gathers the projects, research, notes, and image collections that matter to me and my team.
   note: Agent research / project building / team leadership / long-form writing / image collection
   visualKicker: Main Visual

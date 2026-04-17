@@ -1,6 +1,6 @@
 ---
 page: research
-metaTitle: Research | ABOYL-AIS
+metaTitle: Research | Lior | ABOYL-AIS
 metaDescription: Papers, competitions, reports and achievements
 kicker: Research
 title: 论文、竞赛、报告与成果展示页！

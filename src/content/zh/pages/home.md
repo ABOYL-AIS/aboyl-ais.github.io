@@ -2,7 +2,7 @@
 page: home
 hero:
   kicker: Quiet Presence
-  title: 欢迎来到 ABOYL-AIS
+  title: 欢迎来到 Lior
   intro: 我是一名偏 INFJ 气质、重视长期主义表达的学生研究者。这里会持续整理我与团队正在做的项目、研究、笔记，以及一些个人化的图像收藏。
   note: Agent 研究 / 项目实践 / 团队建设 / 长期写作 / 图像收藏
   visualKicker: Main Visual

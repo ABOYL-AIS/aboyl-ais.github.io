@@ -1,6 +1,6 @@
 ---
 page: notes
-metaTitle: Notes | ABOYL-AIS
+metaTitle: Notes | Lior | ABOYL-AIS
 metaDescription: Notes, technical records and essays
 kicker: Notes
 title: 写一些INFJ-绿老头的深度思考......

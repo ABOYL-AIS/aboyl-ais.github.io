@@ -2,6 +2,7 @@ import type { Locale } from "../i18n/config";
 
 type SiteCopy = {
   name: string;
+  secondaryName: string;
   meta: {
     title: string;
     description: string;
@@ -42,9 +43,10 @@ type SiteCopy = {
 
 const siteCopy: Record<Locale, SiteCopy> = {
   zh: {
-    name: "ABOYL-AIS",
+    name: "Lior",
+    secondaryName: "ABOYL-AIS",
     meta: {
-      title: "ABOYL-AIS | Personal Archive",
+      title: "Lior | ABOYL-AIS",
       description:
         "一个以内容与排版为主的个人静态网站，用于承载项目、论文、记录、图集与长期表达。",
     },
@@ -60,9 +62,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
     brand: {
       markLetter: "A",
       markImage: "/images/brand/icon.jpg",
-      markImageAlt: "ABOYL-AIS anime icon",
+      markImageAlt: "Lior / ABOYL-AIS anime icon",
       wordmarkImage: "",
-      wordmarkImageAlt: "ABOYL-AIS wordmark",
+      wordmarkImageAlt: "Lior / ABOYL-AIS wordmark",
       editionLabel: "You can be more than you seem!",
     },
     common: {
@@ -79,7 +81,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       venueLabel: "载体",
     },
     notFound: {
-      metaTitle: "404 | ABOYL-AIS",
+      metaTitle: "404 | Lior | ABOYL-AIS",
       metaDescription: "页面未找到",
       kicker: "404",
       title: "这页没有被留在当前站点里。",
@@ -90,9 +92,10 @@ const siteCopy: Record<Locale, SiteCopy> = {
     },
   },
   en: {
-    name: "ABOYL-AIS",
+    name: "Lior",
+    secondaryName: "ABOYL-AIS",
     meta: {
-      title: "ABOYL-AIS | Personal Archive",
+      title: "Lior | ABOYL-AIS",
       description:
         "A content-led personal static site for projects, research, notes, gallery fragments, and long-form self-expression.",
     },
@@ -108,9 +111,9 @@ const siteCopy: Record<Locale, SiteCopy> = {
     brand: {
       markLetter: "A",
       markImage: "/images/brand/icon.jpg",
-      markImageAlt: "ABOYL-AIS anime icon",
+      markImageAlt: "Lior / ABOYL-AIS anime icon",
       wordmarkImage: "",
-      wordmarkImageAlt: "ABOYL-AIS wordmark",
+      wordmarkImageAlt: "Lior / ABOYL-AIS wordmark",
       editionLabel: "You can be more than you seem!",
     },
     common: {
@@ -127,7 +130,7 @@ const siteCopy: Record<Locale, SiteCopy> = {
       venueLabel: "Venue",
     },
     notFound: {
-      metaTitle: "404 | ABOYL-AIS",
+      metaTitle: "404 | Lior | ABOYL-AIS",
       metaDescription: "Page not found",
       kicker: "404",
       title: "This page is not part of the current archive.",
@@ -142,4 +145,14 @@ const siteCopy: Record<Locale, SiteCopy> = {
 
 export function getSiteCopy(locale: Locale) {
   return siteCopy[locale];
+}
+
+export function getBrandTitle(locale: Locale) {
+  const copy = getSiteCopy(locale);
+  return `${copy.name} | ${copy.secondaryName}`;
+}
+
+export function getCompositeBrandName(locale: Locale) {
+  const copy = getSiteCopy(locale);
+  return `${copy.name} / ${copy.secondaryName}`;
 }

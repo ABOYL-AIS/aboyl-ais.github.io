@@ -1,7 +1,7 @@
 ---
 page: about
-metaTitle: About | ABOYL-AIS
-metaDescription: About ABOYL-AIS
+metaTitle: About | Lior | ABOYL-AIS
+metaDescription: About Lior (ABOYL-AIS)
 kicker: About
 title: INFJ | Qi Liu（刘琪）
 intro: Climb the hill, look up to the distant mountains! You can enjoy the view and chase your dreams with good company along the way!

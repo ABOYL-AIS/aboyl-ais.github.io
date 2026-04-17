@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { getSiteCopy } from "../data/site";
+import { getBrandTitle, getCompositeBrandName, getSiteCopy } from "../data/site";
 import {
   getLangTag,
   getLocaleFromPathname,
@@ -21,7 +21,7 @@ interface Props {
 
 const {
   locale = getLocaleFromPathname(Astro.url.pathname),
-  title = getSiteCopy(locale).meta.title,
+  title = getBrandTitle(locale),
   description = getSiteCopy(locale).meta.description,
   htmlClass = "",
   bodyClass = "",
@@ -55,7 +55,7 @@ const alternateUrl = Astro.site
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:site_name" content={copy.name} />
+    <meta property="og:site_name" content={getCompositeBrandName(locale)} />
     <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>
       (() => {

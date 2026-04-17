@@ -1,7 +1,7 @@
 ---
 page: contact
-metaTitle: Contact | ABOYL-AIS
-metaDescription: Contact ABOYL-AIS
+metaTitle: Contact | Lior | ABOYL-AIS
+metaDescription: Contact Lior (ABOYL-AIS)
 kicker: Contact
 title: Feel free to reach out. I would be glad to hear from you.
 intro: If you are interested in me or some of the things I do, I would be glad to hear from you. I also welcome anyone who wants to join my team!
@@ -14,7 +14,7 @@ contactSections:
         value: 18372779323@163.com
         href: mailto:18372779323@163.com
       - label: GitHub
-        value: ABOYL-AIS
+        value: Lior / ABOYL-AIS
         href: https://github.com/ABOYL-AIS
   - kicker: AIS Team
     title: If you want to contact the Advanced Informatics Scholar team

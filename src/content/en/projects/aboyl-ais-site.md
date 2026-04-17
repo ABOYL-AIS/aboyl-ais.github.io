@@ -1,10 +1,10 @@
 ---
-title: ABOYL-AIS Personal Archive
+title: Lior Personal Archive
 summary: A personal static site built with Astro, centered on bilingual content, visual tone, long-term maintainability, and GitHub Pages / Vercel compatibility.
 year: "2026"
 role: Product Design / Frontend / Content Architecture
 cover: /favicon.jpg
-coverAlt: ABOYL-AIS site favicon
+coverAlt: Lior / ABOYL-AIS site favicon
 tags:
   - Astro
   - Tailwind CSS
