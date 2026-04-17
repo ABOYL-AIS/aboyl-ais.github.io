@@ -28,7 +28,7 @@ const navItemClass =
     <div class="hidden items-center gap-4 md:grid md:grid-cols-[minmax(0,1fr)_auto] xl:gap-6">
       <div class="paper-panel surface-rose rounded-full px-6 py-3">
         <div class="grid items-center gap-8 md:grid-cols-[auto_1fr]">
-          <a href={withBase(localizePath(locale, "/"))} class="flex min-w-0 items-center gap-3 text-text">
+          <a href={withBase(localizePath(locale, "/"))} class="flex min-w-0 flex-1 items-center gap-3 text-text">
             {copy.brand.markImage ? (
               <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-line-strong bg-white/90 shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
                 <img
@@ -42,7 +42,7 @@ const navItemClass =
                 {copy.brand.markLetter}
               </span>
             )}
-            <div class="min-w-0">
+            <div class="min-w-0 flex-1">
               {copy.brand.wordmarkImage ? (
                 <img
                   src={withBase(copy.brand.wordmarkImage)}
@@ -50,12 +50,12 @@ const navItemClass =
                   class="h-8 w-auto"
                 />
               ) : (
-                <div class="flex min-w-0 items-baseline gap-2.5">
-                  <p class="shrink-0 font-display text-lg leading-none">{copy.name}</p>
-                  <p class="truncate text-[0.66rem] leading-none tracking-[0.24em] text-muted">{copy.secondaryName}</p>
+                <div class="flex min-w-0 flex-nowrap items-baseline gap-2.5 whitespace-nowrap">
+                  <p class="shrink-0 whitespace-nowrap font-display text-lg leading-none">{copy.name}</p>
+                  <p class="truncate whitespace-nowrap text-[0.66rem] leading-none tracking-[0.24em] text-muted">{copy.secondaryName}</p>
                 </div>
               )}
-              <p class="mt-1.5 max-w-[11rem] text-[0.68rem] leading-[1.2] tracking-[0.16em] text-muted">
+              <p class="mt-1.5 max-w-[13rem] text-[0.68rem] leading-[1.2] tracking-[0.16em] text-muted">
                 {copy.brand.editionLabel}
               </p>
             </div>
@@ -103,7 +103,7 @@ const navItemClass =
     <div class="md:hidden">
       <div class="paper-panel rounded-[1.7rem] px-4 py-3">
         <div class="flex items-center justify-between gap-4">
-          <a href={withBase(localizePath(locale, "/"))} class="flex min-w-0 items-center gap-3 text-text">
+          <a href={withBase(localizePath(locale, "/"))} class="flex min-w-0 flex-1 items-center gap-3 text-text">
             {copy.brand.markImage ? (
               <span class="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-line-strong bg-white/90 shadow-[0_8px_20px_rgba(125,97,118,0.08)]">
                 <img
@@ -117,7 +117,7 @@ const navItemClass =
                 {copy.brand.markLetter}
               </span>
             )}
-            <div class="min-w-0">
+            <div class="min-w-0 flex-1">
               {copy.brand.wordmarkImage ? (
                 <img
                   src={withBase(copy.brand.wordmarkImage)}
@@ -125,12 +125,12 @@ const navItemClass =
                   class="h-8 w-auto"
                 />
               ) : (
-                <div class="flex min-w-0 items-baseline gap-2">
-                  <p class="shrink-0 font-display text-lg leading-none">{copy.name}</p>
-                  <p class="truncate text-[0.58rem] leading-none tracking-[0.2em] text-muted">{copy.secondaryName}</p>
+                <div class="flex min-w-0 flex-nowrap items-baseline gap-2 whitespace-nowrap">
+                  <p class="shrink-0 whitespace-nowrap font-display text-lg leading-none">{copy.name}</p>
+                  <p class="truncate whitespace-nowrap text-[0.58rem] leading-none tracking-[0.2em] text-muted">{copy.secondaryName}</p>
                 </div>
               )}
-              <p class="mt-1.5 max-w-[8.5rem] text-[0.62rem] leading-[1.2] tracking-[0.14em] text-muted sm:max-w-[10.5rem] sm:text-[0.68rem] sm:tracking-[0.16em]">
+              <p class="mt-1.5 max-w-[12rem] text-[0.62rem] leading-[1.2] tracking-[0.14em] text-muted sm:max-w-[13rem] sm:text-[0.68rem] sm:tracking-[0.16em]">
                 {copy.brand.editionLabel}
               </p>
             </div>
