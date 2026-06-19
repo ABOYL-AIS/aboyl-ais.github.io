@@ -7,7 +7,7 @@ title: INFJ | Qi Liu（刘琪）
 intro: Climb the hill, look up to the distant mountains! You can enjoy the view and chase your dreams with good company along the way!
 portraitImage: /images/about/二存.jpg
 portraitImageAlt: Qi Liu portrait
-cvFile: /刘琪-CV.pdf
+cvFile: /QiLiu_Lior_2026_CV_CN.pdf
 affiliations:
   - text: Senior undergraduate student in Software Engineering @ Northwest University (China)
     href: https://www.nwu.edu.cn/

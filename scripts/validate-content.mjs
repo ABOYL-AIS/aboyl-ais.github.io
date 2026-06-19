@@ -9,7 +9,7 @@ const requiredPublicAssets = [
   "public/favicon.jpg",
   "public/Wechat.png",
   "public/团队LOGO.png",
-  "public/刘琪-CV.pdf",
+  "public/QiLiu_Lior_2026_CV_CN.pdf",
 ];
 const requiredDirectories = [
   "public/Photos/avatar",
